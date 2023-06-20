@@ -9,5 +9,5 @@
 Use URL = localhost/admin
 
 Crudential :
-admin@gmail.com
-1235678
+email: admin@gmail.com <br>
+pass : 1235678
