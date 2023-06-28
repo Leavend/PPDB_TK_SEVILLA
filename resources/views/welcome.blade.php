@@ -37,6 +37,14 @@ PPDB
           <h2>Sejarah Sekolah</h2>
         </div>
 
+        <div class="row image">
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="150">
+            <img src="" alt="TK1">
+            <img src="" alt="TK2">
+            <img src="" alt="TK3">
+          </div>
+        </div>
+
         <div class="row content">
           <div class="col-lg-12" data-aos="fade-up" data-aos-delay="150">
             <p>
