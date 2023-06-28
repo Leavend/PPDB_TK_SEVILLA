@@ -34,31 +34,21 @@ PPDB
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>Tentang Kami</h2>
+          <h2>Sejarah Sekolah</h2>
         </div>
 
         <div class="row content">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="150">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Taman Kanak-Kanak Sevilla Al-Fatah  merupakan Sekolah Taman Kanak-Kanak yang berada dibawah naungan Dewan Pengelola dan Pendidikan Masjid Al-Fatah Yayasan Istiqomah. Program pembelajaran yang dilaksanakan berbasis agama Islam. TK Sevilla Al-Fatah berdiri pada tanggal 1 Oktober 2004. Status gedung permanen milik jama’ah Masjid Al-Fatah yang memberikan izin untuk pengelolaan TK Sevilla Al-Fatah dengan luas lahan 153m2. Berada ditengah komplek Masjid Al-Fatah dengan beberapa gedung yang pertama hanya digunakan untuk Taman Pendidikan Al-Fatah (TPA) Al-Qur’an. 
             </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-            </ul>
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
+              Melihat kondisi dimana beberapa gedung yang masih kosong maka jama’ah masjid Al-Fatah berkeinginan untuk memanfaatkan gedung tersebut untuk dikelola. Pengurus Masjid Al-Fatah bekerjasama dengan TK Sevilla Samarinda untuk mendirikan lembaga Taman Kanak-Kanak. Akhirnya pelaksanaan pendirian TK terlaksana dengan memperkerjakan tenaga pendidik setempat yang kemudian di beri training di TK Sevilla Samarinda.
             </p>
-            {{-- <a href="#" class="btn-learn-more">Learn More</a> --}}
+            <p>
+              Letak geografis Taman Kanak-Kanak Sevilla Al-Fatah berada di Kecamatan Balikpapan Barat, Kelurahan Margomulyo, letaknya cukup strategis karena berada di lingkungan Masjid Al-Fatah, dan berada di lingkungan perumahan warga yang memiliki banyak anak kecil, serta kondisi lingkungan yang sehat, jauh dari polusi.
+            </p>
           </div>
-        </div>
-
       </div>
     </section>
     <!-- End About Us Section -->

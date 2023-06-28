@@ -36,10 +36,25 @@ class AuthController extends Controller
         return redirect()->back()->with('error', 'Data tidak cocok di sistem.');
     }
 
+    public function AuthRegister(Request $request)
+    {
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = Auth::user();
+            if ($user->user_type == 1) {
+                return redirect('admin/dashboard');
+            } else if ($user->user_type == 2) {
+                return redirect('student/dashboard');
+            }
+        }
+
+        return redirect()->back()->with('error', 'Data tidak cocok di sistem.');
+    }
+
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/home');
     }
 
     public function forgetPassword()

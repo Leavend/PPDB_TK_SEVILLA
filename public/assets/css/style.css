@@ -549,6 +549,11 @@ section {
   font-size: 26px;
 }
 
+.about .col-lg-12 p{
+  font-size: 20px;
+  text-align: center;
+}
+
 .about .content ul {
   list-style: none;
   padding: 0;
@@ -574,6 +579,8 @@ section {
 
 .about .content p:last-child {
   margin-bottom: 0;
+  font-size: 20px;
+  padding-top: 20px;
 }
 
 .about .content .btn-learn-more {
