@@ -39,25 +39,25 @@ class AuthController extends Controller
     public function register()
     {
         if (Auth::check()) {
-            return redirect('/register');
+            return redirect('/registrasi');
         }
         return view('auth.register');
     }
 
-    // public function AuthRegister(Request $request)
-    // {
+    public function authRegister(Request $request)
+    {
+        request()->validate([
+            'email' => 'required|email|unique:users'
+        ]);
+        $user = new User;
+        $user->name = trim($request->name);
+        $user->email = trim($request->email);
+        $user->password = Hash::make($request->password);
+        $user->user_type = 2;
+        $user->save();
 
-    //     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-    //         $user = Auth::user();
-    //         if ($user->user_type == 1) {
-    //             return redirect('admin/dashboard');
-    //         } else if ($user->user_type == 2) {
-    //             return redirect('student/dashboard');
-    //         }
-    //     }
-
-    //     return redirect()->back()->with('error', 'Data tidak cocok di sistem.');
-    // }
+        return redirect('/login')->with('success', 'Berhasil membuat akun');
+    }
 
     public function logout()
     {

@@ -23,7 +23,7 @@
     <div class="card-body">
       <p class="login-box-msg">Kamu lupa Password? Ajukan Permintaan Password Baru</p>
 
-      @include('_messages')
+      @include('_messages');
 
       <form action="{{ url('reset/{token}') }}" method="post">
         @csrf
@@ -37,7 +37,7 @@
         </div>
 
         <div class="input-group mb-3">
-          <input type="password" class="form-control" name="cpassword" placeholder="Confirm Password">
+          <input type="password" class="form-control" name="cpassword" placeholder="Konfirmasi Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
