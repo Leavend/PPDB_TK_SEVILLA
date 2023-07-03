@@ -18,13 +18,14 @@
 <div class="login-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="{{ url('/lupa-password') }}" class="h1">Lupa <b>Password</b></a>
+      <a href="{{ url('/reset-password') }}" class="h1">Lupa <b>Password</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Kamu lupa Password? Ajukan Permintaan Password Baru</p>
 
       @include('_messages')
-      <form action="" method="post">
+
+      <form action="{{ url('reset/{token}') }}" method="post">
         @csrf
         <div class="input-group mb-3">
           <input type="password" class="form-control" name="password" placeholder="Password">

@@ -1,9 +1,13 @@
 @component('mail::message')
-Hello {{ $user->name }}
+Hello {{ $user->name }},
+
 <p>Kami paham terkadang itu terjadi.</p>
 
-@component('mail::button', ['url' => url('reset/ $user->remember_token')])
+@component('mail::button', ['url' => url('reset/' .$user->remember_token)])
 Reset Password Anda
-<p>Terimakasih</p>
+@endcomponent
+
+<p>Jika terdapat Kendala hubungi Kami. TK Sevilla Admin</p>
+Thanks, <br>
 {{ config('app.name') }}
 @endcomponent

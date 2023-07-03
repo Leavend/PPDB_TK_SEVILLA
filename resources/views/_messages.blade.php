@@ -1,16 +1,16 @@
-@if(!@empty(session('success')))
+@if(!empty(session('success')))
   <div class="alert alert-success alert-dismissible fade in" role="alert"> 
     {{ session('success') }}
   </div> 
 @endif
 
-@if(!@empty(session('error')))
+@if(!empty(session('error')))
   <div class="alert alert-danger" role="alert"> 
     {{ session('error') }}
   </div> 
 @endif
 
-@if(!@empty(session('success')))
+{{-- @if(!@empty(session('success')))
   <div class="alert alert-success alert-dismissible fade in" role="alert"> 
     {{ session('success') }}
   </div> 
@@ -20,4 +20,4 @@
   <div class="alert alert-success alert-dismissible fade in" role="alert"> 
     {{ session('success') }}
   </div> 
-@endif
+@endif --}}

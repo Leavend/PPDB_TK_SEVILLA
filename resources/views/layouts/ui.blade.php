@@ -52,7 +52,7 @@
       <div class="row d-flex align-items-center">
         <div class="col-lg-6 text-lg-left text-center">
           <div class="copyright">
-            &copy; Copyright <strong>Rizal</strong>. All Rights Reserved 2023
+            &copy; Copyright <strong>Rizal</strong>. All Rights Reserved {{ date('Y') }}
           </div>
         </div>
         <div class="col-lg-6 text-lg-left text-center">

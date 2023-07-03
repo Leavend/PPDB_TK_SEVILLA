@@ -146,10 +146,10 @@
 
           <!-- List Admin -->
           <li class="nav-item">
-            <a href="{{ url('admin/admin/list') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
+            <a href="{{ url('admin/admin/list-admin') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
               <i class="nav-icon far fa-user"></i>
               <p>
-                List Admin
+                Admin
                 {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>

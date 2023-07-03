@@ -1,6 +1,6 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2023 <a href="/">Rizal</a>.</strong>
+    <strong>Copyright &copy; {{ date('Y') }} TK Sevilla</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.x.x

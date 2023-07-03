@@ -20,7 +20,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function AuthLogin(Request $request)
+    public function authLogin(Request $request)
     {
         $remember = $request->has('remember');
 
@@ -97,7 +97,7 @@ class AuthController extends Controller
         }
     }
 
-    public function PostReset($token, Request $request)
+    public function postReset($token, Request $request)
     {
         if ($request->password == $request->cpassword) {
             $user = User::getTokenSingle($token);
@@ -107,7 +107,7 @@ class AuthController extends Controller
 
             return redirect(url('/login'))->back()->with('success', 'Password berhasil di ubah');
         } else {
-            return redirect()->back()->with('error', 'Password dan Confirm Password tidak cocok');
+            return redirect()->back()->with('error', 'Password dan Konfirmasi Password tidak cocok');
         }
     }
 }
