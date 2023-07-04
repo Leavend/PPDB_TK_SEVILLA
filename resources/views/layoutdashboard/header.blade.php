@@ -156,10 +156,34 @@
           </li>
           <!-- End List Admin -->
 
+          <!-- List Student -->
+          <li class="nav-item">
+            <a href="{{ url('admin/siswa/list-siswa') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
+              <i class="nav-icon fas fa-graduation-cap"></i>
+              <p>
+                Siswa
+                {{-- <i class="right fas fa-angle-left"></i> --}}
+              </p>
+            </a>
+          </li>
+          <!-- End List Siswa -->
+
+          <!-- Info Assignment -->
+          <li class="nav-item">
+            <a href="{{ url('admin/pendaftaran/') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
+              <i class="nav-icon fas fa-address-card"></i>
+              <p>
+                Info Pendaftaran
+                {{-- <i class="right fas fa-angle-left"></i> --}}
+              </p>
+            </a>
+          </li>
+          <!-- End Info Assignment -->
+
           <!-- Logout-->
           <li class="nav-item">
             <a href="{{ url('keluar') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
-              <i class="nav-icon far fa-sign-out"></i>
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Logout
                 {{-- <i class="right fas fa-angle-left"></i> --}}
@@ -187,7 +211,7 @@
           <!-- Logout-->
           <li class="nav-item">
             <a href="{{ url('keluar') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
-              <i class="nav-icon fa-solid fa-arrow-right-from-bracket"></i>
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Logout
                 {{-- <i class="right fas fa-angle-left"></i> --}}

@@ -9,10 +9,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List Admin  (Total : {{ $getRecord->total() }})</h1>
+            <h1>List Akun Siswa  (Total : {{ $getRecord->total() }})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right">
-            <a href="{{ url('admin/admin/tambah-admin') }}" class="btn btn-primary">Tambah Admin Baru</a>
+            <a href="{{ url('admin/siswa/tambah-siswa') }}" class="btn btn-primary">Tambah Akun Siswa Baru</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -27,7 +27,7 @@
             
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Cari Admin</h3>
+                <h3 class="card-title">Cari Siswa</h3>
               </div>
               <form action="" method="get">
                 <div class="card-body">
@@ -45,8 +45,8 @@
                       <input type="date" value="{{ Request::get('date') }}" class="form-control" name="date" placeholder="Date">
                     </div>  
                     <div class="form-group col-md-3">
-                      <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
-                      <a href="{{ url('admin/admin/list-admin') }}" class="btn btn-success" style="margin-top: 30px">Clear</a>
+                      <button class="btn btn-primary" type="submit" style="margin-top: 30px">Cari</button>
+                      <a href="{{ url('admin/siswa/list-siswa') }}" class="btn btn-success" style="margin-top: 30px">Reset</a>
                     </div>
                   </div>
                 </div>
@@ -57,7 +57,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Admin TK Sevilla</h3>
+                <h3 class="card-title">Siswa TK Sevilla</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">

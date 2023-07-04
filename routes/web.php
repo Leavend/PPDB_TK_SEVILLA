@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -53,10 +54,16 @@ Route::get('/alur-pendaftaran', function () {
 
 // Route Middleware
 Route::group(['middleware' => 'admin'], function () {
+
     // Route Dashboard
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+
     // Route List Admin
     Route::get('admin/admin/list-admin', [AdminController::class, 'list']);
+
+    // Route List Siswa
+    Route::get('admin/siswa/list-siswa', [SiswaController::class, 'list']);
+
     // Route Akun Admin
     Route::get('admin/admin/tambah-admin', [AdminController::class, 'addAdmin']);
     Route::post('admin/admin/insertAdmin', [AdminController::class, 'insertAdmin']);
