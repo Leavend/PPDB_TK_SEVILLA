@@ -74,5 +74,5 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::group(['middleware' => 'student'], function () {
     // Route Dashboard
-    Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('siswa/dashboard', [DashboardController::class, 'dashboard']);
 });

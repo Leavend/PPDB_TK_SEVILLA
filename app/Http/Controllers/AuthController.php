@@ -46,17 +46,21 @@ class AuthController extends Controller
 
     public function authRegister(Request $request)
     {
-        request()->validate([
-            'email' => 'required|email|unique:users'
-        ]);
-        $user = new User;
-        $user->name = trim($request->name);
-        $user->email = trim($request->email);
-        $user->password = Hash::make($request->password);
-        $user->user_type = 2;
-        $user->save();
+        if ($request->password == $request->cpassword) {
+            request()->validate([
+                'email' => 'required|email|unique:users'
+            ]);
+            $user = new User;
+            $user->name = trim($request->name);
+            $user->email = trim($request->email);
+            $user->password = Hash::make($request->password);
+            $user->user_type = 2;
+            $user->save();
 
-        return redirect('/login')->with('success', 'Berhasil membuat akun');
+            return redirect('/login')->with('success', 'Berhasil membuat akun');
+        } else {
+            return redirect('/registrasi')->with('error', 'Password dan Konfirmasi Password tidak cocok');
+        }
     }
 
     public function logout()
