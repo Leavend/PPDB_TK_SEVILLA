@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Advanced Form</h1>
+            <h1>Formulir Pendaftaran</h1>
           </div>
         </div>
       </div>
@@ -37,109 +37,84 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Minimal</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
+                  <label>Nama Panggilan</label>
+                  <input disabled="disabled" style="width: 100%;" class="form-control" value="siswa" id="inputNamaPanggilan">
                 </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                  <label>Disabled</label>
-                  <select class="form-control select2" disabled="disabled" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
               </div>
-              <!-- /.col -->
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Multiple</label>
-                  <select class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                    <option>Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                  <label>Disabled Result</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option disabled="disabled">California (disabled)</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
+                  <label>Nama Lengkap</label>
+                  <input type="text" disabled value="siswa" style="width: 100%" class="form-control" id="inputNamaLengkap">
+                </div>              
               </div>
-              <!-- /.col -->
             </div>
             <!-- /.row -->
-
-            <h5>Custom Color Variants</h5>
             <div class="row">
-              <div class="col-12 col-sm-6">
+              <div class="col-md-3">
                 <div class="form-group">
-                  <label>Minimal (.select2-danger)</label>
-                  <select class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
+                  <label>Tempat Lahir</label>
+                  <input type="text" class="form-control" id="inputTempatLahir" placeholder="Tempat Lahir">
                 </div>
-                <!-- /.form-group -->
               </div>
-              <!-- /.col -->
-              <div class="col-12 col-sm-6">
+              <div class="col-md-3">
                 <div class="form-group">
-                  <label>Multiple (.select2-purple)</label>
-                  <div class="select2-purple">
-                    <select class="select2" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
-                      <option>Alabama</option>
-                      <option>Alaska</option>
-                      <option>California</option>
-                      <option>Delaware</option>
-                      <option>Tennessee</option>
-                      <option>Texas</option>
-                      <option>Washington</option>
-                    </select>
+                  <label>Tanggal Lahir</label>
+                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
                   </div>
                 </div>
-                <!-- /.form-group -->
               </div>
-              <!-- /.col -->
+              <div class="col-md-6">
+                <label for="">Jenis Kelamin</label>
+                <select class="form-control" style="width: 100%;">
+                    <option>Laki-Laki</option>
+                    <option>Perempuan</option>
+                  </select>
+              </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+              <div class="col-md-3">
+                <label>Tempat Lahir</label>
+                <input type="text" class="form-control" id="inputTempatLahir" placeholder="Tempat Lahir">
+              </div>
+              <div class="col-md-3">
+                <label>Tanggal Lahir</label>
+                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <label for="">Jenis Kelamin</label>
+                <select class="form-control" style="width: 100%;">
+                    <option>Laki-Laki</option>
+                    <option>Perempuan</option>
+                  </select>
+              </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+              <div class="col-md-3">
+                <label for="">Agama</label>
+                <select name="agama" id="agama" class="form-control" style="width: 100%">
+                  <option value="">Islam</option>
+                  <option value="">Non - Islam</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="">Jumlah Saudara Kandung</label>
+                <input type="text" placeholder="Jumlah Saudara Kandung" class="form-control" style="width: 100%">
+              </div>
             </div>
             <!-- /.row -->
           </div>
           <!-- /.card-body -->
-          <div class="card-footer">
-            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-            the plugin.
-          </div>
         </div>
         <!-- /.card -->
 
