@@ -67,6 +67,25 @@ class User extends Authenticatable
         return $return;
     }
 
+    static public function getTotalAdmin()
+    {
+        $query = self::where('user_type', '=', 1)->where('is_delete', '=', 0);
+
+        if (!empty(Request::get('name'))) {
+            $query->where('name', 'like', '%' . Request::get('name') . '%');
+        }
+
+        if (!empty(Request::get('email'))) {
+            $query->where('email', 'like', '%' . Request::get('email') . '%');
+        }
+
+        if (!empty(Request::get('date'))) {
+            $query->whereDate('created_at', '=', Request::get('date'));
+        }
+
+        return $query->count();
+    }
+
     static public function getStudent()
     {
         $return = User::select('users.*')->where('user_type', '=', 2)->where('is_delete', '=', 0);
@@ -82,6 +101,25 @@ class User extends Authenticatable
         $return = $return->orderBy('id', 'desc')->paginate(3);
 
         return $return;
+    }
+
+    static public function getTotalStudent()
+    {
+        $query = User::where('user_type', '=', 2)->where('is_delete', '=', 0);
+
+        if (!empty(Request::get('name'))) {
+            $query->where('name', 'like', '%' . Request::get('name') . '%');
+        }
+
+        if (!empty(Request::get('email'))) {
+            $query->where('email', 'like', '%' . Request::get('email') . '%');
+        }
+
+        if (!empty(Request::get('date'))) {
+            $query->whereDate('created_at', '=', Request::get('date'));
+        }
+
+        return $query->count();
     }
 
     static public function getEmailSingle($email)

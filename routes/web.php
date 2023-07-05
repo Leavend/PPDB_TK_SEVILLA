@@ -73,6 +73,8 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Route::group(['middleware' => 'student'], function () {
-    // Route Dashboard
-    Route::get('siswa/dashboard', [DashboardController::class, 'dashboard']);
+    // Route Profile
+    Route::get('siswa/profile', function () {
+        return view('student.profile');
+    });
 });

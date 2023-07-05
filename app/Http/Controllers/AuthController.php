@@ -29,7 +29,7 @@ class AuthController extends Controller
             if ($user->user_type == 1) {
                 return redirect('admin/dashboard');
             } else if ($user->user_type == 2) {
-                return redirect('student/dashboard');
+                return redirect('siswa/profile');
             }
         }
 

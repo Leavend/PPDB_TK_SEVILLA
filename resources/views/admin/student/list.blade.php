@@ -11,9 +11,6 @@
           <div class="col-sm-6">
             <h1>List Akun Siswa  (Total : {{ $getRecord->total() }})</h1>
           </div>
-          <div class="col-sm-6" style="text-align: right">
-            <a href="{{ url('admin/siswa/tambah-siswa') }}" class="btn btn-primary">Tambah Akun Siswa Baru</a>
-          </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
