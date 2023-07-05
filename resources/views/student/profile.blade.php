@@ -30,8 +30,6 @@
                 </div>
 
                 <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                {{-- <p class="text-muted text-center">Software Engineer</p> --}}
               </div>
               <!-- /.card-body -->
             </div>
@@ -42,17 +40,22 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                  <li class="nav-item">Settings</li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
-                <div class="tab-content">
-                  <div class="tab-pane" id="settings">
                     <form class="form-horizontal">
+                      @csrf
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Nama Panggilan</label>
+                        <label for="inputName" class="col-sm-2 col-form-label">Nama Panggilan Siswa</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Nama Panggilan">
+                          <input type="email" class="form-control" id="inputNamePanggilanSiswa" placeholder="Nama Panggilan">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Nama Lengkap Siswa</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputNameLengkapSiswa" placeholder="Nama Lengkap">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -62,15 +65,9 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Nama Orang Tua</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Nama Lengkap">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                          <input type="text" class="form-control" id="inputNameOrangTua" placeholder="Nama Orang Tua">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -88,10 +85,6 @@
                         </div>
                       </div>
                     </form>
-                  </div>
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
               </div><!-- /.card-body -->
             </div>
             <!-- /.card -->

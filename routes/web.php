@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -74,7 +75,6 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::group(['middleware' => 'student'], function () {
     // Route Profile
-    Route::get('siswa/profile', function () {
-        return view('student.profile');
-    });
+
+    Route::get('siswa/profile', [ProfileController::class, 'getProfile']);
 });
