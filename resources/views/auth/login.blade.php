@@ -64,7 +64,7 @@
         <a href="{{ url('/lupa-password') }}">Saya Lupa Password !</a>
       </p>
       <p class="mb-0">
-        <a href="{{ url('/register') }}" class="text-center">Daftar | Siswa</a>
+        <a href="{{ url('/registrasi') }}" class="text-center">Daftar | Siswa</a>
       </p>
     </div>
     <!-- /.card-body -->
