@@ -33,7 +33,7 @@ class AuthController extends Controller
             }
         }
 
-        return redirect()->back()->with('error', 'Data tidak cocok di sistem.');
+        return redirect()->back()->with(['error', 'Data tidak cocok di sistem.']);
     }
 
     public function register()
@@ -57,9 +57,9 @@ class AuthController extends Controller
             $user->user_type = 2;
             $user->save();
 
-            return redirect('/login')->with('success', 'Berhasil membuat akun');
+            return redirect('/login')->with(['success', 'Berhasil membuat akun']);
         } else {
-            return redirect('/registrasi')->with('error', 'Password dan Konfirmasi Password tidak cocok');
+            return redirect('/registrasi')->with(['error', 'Password dan Konfirmasi Password tidak cocok']);
         }
     }
 
@@ -84,9 +84,9 @@ class AuthController extends Controller
 
             Mail::to($user->email)->send(new ForgotPasswordMail($user));
 
-            return redirect()->back()->with('success', 'Tolong cek kotak masuk di Email anda');
+            return redirect()->back()->with(['success', 'Tolong cek kotak masuk di Email anda']);
         } else {
-            return redirect()->back()->with('error', 'Email tidak terdaftar di sistem.');
+            return redirect()->back()->with(['error', 'Email tidak terdaftar di sistem.']);
         }
     }
 
@@ -109,9 +109,9 @@ class AuthController extends Controller
             $user->remember_token = Str::random(30);
             $user->save();
 
-            return redirect(url('/login'))->back()->with('success', 'Password berhasil di ubah');
+            return redirect(url('/login'))->back()->with(['success', 'Password berhasil di ubah']);
         } else {
-            return redirect()->back()->with('error', 'Password dan Konfirmasi Password tidak cocok');
+            return redirect()->back()->with(['error', 'Password dan Konfirmasi Password tidak cocok']);
         }
     }
 }

@@ -58,7 +58,7 @@ class AdminController extends Controller
         $user->user_type = 1;
         $user->save();
 
-        return redirect('admin/admin/list-admin')->with(['success', 'Admin berhasil ditambahkan']);
+        return redirect('admin/admin/list-admin')->with(['success', 'Data Admin berhasil di Update']);
     }
 
     public function deleteAdmin($id)

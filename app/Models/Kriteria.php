@@ -9,9 +9,18 @@ class Kriteria extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nama_kriteria',
+        'attribut',
+        'bobot',
+    ];
+
+    protected $table = 'kriterias';
+    protected $guarded = [];
+
     static public function getSingle($id)
     {
-        return self::find($id);
+        return self::findOrFail($id);
     }
 
     static public function getKriteria()

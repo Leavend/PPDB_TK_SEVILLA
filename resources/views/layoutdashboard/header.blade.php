@@ -91,7 +91,7 @@
 
           <!-- Info Assignment -->
           <li class="nav-item">
-            <a href="{{ url('admin/pendaftaran/') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
+            <a href="{{ url('admin/dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Info Pendaftaran
@@ -100,6 +100,17 @@
             </a>
           </li>
           <!-- End Info Assignment -->
+
+          <!-- Info Kriteria -->
+          <li class="nav-item">
+            <a href="{{ url('admin/kriteria/list-kriteria') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
+              <i class="nav-icon fas fa-address-card"></i>
+              <p>
+                Kriteria
+              </p>
+            </a>
+          </li>
+          <!-- End Info Kriteria -->
 
           <!-- Student -->
           @elseif(Auth::user()->user_type == 2)
