@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KriteriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,12 +67,22 @@ Route::group(['middleware' => 'admin'], function () {
     // Route List Siswa
     Route::get('admin/siswa/list-siswa', [SiswaController::class, 'list']);
 
+    // Route List Kriteria
+    Route::get('admin/kriteria/list-kriteria', [KriteriaController::class, 'list']);
+
     // Route Akun Admin
     Route::get('admin/admin/tambah-admin', [AdminController::class, 'addAdmin']);
     Route::post('admin/admin/insertAdmin', [AdminController::class, 'insertAdmin']);
     Route::get('admin/admin/edit-admin/{id}', [AdminController::class, 'editAdmin']);
     Route::post('admin/admin/edit-admin/{id}', [AdminController::class, 'updateAdmin']);
     Route::get('admin/admin/delete-admin/{id}', [AdminController::class, 'deleteAdmin']);
+
+    // Route Kriteria
+    Route::get('admin/kriteria/tambah-kriteria', [KriteriaController::class, 'addKriteria']);
+    Route::post('admin/kriteria/insertKriteria', [KriteriaController::class, 'insertKriteria']);
+    Route::get('admin/kriteria/edit-kriteria/{id}', [KriteriaController::class, 'editKriteria']);
+    Route::post('admin/kriteria/edit-kriteria/{id}', [KriteriaController::class, 'updateKriteria']);
+    Route::get('admin/kriteria/delete-kriteria/{id}', [KriteriaController::class, 'deleteKriteria']);
 });
 
 Route::group(['middleware' => 'student'], function () {

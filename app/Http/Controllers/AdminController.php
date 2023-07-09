@@ -33,7 +33,7 @@ class AdminController extends Controller
         $user->user_type = 1;
         $user->save();
 
-        return redirect('admin/admin/list-admin')->with('success', 'Admin berhasil ditambahkan');
+        return redirect('admin/admin/list-admin')->with(['success', 'Admin berhasil ditambahkan']);
     }
 
     public function editAdmin($id)
@@ -58,7 +58,7 @@ class AdminController extends Controller
         $user->user_type = 1;
         $user->save();
 
-        return redirect('admin/admin/list-admin')->with('success', 'Admin berhasil ditambahkan');
+        return redirect('admin/admin/list-admin')->with(['success', 'Admin berhasil ditambahkan']);
     }
 
     public function deleteAdmin($id)
@@ -67,6 +67,6 @@ class AdminController extends Controller
         $user->is_delete = 1;
         $user->save();
 
-        return redirect('admin/admin/list-admin')->with('success', 'Admin berhasil dihapuskan');
+        return redirect('admin/admin/list-admin')->with(['success', 'Admin berhasil dihapuskan']);
     }
 }
