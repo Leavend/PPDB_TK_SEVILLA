@@ -89,6 +89,7 @@ Route::group(['middleware' => 'student'], function () {
 
     // Route Profile
     Route::get('siswa/profile', [ProfileController::class, 'getProfile']);
+    Route::post('siswa/edit-profile', [ProfileController::class, 'getProfile']);
 
     // Route Formulir
     Route::get('siswa/formulir', [FormController::class, 'getForm']);
