@@ -94,6 +94,33 @@ Route::group(['middleware' => 'student'], function () {
     // Route Update Profile
     Route::post('/update-user/{user_id}', [UserController::class, 'updateUser'])->name('update-user');
 
+    // Route Formulir
+    Route::get('siswa/formulir-pendaftaran', [FormController::class, 'getForm']);
+
+    Route::get('/data-registration', [PendaftaranController::class, 'datapendaftaran'])->name('data-registration');
+    Route::get('/form-registration', [PendaftaranController::class, 'inputpendaftaran']);
+    Route::post('/save-registration', [PendaftaranController::class, 'simpanpendaftaran']);
+    Route::get('/edit-registration/{id_pendaftaran}', [PendaftaranController::class, 'editpendaftaran']);
+    Route::post('/update-registration/{id_pendaftaran}', [PendaftaranController::class, 'updatependaftaran']);
+    Route::get('/delete-registration/{id_pendaftaran}', [PendaftaranController::class, 'hapuspendaftaran']);
+    Route::get('/detail-registration/{id_pendaftaran}', [PendaftaranController::class, 'detailpendaftaran']);
+    Route::get('/card-registration/{id_pendaftaran}', [PendaftaranController::class, 'kartupendaftaran']);
+
+    Route::get('/verified-registration/{id_pendaftaran}', [PendaftaranController::class, 'verifikasistatuspendaftaran']);
+    Route::get('/notverified-registration/{id_pendaftaran}', [PendaftaranController::class, 'notverifikasistatuspendaftaran']);
+    Route::get('/invalid-registration/{id_pendaftaran}', [PendaftaranController::class, 'invalidstatuspendaftaran']);
+    Route::get('/finish-registration/{id_pendaftaran}', [PendaftaranController::class, 'selesaistatuspendaftaran']);
+
+
+
+
+
+
+
+
+
+
+
     // Route 
 
     // Route::post('/edit-pw', [ProfileController::class, 'editakun']);
@@ -105,6 +132,4 @@ Route::group(['middleware' => 'student'], function () {
     // Route::post('/siswa/profile/edit-user/{user_id}', [UserController::class, 'updateUser'])->name('update-user');
     // Route::get('/delete-user/{user_id}', [UserController::class, 'hapususer'])->name('delete-user');
 
-    // Route Formulir
-    Route::get('siswa/formulir', [FormController::class, 'getForm']);
 });

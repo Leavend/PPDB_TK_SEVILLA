@@ -35,17 +35,25 @@
           <!-- /.card-header -->
           <div class="card-body">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label>Nama Panggilan</label>
                   <input style="width: 100%;" class="form-control" required name="firstName" id="inputNamaPanggilan">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label>Nama Lengkap</label>
-                  <input type="text" disableb="disabled" value="{{ Auth::user()->profile->nama }}" style="width: 100%" class="form-control" id="inputNamaLengkap">
+                  <input type="text" disabled="disabled" value="{{ Auth::user()->profile->nama }}" style="width: 100%" class="form-control" id="inputNamaLengkap">
                 </div>              
+              </div>
+              <div class="col-md-6">
+                <label>Jenis Kelamin</label>
+                <select class="form-control" style="width: 100%;" name="jenis_kelamin">
+                    <option value="">Pilih Jenis Kelamin</option>
+                    <option value="laki-laki">Laki-Laki</option>
+                    <option value="perempuan">Perempuan</option>
+                </select>
               </div>
             </div>
             <!-- /.row -->
@@ -68,12 +76,17 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="">Jenis Kelamin</label>
-                <select class="form-control" style="width: 100%;" name="jenis_kelamin">
-                    <option value="">Pilih Jenis Kelamin</option>
-                    <option value="laki-laki">Laki-Laki</option>
-                    <option value="perempuan">Perempuan</option>
-                </select>
+                <label for="">Anak Ke -</label>
+                <select class="form-control" style="width: 100%;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="other">lainnya</option>
+                  </select>
               </div>
             </div>
             <!-- /.row -->
@@ -92,24 +105,23 @@
               </div>
               <div class="col-md-3">
                 <label>Jumlah Saudara</label>
-                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" name="jumlah_saudara"/>
-                  </div>
+                <input type="text" class="form-control" name="jumlah_saudara"/>
               </div>
               <div class="col-md-6">
-                <label for="">Anak Ke -</label>
+                <label for="">Anak Tinggal Bersama</label>
                 <select class="form-control" style="width: 100%;">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
                   </select>
               </div>
             </div>
+            <!-- /.row -->
           </div>
           <!-- /.card-body -->
         </div>

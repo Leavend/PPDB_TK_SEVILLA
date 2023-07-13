@@ -123,7 +123,7 @@
 
           <!-- Profile -->
           <li class="nav-item">
-            <a href="{{ url('siswa/profile') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
+            <a href="{{ url('siswa/profile') }}" class="nav-link @if(Request::segment(2) == 'profile') @endif">
               <i class="nav-icon fas fa-user-circle"></i>
               <p>
                 Profile
@@ -134,7 +134,7 @@
 
           <!-- Form Pendaftaran -->
           <li class="nav-item">
-            <a href="{{ url('siswa/formulir') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
+            <a href="{{ url('siswa/formulir-pendaftaran') }}" class="nav-link @if(Request::segment(2) == 'pendaftaran') @endif">
               <i class="nav-icon fas fa-clipboard-list"></i>
               <p>
                 Formulir

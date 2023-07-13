@@ -89,11 +89,11 @@
                     @endif
                     <div class="card-body">
                       
-                      <strong><i class="fas fa-book mr-1"></i> Nama </strong>
+                      <strong><i class="fas fa-user mr-1"></i> Nama </strong>
                       <p class="text-muted">{{ Auth::user()->profile->nama ? Auth::user()->profile->nama : "-" }}</p>
                       <hr>
 
-                      <strong><i class="fas fa-book mr-1"></i> Jenis Kelamin </strong>
+                      <strong><i class="fas fa-venus-mars mr-1"></i> Jenis Kelamin </strong>
                       <p class="text-muted">{{ Auth::user()->profile->jenis_kelamin ? Auth::user()->profile->jenis_kelamin : "-" }}</p>
                       <hr>
 
@@ -105,11 +105,11 @@
                       <p class="text-muted">{{ Auth::user()->profile->tanggal_lahir ? Auth::user()->profile->tanggal_lahir : "-" }}</p>
                       <hr>
 
-                      <strong><i class="far fa-file-alt mr-1"></i> No HP Wali (Orang Tua Siswa) </strong>
+                      <strong><i class="fas fa-address-book mr-1"></i> No HP Wali (Orang Tua Siswa) </strong>
                       <p class="text-muted">{{ Auth::user()->profile->no_hp ? Auth::user()->profile->no_hp : "-" }}</p>
                       <hr>
 
-                      <strong><i class="far fa-file-alt mr-1"></i> Email (Orang Tua Siswa) </strong>
+                      <strong><i class="fas fa-envelope-square mr-1"></i> Email (Orang Tua Siswa) </strong>
                       <p class="text-muted">{{ Auth::user()->profile->email ? Auth::user()->profile->email : "-" }}</p>
 
                     </div>
