@@ -96,10 +96,10 @@ Route::group(['middleware' => 'student'], function () {
 
     // Route Formulir
     Route::get('siswa/formulir-pendaftaran', [FormController::class, 'getForm']);
+    Route::post('/save-registration', [FormController::class, 'insertRegistration']);
 
     Route::get('/data-registration', [PendaftaranController::class, 'datapendaftaran'])->name('data-registration');
     Route::get('/form-registration', [PendaftaranController::class, 'inputpendaftaran']);
-    Route::post('/save-registration', [PendaftaranController::class, 'simpanpendaftaran']);
     Route::get('/edit-registration/{id_pendaftaran}', [PendaftaranController::class, 'editpendaftaran']);
     Route::post('/update-registration/{id_pendaftaran}', [PendaftaranController::class, 'updatependaftaran']);
     Route::get('/delete-registration/{id_pendaftaran}', [PendaftaranController::class, 'hapuspendaftaran']);

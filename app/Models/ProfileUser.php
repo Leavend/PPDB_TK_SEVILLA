@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ProfileUser extends Model
 {
@@ -21,7 +22,7 @@ class ProfileUser extends Model
 
     public static function id()
     {
-        $kode = self::table('profile_user')->max('user_id');
+        $kode = DB::table('profile_user')->max('user_id');
         $addNol = '';
         $kode = str_replace("USR", "", $kode);
         $kode = (int) $kode + 1;
