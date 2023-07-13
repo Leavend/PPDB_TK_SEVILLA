@@ -1,9 +1,9 @@
 /.phpunit.cache
 /node_modules
 /public/build
+/public/upload
 /public/hot
 /public/storage
-/public/upload/profile
 /storage/*.key
 /vendor
 .env
@@ -17,4 +17,5 @@ npm-debug.log
 yarn-error.log
 /.fleet
 /.idea
+!public/.gitignore
 /.vscode
