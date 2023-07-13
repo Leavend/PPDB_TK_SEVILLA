@@ -72,7 +72,7 @@
                 <select class="form-control" style="width: 100%;">
                     <option>Laki-Laki</option>
                     <option>Perempuan</option>
-                  </select>
+                </select>
               </div>
             </div>
             <!-- /.row -->

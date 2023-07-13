@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ForgotPasswordMail;
+use App\Models\ProfileUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,17 @@ class AuthController extends Controller
             $user->email = trim($request->email);
             $user->password = Hash::make($request->password);
             $user->user_type = 2;
+            $user->created_at = now();
             $user->save();
+
+            $usersid  = User::orderBy('id', 'DESC')->first();
+            ProfileUser::create([
+                'user_id' => $usersid->id,
+                'nama' => $request->name,
+                'email' => $request->email,
+                'created_at' => $user->created_at = now(),
+                'updated_at' => $user->updated_at = now(),
+            ]);
 
             return redirect('/login')->with(['success', 'Berhasil membuat akun']);
         } else {

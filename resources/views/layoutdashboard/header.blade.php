@@ -38,7 +38,13 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          @if (Auth::user()->profile->foto != null)
+            <img class="profile-user-img img-fluid img-circle"
+              src="{{ url('upload/profile/' . Auth::user()->profile->foto) }}"
+              alt="User Image">
+          @else
+            <img src="../../dist/img/user4-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+          @endif
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>

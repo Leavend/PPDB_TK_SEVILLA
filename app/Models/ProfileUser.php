@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class ProfileUser extends Model
 {
     use HasFactory;
-    protected $table = "profile_users";
+    protected $table = "profile_user";
     protected $fillable = ["user_id", "nama", "email", "foto", "tempat_lahir", "tanggal_lahir", "jenis_kelamin", "no_hp"];
     public $timestamps = false;
     public $incrementing = false;
     protected $primaryKey = "id";
+
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
 
     public static function id()
     {

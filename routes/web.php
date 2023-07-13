@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FormController;
@@ -88,8 +89,16 @@ Route::group(['middleware' => 'admin'], function () {
 Route::group(['middleware' => 'student'], function () {
 
     // Route Profile
-    Route::get('siswa/profile', [ProfileController::class, 'getProfile']);
-    Route::post('siswa/edit-profile', [ProfileController::class, 'getProfile']);
+    Route::get('/siswa/profile', [ProfileController::class, 'getProfile'])->name("profile");
+    // Route::post('/edit-pw', [ProfileController::class, 'editakun']);
+
+    // Route User
+    Route::post('/update-user/{user_id}', [UserController::class, 'updateUser'])->name('update-user');
+    // Route::get('/siswa/data-user', [UserController::class, 'datauser'])->name('data-user');
+    // Route::post('/siswa/save-user', [UserController::class, 'simpanuser']);
+    // Route::get('/siswa/profile/edit-user/{user_id}', [UserController::class, 'edituser'])->name('edit-user');
+    // Route::post('/siswa/profile/edit-user/{user_id}', [UserController::class, 'updateUser'])->name('update-user');
+    // Route::get('/delete-user/{user_id}', [UserController::class, 'hapususer'])->name('delete-user');
 
     // Route Formulir
     Route::get('siswa/formulir', [FormController::class, 'getForm']);
