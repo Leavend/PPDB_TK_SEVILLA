@@ -90,10 +90,15 @@ Route::group(['middleware' => 'student'], function () {
 
     // Route Profile
     Route::get('/siswa/profile', [ProfileController::class, 'getProfile'])->name("profile");
+
+    // Route Update Profile
+    Route::post('/update-user/{user_id}', [UserController::class, 'updateUser'])->name('update-user');
+
+    // Route 
+
     // Route::post('/edit-pw', [ProfileController::class, 'editakun']);
 
     // Route User
-    Route::post('/update-user/{user_id}', [UserController::class, 'updateUser'])->name('update-user');
     // Route::get('/siswa/data-user', [UserController::class, 'datauser'])->name('data-user');
     // Route::post('/siswa/save-user', [UserController::class, 'simpanuser']);
     // Route::get('/siswa/profile/edit-user/{user_id}', [UserController::class, 'edituser'])->name('edit-user');

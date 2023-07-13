@@ -38,13 +38,13 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Nama Panggilan</label>
-                  <input disabled="disabled" style="width: 100%;" class="form-control" value="siswa" id="inputNamaPanggilan">
+                  <input style="width: 100%;" class="form-control" required name="firstName" id="inputNamaPanggilan">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Nama Lengkap</label>
-                  <input type="text" disabled value="siswa" style="width: 100%" class="form-control" id="inputNamaLengkap">
+                  <input type="text" disableb="disabled" value="{{ Auth::user()->profile->nama }}" style="width: 100%" class="form-control" id="inputNamaLengkap">
                 </div>              
               </div>
             </div>
@@ -53,14 +53,14 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Tempat Lahir</label>
-                  <input type="text" class="form-control" id="inputTempatLahir" placeholder="Tempat Lahir">
+                  <input type="text" class="form-control" id="inputTempatLahir" value="{{ Auth::user()->profile->tempat_lahir }}" placeholder="Tempat Lahir" name="tempat_lahir">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Tanggal Lahir</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                    <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" value="{{ Auth::user()->profile->tanggal_lahir }}" name="tanggal_lahir">
                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
@@ -69,32 +69,44 @@
               </div>
               <div class="col-md-6">
                 <label for="">Jenis Kelamin</label>
-                <select class="form-control" style="width: 100%;">
-                    <option>Laki-Laki</option>
-                    <option>Perempuan</option>
+                <select class="form-control" style="width: 100%;" name="jenis_kelamin">
+                    <option value="">Pilih Jenis Kelamin</option>
+                    <option value="laki-laki">Laki-Laki</option>
+                    <option value="perempuan">Perempuan</option>
                 </select>
               </div>
             </div>
             <!-- /.row -->
             <div class="row">
               <div class="col-md-3">
-                <label>Tempat Lahir</label>
-                <input type="text" class="form-control" id="inputTempatLahir" placeholder="Tempat Lahir">
+                <label for="">Agama</label>
+                <select class="form-control" style="width: 100%;" name="agama">
+                    <option value="">Pilih Agama</option>
+                    <option value="islam">Islam</option>
+                    <option value="kristen protestan">Kristen Protestan</option>
+                    <option value="kristen katolik">Kristen Katolik</option>
+                    <option value="hindu">Hindu</option>
+                    <option value="buddha">Buddha</option>
+                    <option value="konghucu">Konghucu</option>
+                </select>
               </div>
               <div class="col-md-3">
-                <label>Tanggal Lahir</label>
+                <label>Jumlah Saudara</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
+                    <input type="text" class="form-control datetimepicker-input" name="jumlah_saudara"/>
                   </div>
               </div>
               <div class="col-md-6">
-                <label for="">Jenis Kelamin</label>
+                <label for="">Anak Ke -</label>
                 <select class="form-control" style="width: 100%;">
-                    <option>Laki-Laki</option>
-                    <option>Perempuan</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
                   </select>
               </div>
             </div>
