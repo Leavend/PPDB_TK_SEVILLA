@@ -110,27 +110,12 @@
                   </select>
               </div>
             </div>
-            <!-- /.row -->
-            <div class="row">
-              <div class="col-md-3">
-                <label for="">Agama</label>
-                <select name="agama" id="agama" class="form-control" style="width: 100%">
-                  <option value="">Islam</option>
-                  <option value="">Non - Islam</option>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <label for="">Jumlah Saudara Kandung</label>
-                <input type="text" placeholder="Jumlah Saudara Kandung" class="form-control" style="width: 100%">
-              </div>
-            </div>
-            <!-- /.row -->
           </div>
           <!-- /.card-body -->
         </div>
         <!-- /.card -->
 
-        <!-- SELECT2 EXAMPLE -->
+        {{-- <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title">Select2 (Bootstrap4 Theme)</h3>
@@ -762,7 +747,7 @@
             <!-- /.card -->
           </div>
         </div>
-        <!-- /.row -->
+        <!-- /.row --> --}}
       </div>
       <!-- /.container-fluid -->
     </section>
