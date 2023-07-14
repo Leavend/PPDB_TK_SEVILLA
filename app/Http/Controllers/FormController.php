@@ -36,15 +36,8 @@ class FormController extends Controller
         $pathOrtu = $namaFolderftgaji . "/" . $nama_fileftberkas_ortu;
 
         Pendaftaran::create([
-            'id_pendaftaran' => $kodependaftaran,
-            'user_id' => Auth::user()->id,
-            'nama_siswa' => $request->nama,
-            'jenis_kelamin' => $request->jk,
-            'pas_foto' => $pathFoto,
-            'tempat_lahir' => $request->tempatlahir,
-            'tanggal_lahir' => $request->tanggallahir,
-            'agama' => $request->agama,
 
+            // data calon siswa
             'id_pendaftaran' => $kodependaftaran,
             'user_id' => Auth::user()->id,
             'nama_panggilan' => $request->nama_panggilan,
@@ -56,12 +49,15 @@ class FormController extends Controller
             'agama' => $request->agama,
             'jumlah_saudara' => $request->jumlah_saudara,
             'tinggal_bersama' => $request->tinggal_bersama,
+            'pas_foto' => $pathFoto,
 
             'email' => $request->email,
             'no_hp' => $request->no_hp,
 
             'alamat' => $request->alamat,
 
+
+            // data wali / ortu calon siswa
             //ayahibu
             'nama_ayah' => $request->nama_ayah,
             'nama_ibu' => $request->nama_ibu,
@@ -75,10 +71,17 @@ class FormController extends Controller
             'penghasilan_ibu' => $request->penghasilan_ibu,
             'berkas_ortu' =>  $pathOrtu,
 
+            // data kesehatan calon siswa
+            'penyakit_anak' => $request->penyakit_anak,
+            'makanan_bayi' => $request->makanan_bayi,
+            'penyakit_kambuh' => $request->penyakit_kambuh,
+            'obat' => $request->obat,
+
             'status_pendaftaran' => 'Belum Terverifikasi',
             'tgl_pendaftaran' => now(),
             'created_at' => now()
         ]);
+
         $pendaftaranbaru = Pendaftaran::orderBy('id', 'DESC')->first();
         $id_pendaftaran = $pendaftaranbaru->id;
 
@@ -91,8 +94,8 @@ class FormController extends Controller
             'status' => "Belum Bayar",
             'verifikasi' => false,
             'jatuh_tempo'  => now()->addDays(2)->format('Y-m-d'),
-            'tgl_pembayaran' => now(),
-            'total_bayar'  => 150000,
+            'tanggal_pembayaran' => now(),
+            'total_bayar'  => 3000000,
             'id_pendaftaran' => $id_pendaftaran,
             'created_at' => now()
         ]);

@@ -46,6 +46,12 @@ class Pendaftaran extends Model
         'penghasilan_ibu',
         'berkas_ortu',
 
+        //data kesehatan anak
+        'penyakit_anak',
+        'makanan_bayi',
+        'penyakit_kambuh',
+        'obat',
+
         'status_pendaftaran',
         'tgl_pendaftaran',
         'created_at'

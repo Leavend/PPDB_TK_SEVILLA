@@ -149,7 +149,7 @@
                       <div class="form-group row">
                         <label for="inputFotoProfile" class="col-sm-2 col-form-label">Foto Profile</label>
                         <div class="col-sm-10">
-                          <input type="file" class="form-control" name="foto">
+                          <input type="file" class="form-control" name="foto" accept="image/png, image/jpg, image/jpeg, image/gif, image/svg">
                         </div>
                       </div>
 
