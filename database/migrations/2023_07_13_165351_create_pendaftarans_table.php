@@ -32,7 +32,8 @@ return new class extends Migration
 
             //Kontak
             $table->string('email')->nullable();
-            $table->string('no_hp')->nullable();
+            $table->string('no_hp_ayah')->nullable();
+            $table->string('no_hp_ibu')->nullable();
 
             // Alamat lengkap
             $table->string('alamat')->nullable();
@@ -65,7 +66,7 @@ return new class extends Migration
             $table->string('penghasilan_ayah')->nullable();
             $table->string('penghasilan_ibu')->nullable();
 
-            $table->string('berkas_ortu'); //kk akte ijazah raport penghasilan
+            // $table->string('berkas_ortu'); //kk akte ijazah raport penghasilan
 
 
             //data kesehatan anak

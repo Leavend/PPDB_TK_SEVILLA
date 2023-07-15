@@ -30,7 +30,8 @@ class Pendaftaran extends Model
 
         //kontak
         'email',
-        'no_hp',
+        'no_hp_ayah',
+        'no_hp_ibu',
 
         //alamat
         'alamat',
@@ -44,7 +45,6 @@ class Pendaftaran extends Model
         'pendidikan_ibu',
         'penghasilan_ayah',
         'penghasilan_ibu',
-        'berkas_ortu',
 
         //data kesehatan anak
         'penyakit_anak',

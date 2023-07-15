@@ -29,11 +29,11 @@ class FormController extends Controller
         $file->move($namaFolder, $nama_file);
         $pathFoto = $namaFolder . "/" . $nama_file;
 
-        $fileftberkas_ortu = $request->file('ftberkas_ortu');
-        $nama_fileftberkas_ortu = "BerkasOrtu" . time() . "-" . $fileftberkas_ortu->getClientOriginalName();
-        $namaFolderftgaji = 'data pendaftar/' . $kodependaftaran;
-        $fileftberkas_ortu->move($namaFolderftgaji, $nama_fileftberkas_ortu);
-        $pathOrtu = $namaFolderftgaji . "/" . $nama_fileftberkas_ortu;
+        // $fileftberkas_ortu = $request->file('ftberkas_ortu');
+        // $nama_fileftberkas_ortu = "BerkasOrtu" . time() . "-" . $fileftberkas_ortu->getClientOriginalName();
+        // $namaFolderftgaji = 'data pendaftar/' . $kodependaftaran;
+        // $fileftberkas_ortu->move($namaFolderftgaji, $nama_fileftberkas_ortu);
+        // $pathOrtu = $namaFolderftgaji . "/" . $nama_fileftberkas_ortu;
 
         Pendaftaran::create([
 
@@ -52,13 +52,14 @@ class FormController extends Controller
             'pas_foto' => $pathFoto,
 
             'email' => $request->email,
-            'no_hp' => $request->no_hp,
+            'no_hp_ayah' => $request->no_hp_ayah,
+            'no_hp_ibu' => $request->no_hp_ibu,
 
             'alamat' => $request->alamat,
 
 
             // data wali / ortu calon siswa
-            //ayahibu
+            // nama ayah ibu
             'nama_ayah' => $request->nama_ayah,
             'nama_ibu' => $request->nama_ibu,
             'pekerjaan_ayah' => $request->pekerjaan_ayah,
@@ -69,7 +70,7 @@ class FormController extends Controller
             // penghasilan
             'penghasilan_ayah' => $request->penghasilan_ayah,
             'penghasilan_ibu' => $request->penghasilan_ibu,
-            'berkas_ortu' =>  $pathOrtu,
+            // 'berkas_ortu' =>  $pathOrtu,
 
             // data kesehatan calon siswa
             'penyakit_anak' => $request->penyakit_anak,
