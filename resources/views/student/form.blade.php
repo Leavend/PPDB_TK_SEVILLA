@@ -41,21 +41,25 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Nama Panggilan</label>
-                  <input style="width: 100%;" class="form-control" required name="firstName" id="inputNamaPanggilan">
+                  <input style="width: 100%;" class="form-control" required name="nama_panggilan" id="inputNamaPanggilan">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Nama Lengkap</label>
-                  <input type="text" disabled="disabled" value="{{ Auth::user()->profile->nama }}" style="width: 100%" class="form-control" id="inputNamaLengkap">
+                  @if (Auth::user()->profile->nama  != null)
+                  <input type="text" disabled="disabled" value="{{ Auth::user()->profile->nama }}" style="width: 100%" class="form-control" id="inputNamaLengkap" name="nama_lengkap">
+                  @else
+                  <input type="text" value="{{ old('nama_lengkap') }}" style="width: 100%" class="form-control" id="inputNamaLengkap" name="nama_lengkap">
+                  @endif
                 </div>              
               </div>
               <div class="col-md-6">
                 <label>Jenis Kelamin</label>
                 <select class="form-control" style="width: 100%;" name="jenis_kelamin">
                     <option value="">Pilih Jenis Kelamin</option>
-                    <option value="laki-laki">Laki-Laki</option>
-                    <option value="perempuan">Perempuan</option>
+                    <option value="Laki-Laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
                 </select>
               </div>
             </div>
@@ -437,7 +441,7 @@
         <div class="row my-4">
           <div class="col">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button type="submit" name="add" class="btn btn-primary me-md-2 mb-2 active" data-bs-toggle="button" aria-pressed="true">Buat Pendaftaran</button>
+              <button type="submit" name="add" class="btn btn-primary mb-5 active" data-bs-toggle="button" aria-pressed="true">Buat Pendaftaran</button>
             </div>
           </div>
           <!-- end col -->

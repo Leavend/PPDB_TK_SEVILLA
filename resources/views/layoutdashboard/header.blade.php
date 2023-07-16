@@ -132,7 +132,18 @@
           </li>
           <!-- End Profile -->
 
-          <!-- Form Pendaftaran -->
+          <!-- Info Assignment -->
+          <li class="nav-item">
+            <a href="{{ url('/siswa/data-pendaftaran') }}" class="nav-link @if(Request::segment(2) == 'pendaftaran') @endif">
+              <i class="nav-icon fas fa-address-card"></i>
+              <p>
+                Info Pendaftaran
+              </p>
+            </a>
+          </li>
+          <!-- End Info Assignment -->
+
+          {{-- <!-- Form Pendaftaran -->
           <li class="nav-item">
             <a href="{{ url('siswa/formulir-pendaftaran') }}" class="nav-link @if(Request::segment(2) == 'pendaftaran') @endif">
               <i class="nav-icon fas fa-clipboard-list"></i>
@@ -141,7 +152,7 @@
               </p>
             </a>
           </li>
-          <!-- End Form Pendaftaran -->
+          <!-- End Form Pendaftaran --> --}}
           
           @endif
           <!-- End Student -->

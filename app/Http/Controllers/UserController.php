@@ -15,7 +15,7 @@ use Alert;
 class UserController extends Controller
 {
     //data user
-    public function datauser()
+    public function dataUser()
     {
         $dataUser = User::all();
         $kode = ProfileUser::id();

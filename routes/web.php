@@ -90,15 +90,28 @@ Route::group(['middleware' => 'student'], function () {
 
     // Route Profile
     Route::get('/siswa/profile', [ProfileController::class, 'getProfile'])->name("profile");
-
     // Route Update Profile
     Route::post('/update-user/{user_id}', [UserController::class, 'updateUser'])->name('update-user');
 
+    // Route Pendaftaran
+    Route::get('/siswa/data-pendaftaran', [FormController::class, 'list']);
     // Route Formulir
     Route::get('siswa/formulir-pendaftaran', [FormController::class, 'getForm']);
-    Route::post('/save-registration', [FormController::class, 'insertRegistration']);
+    Route::post('/save-registration', [FormController::class, 'insertRegistration'])->name('save-registration');
+    Route::get('siswa/edit-registration/{id_pendaftaran}', [FormController::class, 'editRegistration']);
+    Route::post('/update-registration/{id_pendaftaran}', [FormController::class, 'updatePendaftaran']);
+    Route::get('siswa/delete-registration/{id_pendaftaran}', [FormController::class, 'hapusPendaftaran']);
+    Route::get('siswa/detail-registration/{id_pendaftaran}', [FormController::class, 'detailPendaftaran']);
+    Route::get('siswa/card-registration/{id_pendaftaran}', [FormController::class, 'kartuPendaftaran']);
 
-    Route::get('/data-registration', [PendaftaranController::class, 'datapendaftaran'])->name('data-registration');
+
+
+
+
+
+    // Route Pembayaran
+
+
     Route::get('/form-registration', [PendaftaranController::class, 'inputpendaftaran']);
     Route::get('/edit-registration/{id_pendaftaran}', [PendaftaranController::class, 'editpendaftaran']);
     Route::post('/update-registration/{id_pendaftaran}', [PendaftaranController::class, 'updatependaftaran']);

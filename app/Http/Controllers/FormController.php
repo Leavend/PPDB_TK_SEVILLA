@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class FormController extends Controller
 {
+    public function list()
+    {
+        $data['getRecord'] = Pendaftaran::all();
+        $dataTitle['header_title'] = 'Pendaftaran';
+        $dataUser['getRecordUser'] = ProfileUser::all();
+        $dataPembayaran['getRecordPayment'] = Pembayaran::all();
+        return view('pendaftaran.data-pendaftaran-list', $dataTitle, ['viewDataPembayaran' => $dataPembayaran, 'viewDataUser' => $dataUser, 'viewData' => $data]);
+    }
+
     public function getForm()
     {
         $data['header_title'] = 'Formulir';
@@ -110,5 +119,12 @@ class FormController extends Controller
         ]);
 
         return redirect('/siswa/profile')->with('success', 'Data Tersimpan!!');
+    }
+
+    public function editRegistration($id_pendaftaran)
+    {
+        $dataUser = ProfileUser::all();
+        $data = Pendaftaran::where("id_pendaftaran", $id_pendaftaran)->first();
+        return view('pendaftaran.data-pendaftaran-edit-admin', ['viewDataUser' => $dataUser, 'viewData' => $data]);
     }
 }
