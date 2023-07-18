@@ -10,17 +10,21 @@ class CripsController extends Controller
 {
     public function insertCrips(Request $request)
     {
-        request()->validate([
+        $validatedData = $request->validate([
+            'kriteria_id' => 'required|integer', // Sesuaikan validasi sesuai kebutuhan
             'nama_crips' => 'required|string',
             'bobot' => 'required|numeric'
         ]);
 
+        // Buat entri crips baru
         $crips = new Crips();
-        $crips->kriteria_id = $request->kriteria_id;
-        $crips->nama_crips = $request->nama_crips;
-        $crips->bobot = $request->bobot;
+        $crips->kriteria_id = $validatedData['kriteria_id'];
+        $crips->nama_crips = $validatedData['nama_crips'];
+        $crips->bobot = $validatedData['bobot'];
         $crips->save();
-        return redirect('admin/kriteria/list-kriteria')->with('success', 'Berhasil menambahkan data');
+
+        // Redirect atau berikan respon sesuai kebutuhan
+        return back()->with('success', 'Berhasil menambahkan data');
     }
 
     public function editCrips($id)

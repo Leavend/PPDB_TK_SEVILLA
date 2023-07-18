@@ -101,12 +101,13 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/kriteria/edit-kriteria/{id}', [KriteriaController::class, 'editKriteria']);
     Route::post('admin/kriteria/edit-kriteria/{id}', [KriteriaController::class, 'updateKriteria']);
     Route::get('admin/kriteria/delete-kriteria/{id}', [KriteriaController::class, 'deleteKriteria']);
+
     // Route Crips
     Route::get('admin/kriteria/show-crips/{id}', [KriteriaController::class, 'showCrips']);
-    Route::post('admin/kriteria/insertCrips', [CripsController::class, 'insertCrips']);
-    Route::get('admin/kriteria/edit-crips/{id}', [CripsController::class, 'editCrips']);
-    Route::post('admin/kriteria/edit-crips/{id}', [CripsController::class, 'updateCrips']);
-    Route::get('admin/kriteria/delete-crips/{id}', [CripsController::class, 'deleteCrips']);
+    Route::post('admin/kriteria/insertCrips', [CripsController::class, 'insertCrips'])->name('insertCrips');
+    Route::get('admin/kriteria/edit-crips/{id}', [CripsController::class, 'editCrips']);;
+    Route::post('admin/kriteria/edit-crips/{id}', [CripsController::class, 'updateCrips']);;
+    Route::get('admin/kriteria/delete-crips/{id}', [CripsController::class, 'deleteCrips']);;
 
 
     // Route Alternatif

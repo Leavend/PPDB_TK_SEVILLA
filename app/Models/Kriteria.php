@@ -18,6 +18,11 @@ class Kriteria extends Model
     protected $table = 'kriterias';
     protected $guarded = [];
 
+    public function crips()
+    {
+        return $this->hasMany(Crips::class);
+    }
+
     static public function getKriteria()
     {
         $return = self::orderBy('nama_kriteria', 'ASC')->get();

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Crips;
 use App\Models\Kriteria;
-use Exception;
 use Illuminate\Http\Request;
 
 class KriteriaController extends Controller
@@ -63,8 +62,8 @@ class KriteriaController extends Controller
 
     public function showCrips($id)
     {
+        $data['kriteria'] = Kriteria::findOrFail($id);
         $data['crips'] = Crips::where('kriteria_id', $id)->get();
-        $data['kriteria_id'] = Kriteria::findOrFail($id);
         return view('admin.kriteria.show', $data);
     }
 }

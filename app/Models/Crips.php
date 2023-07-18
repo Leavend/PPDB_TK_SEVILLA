@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Crips extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'kriteria_id',
-        'nama_crips',
-        'bobot',
-    ];
 
     protected $table = 'crips';
     protected $guarded = [];
+
+    public function kriteria()
+    {
+        return $this->belongsTo(Kriteria::class, 'kriteria_id');
+    }
+
 
     static public function getCrips()
     {

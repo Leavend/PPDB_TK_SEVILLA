@@ -43,6 +43,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Tambah</button>
+                  <a href="{{ url('admin/kriteria/show-crips/' .$crips->id) }}" class="btn btn-sm btn-success">Kembali</a>
                 </div>
               </form>
             </div>

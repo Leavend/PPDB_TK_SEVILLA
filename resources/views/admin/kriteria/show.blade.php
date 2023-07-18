@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Halaman Crips</h1>
+            <h1>Halaman Crips <b style="color: #007bff">{{ $kriteria->nama_kriteria }}</b></h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -25,9 +25,9 @@
             <div class="card card-default text-blue">
               <!-- form start -->
               @include('_messages')
-              <form action="{{ url('admin/kriteria/insertCrips') }}" method="post">
+              <form action="{{ route('insertCrips') }}" method="post">
                 @csrf
-                <input type="hidden" value="{{ $kriteria_id }}" name="kriteria_id">
+                <input type="hidden" value="{{ $kriteria->id }}" name="kriteria_id">
                 <div class="card-header bg-primary">
                   <h3 class="card-title">Tambah Crips</h3>
                 </div>
@@ -44,6 +44,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Tambah</button>
+                  <a href="{{ url('admin/kriteria/list-kriteria/') }}" class="btn btn-sm btn-success">Kembali</a>
                 </div>
               </form>
             </div>
