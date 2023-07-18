@@ -79,6 +79,144 @@
   <!-- Main JS File -->
   <script src="{{ asset('/assets/js/main.js') }}"></script>
 
+  <script>
+      function cardsCenter() {
+          /* testimonial one function by = owl.carousel.js */
+          jQuery('.card-slider').owlCarousel({
+              loop: true,
+              margin: 0,
+              nav: true,
+              //center:true,
+              slideSpeed: 3000,
+              paginationSpeed: 3000,
+              dots: true,
+              navText: ['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+              responsive: {
+                  0: {
+                      items: 1
+                  },
+                  576: {
+                      items: 1
+                  },
+                  800: {
+                      items: 1
+                  },
+                  991: {
+                      items: 1
+                  },
+                  1200: {
+                      items: 1
+                  },
+                  1600: {
+                      items: 1
+                  }
+              }
+          })
+      }
+
+      jQuery(window).on('load', function() {
+          setTimeout(function() {
+              cardsCenter();
+          }, 1000);
+      });
+
+      $(document).ready(function() {
+          $('.mdb-select').materialSelect();
+      });
+  </script>
+
+  <script>
+      function printDiv(divName) {
+          var printContents = document.getElementById(divName).innerHTML;
+          var originalContents = document.body.innerHTML;
+
+          document.body.innerHTML = printContents;
+
+          window.print();
+
+          document.body.innerHTML = originalContents;
+      }
+  </script>
+
+  <script>
+      var serverClock = jQuery("#jamServer");
+      if (serverClock.length > 0) {
+          showServerTime(serverClock, serverClock.text());
+      }
+
+      function showServerTime(obj, time) {
+          var parts = time.split(":"),
+              newTime = new Date();
+
+          newTime.setHours(parseInt(parts[0], 10));
+          newTime.setMinutes(parseInt(parts[1], 10));
+          newTime.setSeconds(parseInt(parts[2], 10));
+
+          var timeDifference = new Date().getTime() - newTime.getTime();
+          var methods = {
+              displayTime: function() {
+                  var now = new Date(new Date().getTime() - timeDifference);
+                  obj.text([
+                      methods.leadZeros(now.getHours(), 2),
+                      methods.leadZeros(now.getMinutes(), 2),
+                      methods.leadZeros(now.getSeconds(), 2)
+                  ].join(":"));
+                  setTimeout(methods.displayTime, 500);
+              },
+
+              leadZeros: function(time, width) {
+                  while (String(time).length < width) {
+                      time = "0" + time;
+                  }
+                  return time;
+              }
+          }
+          methods.displayTime();
+      }
+  </script>
+
+  <script>
+      $(document).on('click', '#btn-delete', function(e) {
+          e.preventDefault();
+          var link = $(this).attr('href');
+
+          Swal.fire({
+              title: 'Apakah Kamu Yakin Untuk Menghapus Data Tersebut?',
+              text: "Kamu tidak bisa mengembalikan data ini!",
+              icon: 'warning',
+              showCancelButton: true,
+              //confirmButtonColor: '#3085d6',
+              //cancelButtonColor: '#d33',
+              confirmButtonText: 'Ya, Hapus itu!'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  window.location = link;
+              }
+          })
+      })
+
+      $(document).on('click', '#btn-update', function(e) {
+          e.preventDefault();
+          var link = $(this).attr('method');
+
+          Swal.fire({
+              title: 'Do you want to save the changes?',
+              icon: 'info',
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: 'Save',
+              denyButtonText: `Don't save`,
+          }).then((result) => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                  window.location = link;
+              } else if (result.isDenied) {
+                  Swal.fire('Changes are not saved', '', 'info')
+              }
+          })
+      })
+  </script>
+  
 </body>
 
 </html>

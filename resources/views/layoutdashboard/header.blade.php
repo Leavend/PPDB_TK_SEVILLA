@@ -30,22 +30,24 @@
     <!-- Brand Logo -->
     <a href="{{ url('/') }}" class="brand-link">
       <img src="../../../dist/img/TKSevillaLogo1.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Halo {{ Auth::user()->name }} 👏</span>
+      <span class="brand-text font-weight-light">TK SEVILLA</span>
     </a>
 
+
+@if(Auth::user()->user_type == 1)
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          @if (Auth::user()->profile->foto != null)
+        {{-- <div class="image"> --}}
+          {{-- @if (Auth::user()->profile->foto != null)
             <img class="profile-user-img img-fluid img-circle"
               src="{{ url('upload/profile/' . Auth::user()->profile->foto) }}"
-              alt="User Image">
-          @else
-            <img src="../../dist/img/user4-128x128.jpg" class="img-circle elevation-2" alt="User Image">
-          @endif
-        </div>
+              alt="User Image"> --}}
+          {{-- @else --}}
+            {{-- <img src="../../dist/img/user4-128x128.jpg" class="img-circle elevation-2" alt="User Image"> --}}
+          {{-- @endif --}}
+        {{-- </div> --}}
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
@@ -57,7 +59,6 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-          @if(Auth::user()->user_type == 1)
         
           <!-- Dashboard -->
           <li class="nav-item">
@@ -109,7 +110,7 @@
 
           <!-- Info Kriteria -->
           <li class="nav-item">
-            <a href="{{ url('admin/kriteria/list-kriteria') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @endif">
+            <a href="{{ url('admin/kriteria/list-kriteria') }}" class="nav-link @if(Request::segment(2) == 'kriteria') @endif">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Kriteria
@@ -118,8 +119,57 @@
           </li>
           <!-- End Info Kriteria -->
 
-          <!-- Student -->
-          @elseif(Auth::user()->user_type == 2)
+          <!-- Info Kriteria -->
+          <li class="nav-item">
+            <a href="{{ url('admin/alternatif/list-alternatif') }}" class="nav-link @if(Request::segment(2) == 'alternatif') @endif">
+              <i class="nav-icon fas fa-address-card"></i>
+              <p>
+                Alternatif
+              </p>
+            </a>
+          </li>
+          <!-- End Info Kriteria -->
+
+          <!-- Info Kriteria -->
+          <li class="nav-item">
+            <a href="{{ url('admin/crips/list-crips') }}" class="nav-link @if(Request::segment(2) == 'crips') @endif">
+              <i class="nav-icon fas fa-address-card"></i>
+              <p>
+                Crips
+              </p>
+            </a>
+          </li>
+          <!-- End Info Kriteria -->
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+
+<!-- Student -->
+@elseif(Auth::user()->user_type == 2)
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          @if (Auth::user()->profile->foto != null)
+            <img class="profile-user-img img-fluid img-circle"
+              src="{{ url('upload/profile/' . Auth::user()->profile->foto) }}"
+              alt="User Image">
+          @else
+            <img src="../../dist/img/user4-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+          @endif
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
 
           <!-- Profile -->
           <li class="nav-item">

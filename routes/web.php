@@ -5,9 +5,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\CripsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +58,17 @@ Route::get('/alur-pendaftaran', function () {
     return view('pendaftaran.alurPendaftaran');
 });
 
+// Route Pembayaran
+Route::get('/data-payment', [PembayaranController::class, 'list'])->name('data-pembayaran');
+Route::post('/save-payment', [PembayaranController::class, 'simpanpembayaran']);
+Route::post('/update-payment/{id_pembayaran}', [PembayaranController::class, 'updatepembayaran']);
+Route::get('/delete-payment/{id_pembayaran}', [PembayaranController::class, 'hapuspembayaran']);
+
+Route::post('/upload-payment', [PembayaranController::class, 'updatebuktipembayaran'])->name('upload-payment');
+Route::get('/paid-payment/{id_pembayaran}', [PembayaranController::class, 'verifikasipembayaran']);
+Route::get('/unpaid-payment/{id_pembayaran}', [PembayaranController::class, 'belumbayar']);
+Route::get('/invalid-payment/{id_pembayaran}', [PembayaranController::class, 'invalidbayar']);
+
 
 // Route Middleware
 Route::group(['middleware' => 'admin'], function () {
@@ -71,6 +85,9 @@ Route::group(['middleware' => 'admin'], function () {
     // Route List Kriteria
     Route::get('admin/kriteria/list-kriteria', [KriteriaController::class, 'list']);
 
+    // Route List Alternatif
+    Route::get('admin/alternatif/list-alternatif', [AlternatifController::class, 'list']);
+
     // Route Akun Admin
     Route::get('admin/admin/tambah-admin', [AdminController::class, 'addAdmin']);
     Route::post('admin/admin/insertAdmin', [AdminController::class, 'insertAdmin']);
@@ -84,6 +101,25 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/kriteria/edit-kriteria/{id}', [KriteriaController::class, 'editKriteria']);
     Route::post('admin/kriteria/edit-kriteria/{id}', [KriteriaController::class, 'updateKriteria']);
     Route::get('admin/kriteria/delete-kriteria/{id}', [KriteriaController::class, 'deleteKriteria']);
+    // Route Crips
+    Route::get('admin/kriteria/show-crips/{id}', [KriteriaController::class, 'showCrips']);
+    Route::post('admin/kriteria/insertCrips', [CripsController::class, 'insertCrips']);
+    Route::get('admin/kriteria/edit-crips/{id}', [CripsController::class, 'editCrips']);
+    Route::post('admin/kriteria/edit-crips/{id}', [CripsController::class, 'updateCrips']);
+    Route::get('admin/kriteria/delete-crips/{id}', [CripsController::class, 'deleteCrips']);
+
+
+    // Route Alternatif
+    Route::get('admin/alternatif/tambah-alternatif', [AlternatifController::class, 'addAlternatif']);
+    Route::post('admin/alternatif/insertAlternatif', [AlternatifController::class, 'insertAlternatif']);
+    Route::get('admin/alternatif/edit-alternatif/{id}', [AlternatifController::class, 'editAlternatif']);
+    Route::post('admin/alternatif/edit-alternatif/{id}', [AlternatifController::class, 'updateAlternatif']);
+    Route::get('admin/alternatif/delete-alternatif/{id}', [AlternatifController::class, 'deleteAlternatif']);
+
+
+
+    // Route Pengumuman
+
 });
 
 Route::group(['middleware' => 'student'], function () {
@@ -98,31 +134,19 @@ Route::group(['middleware' => 'student'], function () {
     // Route Formulir
     Route::get('siswa/formulir-pendaftaran', [FormController::class, 'getForm']);
     Route::post('/save-registration', [FormController::class, 'insertRegistration'])->name('save-registration');
-    Route::get('siswa/edit-registration/{id_pendaftaran}', [FormController::class, 'editRegistration']);
-    Route::post('/update-registration/{id_pendaftaran}', [FormController::class, 'updatePendaftaran']);
-    Route::get('siswa/delete-registration/{id_pendaftaran}', [FormController::class, 'hapusPendaftaran']);
-    Route::get('siswa/detail-registration/{id_pendaftaran}', [FormController::class, 'detailPendaftaran']);
-    Route::get('siswa/card-registration/{id_pendaftaran}', [FormController::class, 'kartuPendaftaran']);
+    Route::get('siswa/edit-pendaftaran/{id_pendaftaran}', [FormController::class, 'editRegistration']);
+    Route::post('siswa/edit-pendaftaran/{id_pendaftaran}', [FormController::class, 'updateRegistration']);
+    Route::get('siswa/delete-pendaftaran/{id_pendaftaran}', [FormController::class, 'deleteRegistration']);
+    Route::get('siswa/detail-pendaftaran/{id_pendaftaran}', [FormController::class, 'detailRegistration']);
+    Route::get('siswa/kartu-pendaftaran/{id_pendaftaran}', [FormController::class, 'cardRegistration']);
+
+    Route::get('/verified-registration/{id_pendaftaran}', [FormController::class, 'verifikasiStatusRegistration']);
+    Route::get('/notverified-registration/{id_pendaftaran}', [FormController::class, 'notVerifikasiStatusRegistration']);
+    Route::get('/invalid-registration/{id_pendaftaran}', [FormController::class, 'invalidStatusRegistration']);
+    Route::get('/finish-registration/{id_pendaftaran}', [FormController::class, 'finishStatusRegistration']);
 
 
 
-
-
-
-    // Route Pembayaran
-
-
-    Route::get('/form-registration', [PendaftaranController::class, 'inputpendaftaran']);
-    Route::get('/edit-registration/{id_pendaftaran}', [PendaftaranController::class, 'editpendaftaran']);
-    Route::post('/update-registration/{id_pendaftaran}', [PendaftaranController::class, 'updatependaftaran']);
-    Route::get('/delete-registration/{id_pendaftaran}', [PendaftaranController::class, 'hapuspendaftaran']);
-    Route::get('/detail-registration/{id_pendaftaran}', [PendaftaranController::class, 'detailpendaftaran']);
-    Route::get('/card-registration/{id_pendaftaran}', [PendaftaranController::class, 'kartupendaftaran']);
-
-    Route::get('/verified-registration/{id_pendaftaran}', [PendaftaranController::class, 'verifikasistatuspendaftaran']);
-    Route::get('/notverified-registration/{id_pendaftaran}', [PendaftaranController::class, 'notverifikasistatuspendaftaran']);
-    Route::get('/invalid-registration/{id_pendaftaran}', [PendaftaranController::class, 'invalidstatuspendaftaran']);
-    Route::get('/finish-registration/{id_pendaftaran}', [PendaftaranController::class, 'selesaistatuspendaftaran']);
 
 
 

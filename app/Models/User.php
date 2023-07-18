@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     static public function getAdmin()
     {
-        $return = self::select('users.*')->where('user_type', '=', 1)->where('is_delete', '=', 0);
+        $return = self::select('users.*')->where('user_type', '=', 1);
         if (!empty(Request::get('name'))) {
             $return = $return->where('name', 'like', '%' . Request::get('name') . '%');
         }
@@ -74,7 +74,7 @@ class User extends Authenticatable
 
     static public function getTotalAdmin()
     {
-        $query = self::where('user_type', '=', 1)->where('is_delete', '=', 0);
+        $query = self::where('user_type', '=', 1);
 
         if (!empty(Request::get('name'))) {
             $query->where('name', 'like', '%' . Request::get('name') . '%');
@@ -93,7 +93,7 @@ class User extends Authenticatable
 
     static public function getStudent()
     {
-        $return = User::select('users.*')->where('user_type', '=', 2)->where('is_delete', '=', 0);
+        $return = User::select('users.*')->where('user_type', '=', 2);
         if (!empty(Request::get('name'))) {
             $return = $return->where('name', 'like', '%' . Request::get('name') . '%');
         }
@@ -110,7 +110,7 @@ class User extends Authenticatable
 
     static public function getTotalStudent()
     {
-        $query = User::where('user_type', '=', 2)->where('is_delete', '=', 0);
+        $query = User::where('user_type', '=', 2);
 
         if (!empty(Request::get('name'))) {
             $query->where('name', 'like', '%' . Request::get('name') . '%');

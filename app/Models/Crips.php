@@ -5,22 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kriteria extends Model
+class Crips extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'nama_kriteria',
-        'attribut',
+        'kriteria_id',
+        'nama_crips',
         'bobot',
     ];
 
-    protected $table = 'kriterias';
+    protected $table = 'crips';
     protected $guarded = [];
 
-    static public function getKriteria()
+    static public function getCrips()
     {
-        $return = self::orderBy('nama_kriteria', 'ASC')->get();
+        $return = self::orderBy('nama_crips', 'ASC')->get();
         return $return;
     }
 }

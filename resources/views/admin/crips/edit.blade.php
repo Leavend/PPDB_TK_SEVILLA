@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit Kriteria {{ $getRecord->nama_kriteria }} </h1>
+            <h1>Edit Crips</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -27,31 +27,22 @@
               @include('_messages')
               <form action="" method="post">
                 @csrf
-                {{-- @method('put') --}}
                 <div class="card-header bg-primary">
-                  <h3 class="card-title">Edit Kriteria {{ $getRecord->nama_kriteria }}</h3>
+                  <h3 class="card-title">Edit Crips</h3>
                 </div>
                 <div class="card-body"> 
                   <div class="form-group">
-                    <label for="nama">Nama Kriteria</label>
-                    <input type="text" class="form-control" required name="nama_kriteria" value="{{ $getRecord->nama_kriteria }}">
+                    <label for="nama">Nama Crips</label>
+                    <input type="text" class="form-control" required name="nama_crips" value="{{ $crips->nama_crips }}">
                   </div>
                   <div class="form-group">
-                    <label for="attribut">Attribut</label>
-                    <select name="attribut" id="" class="form-control" required>
-                      <option {{ $getRecord->attribut == 'Benefit' ? 'selected' : '' }}>Benefit</option>
-                      <option {{ $getRecord->attribut == 'Cost' ? 'selected' : '' }}>Cost</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="bobot">Bobot</label>
-                    <input type="number" class="form-control" required name="bobot" value="{{ $getRecord->bobot }}">
+                    <label for="bobot">Bobot Crips</label>
+                    <input type="number" class="form-control" required name="bobot" value="{{ $crips->bobot }}">
                   </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
-                  <a href="{{ url('admin/kriteria/list-kriteria') }}" class="btn btn-sm btn-success">Kembali</a>
+                  <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
               </form>
             </div>

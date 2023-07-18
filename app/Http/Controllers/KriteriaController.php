@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crips;
 use App\Models\Kriteria;
 use Exception;
 use Illuminate\Http\Request;
@@ -28,12 +29,12 @@ class KriteriaController extends Controller
         $kriteria->attribut = $request->attribut;
         $kriteria->bobot = $request->bobot;
         $kriteria->save();
-        return redirect('admin/kriteria/list-kriteria')->with(['success', 'Berhasil Menambahkan Data']);
+        return redirect('admin/kriteria/list-kriteria')->with('success', 'Berhasil menambahkan data');
     }
 
     public function editKriteria($id)
     {
-        $data['getRecord'] = Kriteria::getSingle($id);
+        $data['getRecord'] = Kriteria::findOrFail($id);
         return view('admin.kriteria.edit', $data);
     }
 
@@ -44,18 +45,26 @@ class KriteriaController extends Controller
             'attribut' => 'required|string',
             'bobot' => 'required|numeric'
         ]);
-        $kriteria = Kriteria::getSingle($id);
-        $kriteria->nama_kriteria = $request->nama_kriteria;
-        $kriteria->attribut = $request->attribut;
-        $kriteria->bobot = $request->bobot;
-        $kriteria->save();
-        return redirect('admin/kriteria/list-kriteria')->with(['success', 'Admin berhasil ditambahkan']);
+        $kriteria = Kriteria::findOrFail($id);
+        $kriteria->update([
+            'nama_kriteria' => $request->nama_kriteria,
+            'attribut' => $request->attribut,
+            'bobot' => $request->bobot
+        ]);
+        return redirect('admin/kriteria/list-kriteria')->with('success', 'Kriteria berhasil diupdate');
     }
 
     public function deleteKriteria($id)
     {
-        $kriteria = Kriteria::getSingle($id);
+        $kriteria = Kriteria::findOrFail($id);
         $kriteria->delete();
-        return redirect('admin/kriteria/list-kriteria')->with(['success', 'Admin berhasil dihapuskan']);
+        return redirect('admin/kriteria/list-kriteria')->with('success', 'Kriteria berhasil dihapuskan');
+    }
+
+    public function showCrips($id)
+    {
+        $data['crips'] = Crips::where('kriteria_id', $id)->get();
+        $data['kriteria_id'] = Kriteria::findOrFail($id);
+        return view('admin.kriteria.show', $data);
     }
 }
