@@ -11,6 +11,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\CripsController;
+use App\Http\Controllers\PenilaianController;
+use App\Http\Controllers\PerhitunganController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,6 +90,12 @@ Route::group(['middleware' => 'admin'], function () {
     // Route List Alternatif
     Route::get('admin/alternatif/list-alternatif', [AlternatifController::class, 'list']);
 
+    // Route List Penilaian
+    Route::get('admin/penilaian/list-penilaian', [PenilaianController::class, 'list']);
+
+    // Route List Perhitungan
+    Route::get('admin/perhitungan/list-perhitungan', [PerhitunganController::class, 'list']);
+
     // Route Akun Admin
     Route::get('admin/admin/tambah-admin', [AdminController::class, 'addAdmin']);
     Route::post('admin/admin/insertAdmin', [AdminController::class, 'insertAdmin']);
@@ -96,7 +104,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/admin/delete-admin/{id}', [AdminController::class, 'deleteAdmin']);
 
     // Route Kriteria
-    Route::get('admin/kriteria/tambah-kriteria', [KriteriaController::class, 'addKriteria']);
+    // Route::get('admin/kriteria/tambah-kriteria', [KriteriaController::class, 'addKriteria']);
     Route::post('admin/kriteria/insertKriteria', [KriteriaController::class, 'insertKriteria']);
     Route::get('admin/kriteria/edit-kriteria/{id}', [KriteriaController::class, 'editKriteria']);
     Route::post('admin/kriteria/edit-kriteria/{id}', [KriteriaController::class, 'updateKriteria']);
@@ -111,12 +119,20 @@ Route::group(['middleware' => 'admin'], function () {
 
 
     // Route Alternatif
-    Route::get('admin/alternatif/tambah-alternatif', [AlternatifController::class, 'addAlternatif']);
+    // Route::get('admin/alternatif/tambah-alternatif', [AlternatifController::class, 'addAlternatif']);
     Route::post('admin/alternatif/insertAlternatif', [AlternatifController::class, 'insertAlternatif']);
     Route::get('admin/alternatif/edit-alternatif/{id}', [AlternatifController::class, 'editAlternatif']);
     Route::post('admin/alternatif/edit-alternatif/{id}', [AlternatifController::class, 'updateAlternatif']);
     Route::get('admin/alternatif/delete-alternatif/{id}', [AlternatifController::class, 'deleteAlternatif']);
 
+    // Route Penilaian
+    // Route::get('admin/penilaian/tambah-kriteria', [PenilaianController::class, 'addPenilaian']);
+    Route::post('admin/penilaian/insertPenilaian', [PenilaianController::class, 'insertPenilaian'])->name('insertPenilaian');
+    // Route::get('admin/penilaian/edit-penilaian/{id}', [PenilaianController::class, 'editPenilaian']);
+    // Route::post('admin/penilaian/edit-penilaian/{id}', [PenilaianController::class, 'updatePenilaian']);
+    // Route::get('admin/penilaian/delete-penilaian/{id}', [PenilaianController::class, 'deletePenilaian']);
+
+    // Route Perhitungan
 
 
     // Route Pengumuman

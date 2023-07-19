@@ -119,7 +119,7 @@
           </li>
           <!-- End Info Kriteria -->
 
-          <!-- Info Kriteria -->
+          <!-- Info Alternatif -->
           <li class="nav-item">
             <a href="{{ url('admin/alternatif/list-alternatif') }}" class="nav-link @if(Request::segment(2) == 'alternatif') @endif">
               <i class="nav-icon fas fa-address-card"></i>
@@ -128,18 +128,30 @@
               </p>
             </a>
           </li>
-          <!-- End Info Kriteria -->
+          <!-- End Info Alternatif -->
 
-          <!-- Info Kriteria -->
+          <!-- Info Penilaian -->
           <li class="nav-item">
-            <a href="{{ url('admin/crips/list-crips') }}" class="nav-link @if(Request::segment(2) == 'crips') @endif">
+            <a href="{{ url('admin/penilaian/list-penilaian') }}" class="nav-link @if(Request::segment(2) == 'penilaian') @endif">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
-                Crips
+                Penilaian
               </p>
             </a>
           </li>
-          <!-- End Info Kriteria -->
+          <!-- End Info Penilaian -->
+
+          <!-- Info Perhitungan -->
+          <li class="nav-item">
+            <a href="{{ url('admin/perhitungan/list-perhitungan') }}" class="nav-link @if(Request::segment(2) == 'penilaian') @endif">
+              <i class="nav-icon fas fa-address-card"></i>
+              <p>
+                Perhitungan
+              </p>
+            </a>
+          </li>
+          <!-- End Info Perhitungan -->
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

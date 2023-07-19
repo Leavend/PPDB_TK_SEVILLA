@@ -20,7 +20,7 @@ class Kriteria extends Model
 
     public function crips()
     {
-        return $this->hasMany(Crips::class);
+        return $this->hasMany(Crips::class, 'kriteria_id');
     }
 
     static public function getKriteria()

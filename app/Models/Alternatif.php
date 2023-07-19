@@ -20,4 +20,9 @@ class Alternatif extends Model
         $return = self::orderBy('nama_alternatif', 'ASC')->get();
         return $return;
     }
+
+    public function penilaian()
+    {
+        return $this->hasMany(Penilaian::class, 'alternatif_id');
+    }
 }
