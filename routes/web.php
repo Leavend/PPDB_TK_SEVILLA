@@ -143,13 +143,15 @@ Route::group(['middleware' => 'student'], function () {
 
     // Route Profile
     Route::get('/siswa/profile', [ProfileController::class, 'getProfile'])->name("profile");
+
     // Route Update Profile
     Route::post('/update-user/{user_id}', [UserController::class, 'updateUser'])->name('update-user');
 
     // Route Pendaftaran
     Route::get('/siswa/data-pendaftaran', [FormController::class, 'list']);
+
     // Route Formulir
-    Route::get('siswa/formulir-pendaftaran', [FormController::class, 'getForm']);
+    Route::get('siswa/formulir-pendaftaran', [FormController::class, 'getForm'])->name('form-registration');
     Route::post('/save-registration', [FormController::class, 'insertRegistration'])->name('save-registration');
     Route::get('siswa/edit-pendaftaran/{id_pendaftaran}', [FormController::class, 'editRegistration']);
     Route::post('siswa/edit-pendaftaran/{id_pendaftaran}', [FormController::class, 'updateRegistration']);

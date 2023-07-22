@@ -49,7 +49,7 @@ class FormController extends Controller
 
             // data calon siswa
             'id_pendaftaran' => $kodependaftaran,
-            'user_id' => Auth::user()->id,
+            'user_id' => $request->user_id,
             'nama_panggilan' => $request->nama_panggilan,
             'nama_lengkap' => $request->nama_lengkap,
             'jenis_kelamin' => $request->jenis_kelamin,
