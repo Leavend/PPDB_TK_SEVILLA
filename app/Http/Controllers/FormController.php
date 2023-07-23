@@ -15,11 +15,20 @@ class FormController extends Controller
 {
     public function list()
     {
-        $data['getRecord'] = Pendaftaran::all();
-        $dataTitle['header_title'] = 'Pendaftaran';
-        $dataUser['getRecordUser'] = ProfileUser::all();
-        $dataPembayaran['getRecordPayment'] = Pembayaran::all();
-        return view('pendaftaran.list', $dataTitle, ['viewDataPembayaran' => $dataPembayaran, 'viewDataUser' => $dataUser, 'viewData' => $data]);
+        $data = Pendaftaran::all();
+        $dataTitle = 'Pendaftaran';
+        $dataUser = ProfileUser::all();
+        $dataPembayaran = Pembayaran::all();
+        // $data['getRecord'] = Pendaftaran::all();
+        // $dataTitle['header_title'] = 'Pendaftaran';
+        // $dataUser['getRecordUser'] = ProfileUser::all();
+        // $dataPembayaran['getRecordPayment'] = Pembayaran::all();
+        return view('pendaftaran.list',  [
+            $dataTitle,
+            'viewDataPembayaran' => $dataPembayaran,
+            'viewDataUser' => $dataUser,
+            'viewData' => $data
+        ]);
     }
 
     public function getForm()
@@ -86,38 +95,38 @@ class FormController extends Controller
             'penyakit_anak' => $request->penyakit_anak,
             'makanan_bayi' => $request->makanan_bayi,
             'penyakit_kambuh' => $request->penyakit_kambuh,
-            'obat' => $request->obat,
+            // 'obat' => $request->obat,
 
             'status_pendaftaran' => 'Belum Terverifikasi',
             'tgl_pendaftaran' => now(),
-            'created_at' => now()
         ]);
+
 
         $pendaftaranbaru = Pendaftaran::orderBy('id', 'DESC')->first();
         $id_pendaftaran = $pendaftaranbaru->id;
 
         //tambah insert
         $kodepembayaran = Pembayaran::id();
-        echo $kodepembayaran;
         Pembayaran::create([
             'id_pembayaran' => $kodepembayaran,
-            //'bukti_pembayaran' => "NULL",
+            'bukti_pembayaran' => "NULL",
             'status' => "Belum Bayar",
             'verifikasi' => false,
             'jatuh_tempo'  => now()->addDays(2)->format('Y-m-d'),
             'tanggal_pembayaran' => now(),
             'total_bayar'  => 3000000,
-            'id_pendaftaran' => $id_pendaftaran,
-            'created_at' => now()
+            'id_pendaftaran' => $id_pendaftaran
         ]);
 
         $kodepengumuman = Pengumuman::id();
         Pengumuman::create([
             'id_pengumuman' => $kodepengumuman,
+            'user_id' => $request->user_id,
             'id_pendaftaran' => $id_pendaftaran,
             'hasil_seleksi' => "Belum Seleksi",
             'status' => false,
         ]);
+
 
         return redirect('/siswa/data-pendaftaran')->with('success', 'Data Tersimpan!!');
     }

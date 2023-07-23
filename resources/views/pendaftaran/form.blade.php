@@ -49,6 +49,17 @@
 
                                 <div class="card-body">
 
+
+                                    @if (Auth::user()->profile->email != null)
+                                        <input type="hidden"
+                                            value="{{ Auth::user()->profile->email }}" style="width: 100%"
+                                            class="form-control" name="email">
+                                    @else
+                                        <input type="text" value="{{ old('email') }}" style="width: 100%"
+                                            class="form-control" name="email">
+                                    @endif
+                                    <!-- /.email -->
+
                                     <div class="form-group mb-3">
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">🧒 Nama Panggilan Anak</span>
@@ -63,9 +74,9 @@
                                             <span class="input-group-text">🧒 Nama Lengkap Anak</span>
                                         </div>
                                         @if (Auth::user()->profile->nama != null)
-                                            <input type="text" disabled="disabled"
+                                            <input type="text"
                                                 value="{{ Auth::user()->profile->nama }}" style="width: 100%"
-                                                class="form-control" name="nama_lengkap">
+                                                class="form-control" name="nama_lengkap" disabled>
                                         @else
                                             <input type="text" value="{{ old('nama_lengkap') }}" style="width: 100%"
                                                 class="form-control" name="nama_lengkap">
@@ -124,7 +135,7 @@
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">👶 Anak Ke -</span>
                                         </div>
-                                        <select class="form-control" style="width: 100%;">
+                                        <select class="form-control" style="width: 100%;" name="anak_ke">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -509,4 +520,14 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <script>
+        // Dalam script JavaScript, cari elemen input berdasarkan nama dan hapus atribut disabled
+        // Sebelum form disubmit, fungsi ini akan menghapus atribut disabled, sehingga nilai dapat dikirim ke controller
+        const form = document.querySelector('form');
+        const inputNamaLengkap = document.querySelector('input[name="nama_lengkap"]');
+
+        form.addEventListener('submit', function() {
+          inputNamaLengkap.removeAttribute('disabled');
+        });
+      </script>
 @endsection

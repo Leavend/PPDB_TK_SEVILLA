@@ -29,7 +29,17 @@
               <li><a href="{{ url('/alur-pendaftaran') }}">Alur Pendaftaran</a></li>
             </ul>
           </li>
-          <li><a href="{{ url('/login') }}" class="getstarted scrollto">Login</a></li>
+          <li>
+            @if(Auth::check())
+                @if(Auth::user()->user_type == 2)
+                    <a href="{{ url('/siswa/profile') }}" class="getstarted scrollto">Dashboard</a>
+                @elseif (Auth::user()->user_type == 1)
+                    <a href="{{ url('admin/dashboard') }}" class="getstarted scrollto">Dashboard</a>
+                @endif
+            @else
+                <a href="{{ url('/login') }}" class="getstarted scrollto">Login</a>
+            @endif
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -216,7 +226,7 @@
           })
       })
   </script>
-  
+
 </body>
 
 </html>

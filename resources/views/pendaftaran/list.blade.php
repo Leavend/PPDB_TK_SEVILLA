@@ -60,9 +60,9 @@
                                                     <tr>
                                                         <td>{{ $no++ }}</td>
                                                         <td>{{ $x->id_pendaftaran }}</td>
-                                                        <td>{{ $x->nama_siswa }}</td>
+                                                        <td>{{ $x->nama_lengkap }}</td>
                                                         <td>{{ $x->jenis_kelamin }}</td>
-                                                        <td><strong>{{ $x->tgl_pendaftaran }}</strong></td>
+                                                        <td><strong>{{ \Carbon\Carbon::parse($x->tgl_pendaftaran)->translatedFormat('d F Y') }}</strong></td>
                                                         <td>
                                                             <div class="row">
                                                                 <div class="col-md-6">
@@ -241,14 +241,10 @@
                                 </div>
 
                                 <div class="card-body">
-                                    @php
-                                        $no = 0;
-                                    @endphp
-                                    @foreach ($viewData as $x)
                                         @if (isset($x->email) && Auth::user()->email == $x->email)
                                             <div class="tab-content">
-
                                                 <div class="active tab-pane" id="AllStatus">
+                                                    @foreach ($viewData as $x)
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <div class="row align-items-center">
@@ -258,19 +254,17 @@
                                                                         style="margin-top: -1.5rem"><strong>{{ $x->id_pendaftaran }}</strong>
                                                                     </span>
                                                                     <span class="d-block mb-lg-0 mb-0 fs-16"><i
-                                                                            class="fas fa-calendar me-3"></i>Didaftarkan
-                                                                        tanggal
-                                                                        {{ $x->tgl_pendaftaran }}</span>
+                                                                            class="fas fa-calendar me-3"></i> Didaftarkan tanggal {{ \Carbon\Carbon::parse($x->tgl_pendaftaran)->translatedFormat('d F Y') }}</span>
                                                                 </div>
                                                                 <div class="col-xl-3  col-lg-3 col-sm-4  col-6 mb-3">
                                                                     <div class="d-flex project-image">
-                                                                        <img src="{{ url('/' . $x->pas_foto) }}"
+                                                                        <img style="height: 50px" src="{{ url('/' . $x->pas_foto) }}"
                                                                             alt="">
                                                                         <div>
                                                                             <small class="d-block fs-16 font-w400"
                                                                                 style="margin-top: -1rem">Pendaftar</small>
                                                                             <span
-                                                                                class="fs-18 font-w500">{{ $x->nama_siswa }}</span>
+                                                                                class="fs-18 font-w500">{{ $x->nama_lengkap }}</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -299,9 +293,9 @@
                                                                         </svg>
                                                                         <div>
                                                                             <small
-                                                                                class="d-block fs-16 font-w400">{{ $x->pilihan1->nama_prodi }}</small>
+                                                                                class="d-block fs-16 font-w400">apeni</small>
                                                                             <span
-                                                                                class="fs-18 font-w500">{{ $x->pilihan2->nama_prodi }}</span>
+                                                                                class="fs-18 font-w500">apeni</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -366,9 +360,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    @endforeach
                                                 </div>
 
                                                 <div class="tab-pane" id="OnProgress">
+                                                    @foreach ($viewData as $x)
                                                     @if ($x->status_pendaftaran == 'Belum Terverifikasi' || $x->status_pendaftaran == 'Terverifikasi')
                                                         <div class="card">
                                                             <div class="card-body">
@@ -377,21 +373,21 @@
                                                                         class="col-xl-4  col-lg-6 col-sm-12 align-items-center customers">
                                                                         <span
                                                                             class="text-primary d-block fs-18 font-w500 mb-1"
-                                                                            style="margin-top: -1.5rem">{{ $x->id_pendaftaran }}</span>
+                                                                            style="margin-top: -1.5rem"><strong>{{ $x->id_pendaftaran }}</strong></span>
                                                                         <span class="d-block mb-lg-0 mb-0 fs-16"><i
-                                                                                class="fas fa-calendar me-3"></i>Didaftarkan
+                                                                                class="fas fa-calendar me-3"></i> Didaftarkan
                                                                             tanggal
-                                                                            {{ $x->tgl_pendaftaran }}</span>
+                                                                            {{ \Carbon\Carbon::parse($x->tgl_pendaftaran)->translatedFormat('d F Y') }}</span>
                                                                     </div>
                                                                     <div class="col-xl-3  col-lg-3 col-sm-4  col-6 mb-3">
                                                                         <div class="d-flex project-image">
-                                                                            <img src="{{ url('/' . $x->pas_foto) }}"
+                                                                            <img style="height: 50px" src="{{ url('/' . $x->pas_foto) }}"
                                                                                 alt="">
                                                                             <div>
                                                                                 <small class="d-block fs-16 font-w400"
                                                                                     style="margin-top: -1rem">Pendaftar</small>
                                                                                 <span
-                                                                                    class="fs-18 font-w500">{{ $x->nama_siswa }}</span>
+                                                                                    class="fs-18 font-w500">{{ $x->nama_lengkap }}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -421,9 +417,9 @@
                                                                             </svg>
                                                                             <div>
                                                                                 <small
-                                                                                    class="d-block fs-16 font-w400">{{ $x->gelombang }}</small>
+                                                                                    class="d-block fs-16 font-w400">apeni</small>
                                                                                 <span
-                                                                                    class="fs-18 font-w500">{{ $x->pil1 }}</span>
+                                                                                    class="fs-18 font-w500">apeni</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -481,10 +477,12 @@
                                                             </div>
                                                         </div>
                                                     @endif
+                                                    @endforeach
 
                                                 </div>
 
                                                 <div class="tab-pane" id="Finish">
+                                                    @foreach ($viewData as $x)
                                                     @if ($x->status_pendaftaran == 'Selesai')
                                                         <div class="card">
                                                             <div class="card-body">
@@ -493,21 +491,21 @@
                                                                         class="col-xl-4  col-lg-6 col-sm-12 align-items-center customers">
                                                                         <span
                                                                             class="text-primary d-block fs-18 font-w500 mb-1"
-                                                                            style="margin-top: -1.5rem">{{ $x->id_pendaftaran }}</span>
+                                                                            style="margin-top: -1.5rem"><strong>{{ $x->id_pendaftaran }}</strong></span>
                                                                         <span class="d-block mb-lg-0 mb-0 fs-16"><i
-                                                                                class="fas fa-calendar me-3"></i>Didaftarkan
+                                                                                class="fas fa-calendar me-3"></i> Didaftarkan
                                                                             tanggal
-                                                                            {{ $x->tgl_pendaftaran }}</span>
+                                                                            {{ \Carbon\Carbon::parse($x->tgl_pendaftaran)->translatedFormat('d F Y') }}</span>
                                                                     </div>
                                                                     <div class="col-xl-3  col-lg-3 col-sm-4  col-6 mb-3">
                                                                         <div class="d-flex project-image">
-                                                                            <img src="{{ url('/' . $x->pas_foto) }}"
+                                                                            <img style="height: 50px" src="{{ url('/' . $x->pas_foto) }}"
                                                                                 alt="">
                                                                             <div>
                                                                                 <small class="d-block fs-16 font-w400"
                                                                                     style="margin-top: -1rem">Pendaftar</small>
                                                                                 <span
-                                                                                    class="fs-18 font-w500">{{ $x->nama_siswa }}</span>
+                                                                                    class="fs-18 font-w500">{{ $x->nama_lengkap }}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -537,9 +535,9 @@
                                                                             </svg>
                                                                             <div>
                                                                                 <small
-                                                                                    class="d-block fs-16 font-w400">{{ $x->gelombang }}</small>
+                                                                                    class="d-block fs-16 font-w400">apeni</small>
                                                                                 <span
-                                                                                    class="fs-18 font-w500">{{ $x->pil1 }}</span>
+                                                                                    class="fs-18 font-w500">apeni</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -594,9 +592,11 @@
                                                             </div>
                                                         </div>
                                                     @endif
+                                                    @endforeach
                                                 </div>
 
                                                 <div class="tab-pane" id="Closed">
+                                                    @foreach ($viewData as $x)
                                                     @if ($x->status_pendaftaran == 'Tidak Sah')
                                                         <div class="card">
                                                             <div class="card-body">
@@ -605,21 +605,21 @@
                                                                         class="col-xl-4  col-lg-6 col-sm-12 align-items-center customers">
                                                                         <span
                                                                             class="text-primary d-block fs-18 font-w500 mb-1"
-                                                                            style="margin-top: -1.5rem">{{ $x->id_pendaftaran }}</span>
+                                                                            style="margin-top: -1.5rem"><strong>{{ $x->id_pendaftaran }}</strong></span>
                                                                         <span class="d-block mb-lg-0 mb-0 fs-16"><i
-                                                                                class="fas fa-calendar me-3"></i>Didaftarkan
+                                                                                class="fas fa-calendar me-3"></i> Didaftarkan
                                                                             tanggal
-                                                                            {{ $x->tgl_pendaftaran }}</span>
+                                                                            {{ \Carbon\Carbon::parse($x->tgl_pendaftaran)->translatedFormat('d F Y') }}</span>
                                                                     </div>
                                                                     <div class="col-xl-3  col-lg-3 col-sm-4  col-6 mb-3">
                                                                         <div class="d-flex project-image">
-                                                                            <img src="{{ url('/' . $x->pas_foto) }}"
+                                                                            <img style="height: 50px" src="{{ url('/' . $x->pas_foto) }}"
                                                                                 alt="">
                                                                             <div>
                                                                                 <small class="d-block fs-16 font-w400"
                                                                                     style="margin-top: -1rem">Pendaftar</small>
                                                                                 <span
-                                                                                    class="fs-18 font-w500">{{ $x->nama_siswa }}</span>
+                                                                                    class="fs-18 font-w500">{{ $x->nama_lengkap }}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -704,6 +704,7 @@
                                                             </div>
                                                         </div>
                                                     @endif
+                                                    @endforeach
                                                 </div>
 
                                                 @php
@@ -711,7 +712,6 @@
                                                 @endphp
                                             </div>
                                         @endif
-                                    @endforeach
                                     @if ($no == 0)
                                         <div class="alert alert-primary alert-dismissible alert-alt fade show">
                                             <button type="button" class="btn-close" data-bs-dismiss="alert"

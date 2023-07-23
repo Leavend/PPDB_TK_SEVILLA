@@ -22,7 +22,8 @@ class Pembayaran extends Model
     public static function id()
     {
         $data = DB::table('pembayaran')->orderby('id_pendaftaran', 'DESC')->first();
-        $kodeakhir5 = substr($data->id_pendaftaran, -3);
+        // $kodeakhir5 = substr($data->id_pendaftaran, -3);
+        $kodeakhir5 = $data ? substr($data->id_pendaftaran, -3) : 0;
         $kodeku = (int)$kodeakhir5;
         $addNol = '';
         $kodetb = 'TAG';
