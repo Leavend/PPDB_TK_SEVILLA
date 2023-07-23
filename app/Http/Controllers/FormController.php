@@ -286,7 +286,15 @@ class FormController extends Controller
 
 
         $dataPendaftaran = Pendaftaran::where("id_pendaftaran", $id_pendaftaran)->get();
-        return view('pendaftaran.detail', $dataTitle, $no, $dataPendaftaran, ['viewDataUser' => $dataUser, 'viewDataPembayaran' => $dataPembayaran, 'viewData' => $data]);
+        return view('pendaftaran.detail',
+        [
+            $dataTitle,
+            $no,
+            $dataPendaftaran,
+            'viewDataUser' => $dataUser,
+            'viewDataPembayaran' => $dataPembayaran,
+            'viewData' => $data
+        ]);
     }
 
     public function cardRegistration($id_pendaftaran)

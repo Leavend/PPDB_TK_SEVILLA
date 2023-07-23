@@ -303,18 +303,18 @@
                                                                     class="col-xl-2  col-lg-6 col-sm-4 mb-sm-3 mb-3 text-end">
                                                                     <div class="d-flex justify-content-end project-btn">
                                                                         @if ($x->status_pendaftaran == 'Belum Terverifikasi')
-                                                                            <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                            <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                 class=" btn bgl-warning text-warning fs-16 font-w600">Belum
                                                                                 <br>
                                                                                 Terverifikasi</a>
                                                                         @elseif ($x->status_pendaftaran == 'Terverifikasi')
-                                                                            <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                            <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                 class=" btn bgl-warning text-success fs-16 font-w600">Terverifikasi</a>
                                                                         @elseif ($x->status_pendaftaran == 'Selesai')
-                                                                            <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                            <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                 class=" btn bgl-warning text-success fs-16 font-w600">Selesai</a>
                                                                         @else
-                                                                            <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                            <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                 class=" btn bgl-warning text-danger fs-16 font-w600">Tidak
                                                                                 Sah</a>
                                                                         @endif
@@ -346,7 +346,7 @@
                                                                             </div>
                                                                             <div class="dropdown-menu dropdown-menu-right">
                                                                                 <a class="dropdown-item"
-                                                                                    href="detail-registration/{{ $x->id_pendaftaran }}">Lihat
+                                                                                    href="detail-pendaftaran/{{ $x->id_pendaftaran }}">Lihat
                                                                                     Selengkapnya</a>
                                                                                 @if ($x->status_pendaftaran == 'Selesai')
                                                                                     <a class="dropdown-item"
@@ -428,11 +428,11 @@
                                                                         <div
                                                                             class="d-flex justify-content-end project-btn">
                                                                             @if ($x->status_pendaftaran == 'Belum Terverifikasi')
-                                                                                <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                                <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                     class=" btn bgl-warning text-warning fs-16 font-w600">Belum
                                                                                     <br> Terverifikasi</a>
                                                                             @elseif($x->status_pendaftaran == 'Terverifikasi')
-                                                                                <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                                <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                     class=" btn bgl-warning text-success fs-16 font-w600">Terverifikasi</a>
                                                                             @endif
                                                                             <div class="dropdown ms-4  mt-auto mb-auto">
@@ -467,7 +467,7 @@
                                                                                 <div
                                                                                     class="dropdown-menu dropdown-menu-right">
                                                                                     <a class="dropdown-item"
-                                                                                        href="detail-registration/{{ $x->id_pendaftaran }}">Lihat
+                                                                                        href="detail-pendaftaran/{{ $x->id_pendaftaran }}">Lihat
                                                                                         Selengkapnya</a>
                                                                                 </div>
                                                                             </div>
@@ -545,7 +545,7 @@
                                                                         class="col-xl-2  col-lg-6 col-sm-4 mb-sm-3 mb-3 text-end">
                                                                         <div
                                                                             class="d-flex justify-content-end project-btn">
-                                                                            <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                            <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                 class=" btn bgl-warning text-success fs-16 font-w600">Selesai</a>
                                                                             <div class="dropdown ms-4  mt-auto mb-auto">
                                                                                 <div class="btn-link"
@@ -579,7 +579,7 @@
                                                                                 <div
                                                                                     class="dropdown-menu dropdown-menu-right">
                                                                                     <a class="dropdown-item"
-                                                                                        href="detail-registration/{{ $x->id_pendaftaran }}">Lihat
+                                                                                        href="detail-pendaftaran/{{ $x->id_pendaftaran }}">Lihat
                                                                                         Selengkapnya</a>
                                                                                     <a class="dropdown-item"
                                                                                         href="view-announcement/{{ $x->id_pendaftaran }}">Lihat
@@ -659,7 +659,7 @@
                                                                         class="col-xl-2  col-lg-6 col-sm-4 mb-sm-3 mb-3 text-end">
                                                                         <div
                                                                             class="d-flex justify-content-end project-btn">
-                                                                            <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                            <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                 class=" btn bgl-warning text-danger fs-16 font-w600">Tidak
                                                                                 Sah</a>
                                                                             <div class="dropdown ms-4  mt-auto mb-auto">
@@ -694,7 +694,7 @@
                                                                                 <div
                                                                                     class="dropdown-menu dropdown-menu-right">
                                                                                     <a class="dropdown-item"
-                                                                                        href="detail-registration/{{ $x->id_pendaftaran }}">Lihat
+                                                                                        href="detail-pendaftaran/{{ $x->id_pendaftaran }}">Lihat
                                                                                         Selengkapnya</a>
                                                                                 </div>
                                                                             </div>
