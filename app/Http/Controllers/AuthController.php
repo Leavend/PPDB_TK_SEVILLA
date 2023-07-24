@@ -68,9 +68,9 @@ class AuthController extends Controller
                 'updated_at' => $user->updated_at = now(),
             ]);
 
-            return redirect('/login')->with(['success', 'Berhasil membuat akun']);
+            return redirect('/login')->with('success', 'Berhasil membuat akun');
         } else {
-            return redirect('/registrasi')->with(['error', 'Password dan Konfirmasi Password tidak cocok']);
+            return redirect('/registrasi')->with('error', 'Password dan Konfirmasi Password tidak cocok');
         }
     }
 

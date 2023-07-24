@@ -214,7 +214,7 @@
 
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Finish"
-                                                        role="tab">Selesai/Lihat
+                                                        role="tab">Selesai / Lihat
                                                         Pengumuman</a>
                                                 </li>
                                                 <li class="nav-item">
@@ -276,7 +276,7 @@
                                                                             <td><img src="{{ url('/' . $x->pas_foto) }}"
                                                                                     alt="pas foto" style="width: 40px">
                                                                             </td>
-                                                                            <td><strong> <?php
+                                                                            <td><strong><?php
                                                                             // Misalkan $x->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
                                                                             $originalDate = $x->tgl_pendaftaran;
                                                                             
@@ -357,20 +357,29 @@
                                                                                         alt="pas foto"
                                                                                         style="width: 40px">
                                                                                 </td>
-                                                                                <td><strong>{{ $x->tgl_pendaftaran }}</strong>
+                                                                                <td><strong><?php
+                                                                                // Misalkan $x->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
+                                                                                $originalDate = $x->tgl_pendaftaran;
+                                                                                
+                                                                                // Ubah format tanggal menjadi "d-m-Y" (tanggal-bulan-tahun)
+                                                                                $formattedDate = date('d-m-Y', strtotime($originalDate));
+                                                                                
+                                                                                // Tampilkan hasilnya
+                                                                                echo $formattedDate;
+                                                                                ?></strong>
                                                                                 </td>
                                                                                 <td><strong>
                                                                                         @if ($x->status_pendaftaran == 'Belum Terverifikasi')
-                                                                                            <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                                            <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                                 class=" btn bgl-warning text-warning fs-16 font-w600">Belum
                                                                                                 <br> Terverifikasi</a>
                                                                                         @elseif($x->status_pendaftaran == 'Terverifikasi')
-                                                                                            <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                                            <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                                 class=" btn bgl-warning text-success fs-16 font-w600">Terverifikasi</a>
                                                                                         @endif
                                                                                     </strong></td>
                                                                                 <td><strong><a class="dropdown-item"
-                                                                                            href="detail-registration/{{ $x->id_pendaftaran }}">Lihat
+                                                                                            href="view-announcement/{{ $x->id_pendaftaran }}">Lihat
                                                                                             Selengkapnya</a>
                                                                                     </strong></td>
                                                                             </tr>
@@ -417,14 +426,23 @@
                                                                                         alt="pas foto"
                                                                                         style="width: 40px">
                                                                                 </td>
-                                                                                <td><strong>{{ $x->tgl_pendaftaran }}</strong>
+                                                                                <td><strong><?php
+                                                                                // Misalkan $x->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
+                                                                                $originalDate = $x->tgl_pendaftaran;
+                                                                                
+                                                                                // Ubah format tanggal menjadi "d-m-Y" (tanggal-bulan-tahun)
+                                                                                $formattedDate = date('d-m-Y', strtotime($originalDate));
+                                                                                
+                                                                                // Tampilkan hasilnya
+                                                                                echo $formattedDate;
+                                                                                ?></strong>
                                                                                 </td>
                                                                                 <td><strong>
-                                                                                        <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                                        <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                             class=" btn bgl-warning text-success fs-16 font-w600">Selesai</a>
                                                                                     </strong></td>
                                                                                 <td><strong><a class="dropdown-item"
-                                                                                            href="detail-registration/{{ $x->id_pendaftaran }}">Lihat
+                                                                                            href="detail-pendaftaran/{{ $x->id_pendaftaran }}">Lihat
                                                                                             Selengkapnya</a>
                                                                                         <a class="dropdown-item"
                                                                                             href="view-announcement/{{ $x->id_pendaftaran }}">Lihat
@@ -474,15 +492,24 @@
                                                                                         alt="pas foto"
                                                                                         style="width: 40px">
                                                                                 </td>
-                                                                                <td><strong>{{ $x->tgl_pendaftaran }}</strong>
+                                                                                <td><strong><?php
+                                                                                // Misalkan $x->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
+                                                                                $originalDate = $x->tgl_pendaftaran;
+                                                                                
+                                                                                // Ubah format tanggal menjadi "d-m-Y" (tanggal-bulan-tahun)
+                                                                                $formattedDate = date('d-m-Y', strtotime($originalDate));
+                                                                                
+                                                                                // Tampilkan hasilnya
+                                                                                echo $formattedDate;
+                                                                                ?></strong>
                                                                                 </td>
                                                                                 <td><strong>
-                                                                                        <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                                                        <a href="detail-pendaftaran/{{ $x->id_pendaftaran }}"
                                                                                             class=" btn bgl-warning text-danger fs-16 font-w600">Tidak
                                                                                             Sah</a>
                                                                                     </strong></td>
                                                                                 <td><strong><a class="dropdown-item"
-                                                                                            href="detail-registration/{{ $x->id_pendaftaran }}">Lihat
+                                                                                            href="view-announcement/{{ $x->id_pendaftaran }}">Lihat
                                                                                             Selengkapnya</a>
                                                                                     </strong></td>
                                                                             </tr>

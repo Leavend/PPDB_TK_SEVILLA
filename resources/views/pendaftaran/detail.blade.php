@@ -56,9 +56,8 @@
                                         $viewDataPembayaran->status != 'Dibayar')
                                     <div class="alert alert-info alert-dismissible fade show">
                                         <strong>Informasi!</strong> Segera lakukan pembayaran.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                        <button type="button" class="close" data-dismiss="alert"
+                                            aria-hidden="true">&times;</button>
                                     </div>
                                 @endif
                                 <div class="text-end">
