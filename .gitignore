@@ -2,6 +2,7 @@
 /node_modules
 /public/build
 /public/upload/
+/public/data pendaftar/
 /public/hot
 /public/storage
 ./upload

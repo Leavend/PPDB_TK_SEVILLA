@@ -151,12 +151,12 @@
                                         </div>
                                         <select class="form-control" style="width: 100%;" name="agama">
                                             <option value="">Pilih Agama</option>
-                                            <option value="islam">☪️ Islam</option>
-                                            <option value="kristen protestan">✝️ Kristen Protestan</option>
-                                            <option value="kristen katolik">✝️ Kristen Katolik</option>
-                                            <option value="hindu">🕉️ Hindu</option>
-                                            <option value="buddha">☸️ Buddha</option>
-                                            <option value="konghucu">☯️ Konghucu</option>
+                                            <option value="Islam">☪️ Islam</option>
+                                            <option value="Kristen Protestan">✝️ Kristen Protestan</option>
+                                            <option value="Kristen Katolik">✝️ Kristen Katolik</option>
+                                            <option value="Hindu">🕉️ Hindu</option>
+                                            <option value="Buddha">☸️ Buddha</option>
+                                            <option value="Konghucu">☯️ Konghucu</option>
                                         </select>
                                     </div>
                                     <!-- /.Agama Anak -->
