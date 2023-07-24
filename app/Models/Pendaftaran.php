@@ -50,7 +50,6 @@ class Pendaftaran extends Model
         'penyakit_anak',
         'makanan_bayi',
         'penyakit_kambuh',
-        'obat',
 
         'status_pendaftaran',
         'tgl_pendaftaran',
@@ -60,7 +59,8 @@ class Pendaftaran extends Model
     public static function id()
     {
         $data = DB::table('pendaftaran')->orderby('id_pendaftaran', 'DESC')->first();
-        $kodeakhir5 = substr($data->id_pendaftaran, -4);
+        $kodeakhir5 = $data ? substr($data->id_pendaftaran, -4) : 0;
+        // $kodeakhir5 = substr($data->id_pendaftaran, -4);
         $kodeku = (int)$kodeakhir5;
         $addNol = '';
         $kodetb = 'PENDPSB';

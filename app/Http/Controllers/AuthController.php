@@ -49,28 +49,31 @@ class AuthController extends Controller
     {
         if ($request->password == $request->cpassword) {
             request()->validate([
-                'email' => 'required|email|unique:users'
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:3|max:12'
             ]);
+            $usersid = ProfileUser::id();
             $user = new User;
             $user->name = trim($request->name);
             $user->email = trim($request->email);
             $user->password = Hash::make($request->password);
             $user->user_type = 2;
+            $user->id_user = $usersid;
             $user->created_at = now();
             $user->save();
 
-            $usersid  = User::orderBy('id', 'DESC')->first();
+            $usersid = ProfileUser::id();
             ProfileUser::create([
-                'user_id' => $usersid->id,
+                'Id_user' => $usersid,
                 'nama' => $request->name,
                 'email' => $request->email,
                 'created_at' => $user->created_at = now(),
                 'updated_at' => $user->updated_at = now(),
             ]);
 
-            return redirect('/login')->with(['success', 'Berhasil membuat akun']);
+            return redirect('/login')->with('success', 'Berhasil membuat akun');
         } else {
-            return redirect('/registrasi')->with(['error', 'Password dan Konfirmasi Password tidak cocok']);
+            return redirect('/registrasi')->with('error', 'Password dan Konfirmasi Password tidak cocok');
         }
     }
 
