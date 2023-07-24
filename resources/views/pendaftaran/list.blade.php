@@ -245,28 +245,27 @@
                                 <!-- /. card-header -->
 
                                 <div class="card-body">
-                                    @if (isset($x->email) && Auth::user()->email == $x->email)
-                                        <div class="tab-content">
+                                    <div class="tab-content">
 
-                                            <div class="active tab-pane" id="AllStatus">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="card-body table-responsive p-0"
-                                                            style="height: 300px;">
-                                                            <table class="table table-head-fixed text-nowrap">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>ID Pendaftaran</th>
-                                                                        <th>Pendaftar</th>
-                                                                        <th>Pas Foto</th>
-                                                                        <th>Tanggal Pendaftaran</th>
-                                                                        <th>Status</th>
-                                                                        <th>Aksi</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @php $no = 1; @endphp
-                                                                    @foreach ($viewData as $x)
+                                        <div class="active tab-pane" id="AllStatus">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                                                        <table class="table table-head-fixed text-nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ID Pendaftaran</th>
+                                                                    <th>Pendaftar</th>
+                                                                    <th>Pas Foto</th>
+                                                                    <th>Tanggal Pendaftaran</th>
+                                                                    <th>Status</th>
+                                                                    <th>Aksi</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @php $no = 1; @endphp
+                                                                @foreach ($viewData as $x)
+                                                                    @if (Auth::user()->email == $x->email)
                                                                         <tr>
                                                                             <td
                                                                                 class="text-primary d-block fs-18 font-w500 mb-1">
@@ -277,7 +276,16 @@
                                                                             <td><img src="{{ url('/' . $x->pas_foto) }}"
                                                                                     alt="pas foto" style="width: 40px">
                                                                             </td>
-                                                                            <td><strong>{{ $x->tgl_pendaftaran }}</strong>
+                                                                            <td><strong> <?php
+                                                                            // Misalkan $x->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
+                                                                            $originalDate = $x->tgl_pendaftaran;
+                                                                            
+                                                                            // Ubah format tanggal menjadi "d-m-Y" (tanggal-bulan-tahun)
+                                                                            $formattedDate = date('d-m-Y', strtotime($originalDate));
+                                                                            
+                                                                            // Tampilkan hasilnya
+                                                                            echo $formattedDate;
+                                                                            ?></strong>
                                                                             </td>
                                                                             <td><strong>
                                                                                     @if ($x->status_pendaftaran == 'Belum Terverifikasi')
@@ -298,7 +306,7 @@
                                                                                     @endif
                                                                                 </strong></td>
                                                                             <td><strong><a class="dropdown-item"
-                                                                                        href="siswa/detail-pendaftaran/{{ $x->id_pendaftaran }}">Lihat
+                                                                                        href="detail-pendaftaran/{{ $x->id_pendaftaran }}">Lihat
                                                                                         Selengkapnya</a>
                                                                                     @if ($x->status_pendaftaran == 'Selesai')
                                                                                         <a class="dropdown-item"
@@ -307,35 +315,36 @@
                                                                                     @endif
                                                                                 </strong></td>
                                                                         </tr>
-                                                                    @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <!-- /.card-body -->
+                                                                    @endif
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
                                                     </div>
+                                                    <!-- /.card-body -->
                                                 </div>
                                             </div>
-                                            <!-- /. tab-pane AllStatus -->
+                                        </div>
+                                        <!-- /. tab-pane AllStatus -->
 
-                                            <div class="tab-pane" id="OnProgress">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="card-body table-responsive p-0"
-                                                            style="height: 300px;">
-                                                            <table class="table table-head-fixed text-nowrap">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>ID Pendaftaran</th>
-                                                                        <th>Pendaftar</th>
-                                                                        <th>Pas Foto</th>
-                                                                        <th>Tanggal Pendaftaran</th>
-                                                                        <th>Status</th>
-                                                                        <th>Aksi</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @php $no = 1; @endphp
-                                                                    @foreach ($viewData as $x)
+                                        <div class="tab-pane" id="OnProgress">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                                                        <table class="table table-head-fixed text-nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ID Pendaftaran</th>
+                                                                    <th>Pendaftar</th>
+                                                                    <th>Pas Foto</th>
+                                                                    <th>Tanggal Pendaftaran</th>
+                                                                    <th>Status</th>
+                                                                    <th>Aksi</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @php $no = 1; @endphp
+                                                                @foreach ($viewData as $x)
+                                                                    @if (Auth::user()->email == $x->email)
                                                                         @if ($x->status_pendaftaran == 'Belum Terverifikasi' || $x->status_pendaftaran == 'Terverifikasi')
                                                                             <tr>
                                                                                 <td
@@ -366,35 +375,36 @@
                                                                                     </strong></td>
                                                                             </tr>
                                                                         @endif
-                                                                    @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <!-- /.card-body -->
+                                                                    @endif
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
                                                     </div>
+                                                    <!-- /.card-body -->
                                                 </div>
                                             </div>
-                                            <!-- /. tab-pane OnProgress -->
+                                        </div>
+                                        <!-- /. tab-pane OnProgress -->
 
-                                            <div class="tab-pane" id="Finish">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="card-body table-responsive p-0"
-                                                            style="height: 300px;">
-                                                            <table class="table table-head-fixed text-nowrap">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>ID Pendaftaran</th>
-                                                                        <th>Pendaftar</th>
-                                                                        <th>Pas Foto</th>
-                                                                        <th>Tanggal Pendaftaran</th>
-                                                                        <th>Status</th>
-                                                                        <th>Aksi</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
+                                        <div class="tab-pane" id="Finish">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                                                        <table class="table table-head-fixed text-nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ID Pendaftaran</th>
+                                                                    <th>Pendaftar</th>
+                                                                    <th>Pas Foto</th>
+                                                                    <th>Tanggal Pendaftaran</th>
+                                                                    <th>Status</th>
+                                                                    <th>Aksi</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
 
-                                                                    @foreach ($viewData as $x)
+                                                                @foreach ($viewData as $x)
+                                                                    @if (Auth::user()->email == $x->email)
                                                                         @if ($x->status_pendaftaran == 'Selesai')
                                                                             <tr>
                                                                                 <td
@@ -422,35 +432,36 @@
                                                                                     </strong></td>
                                                                             </tr>
                                                                         @endif
-                                                                    @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <!-- /.card-body -->
+                                                                    @endif
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
                                                     </div>
+                                                    <!-- /.card-body -->
                                                 </div>
                                             </div>
-                                            <!-- /. tab-pane Finis -->
+                                        </div>
+                                        <!-- /. tab-pane Finis -->
 
-                                            <div class="tab-pane" id="Closed">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="card-body table-responsive p-0"
-                                                            style="height: 300px;">
-                                                            <table class="table table-head-fixed text-nowrap">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>ID Pendaftaran</th>
-                                                                        <th>Pendaftar</th>
-                                                                        <th>Pas Foto</th>
-                                                                        <th>Tanggal Pendaftaran</th>
-                                                                        <th>Status</th>
-                                                                        <th>Aksi</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
+                                        <div class="tab-pane" id="Closed">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                                                        <table class="table table-head-fixed text-nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ID Pendaftaran</th>
+                                                                    <th>Pendaftar</th>
+                                                                    <th>Pas Foto</th>
+                                                                    <th>Tanggal Pendaftaran</th>
+                                                                    <th>Status</th>
+                                                                    <th>Aksi</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
 
-                                                                    @foreach ($viewData as $x)
+                                                                @foreach ($viewData as $x)
+                                                                    @if (Auth::user()->email == $x->email)
                                                                         @if ($x->status_pendaftaran == 'Tidak Sah')
                                                                             <tr>
                                                                                 <td
@@ -476,21 +487,21 @@
                                                                                     </strong></td>
                                                                             </tr>
                                                                         @endif
-                                                                    @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <!-- /.card-body -->
+                                                                    @endif
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
                                                     </div>
+                                                    <!-- /.card-body -->
                                                 </div>
                                             </div>
-                                            <!-- /. tab-pane Closed -->
-
-                                            @php
-                                                $no = $no + 1;
-                                            @endphp
                                         </div>
-                                    @endif
+                                        <!-- /. tab-pane Closed -->
+
+                                        @php
+                                            $no = $no + 1;
+                                        @endphp
+                                    </div>
                                     @if ($no == 0)
                                         <div class="alert alert-info alert-dismissible">
                                             <button type="button" class="close" data-dismiss="alert"

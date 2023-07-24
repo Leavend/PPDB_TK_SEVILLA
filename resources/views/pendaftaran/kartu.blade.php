@@ -61,7 +61,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3 mb-4">
                                                         <h4><strong>DATA PESERTA</strong></h4><br>
-                                                        <strong>NOMOR PESERTA</strong><br>
+                                                        <strong>NOMOR PENDAFTARAN</strong><br>
                                                         <h5 style="text-indent: 0.5in">
                                                             <strong>{{ $viewData->id_pendaftaran }}</strong>
                                                         </h5>

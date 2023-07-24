@@ -159,7 +159,7 @@
                                             </div>
                                             <div class="row mb-2">
                                                 <div class="col-sm-4 col-6">
-                                                    <h5 class="f-w-400"><strong>ID Pendaftaran</strong></h5>
+                                                    <h5 class="f-w-400"><strong>Nomor Pendaftaran</strong></h5>
                                                 </div>
                                                 <div class="col-sm-8 col-7">
                                                     <h5 class="f-w-500">: {{ $viewData->id_pendaftaran }}</h5>
