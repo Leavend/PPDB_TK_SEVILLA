@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pendaftaran', function (Blueprint $table) {
             $table->id();
-            $table->int('id_pendaftaran')->unique();
+            $table->string('id_pendaftaran')->unique();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')

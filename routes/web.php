@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CripsController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\FormController;
-use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KriteriaController;
-use App\Http\Controllers\AlternatifController;
-use App\Http\Controllers\CripsController;
+use App\Http\Controllers\WhatsappController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenilaianController;
+use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PerhitunganController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+//notif whatsapp
+Route::resource('wa', WhatsappController::class);
 
 
 // Route AuthController
@@ -183,7 +187,7 @@ Route::group(['middleware' => 'student'], function () {
 
 
 
-    // Route 
+    // Route
 
     // Route::post('/edit-pw', [ProfileController::class, 'editakun']);
 

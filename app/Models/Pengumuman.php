@@ -45,6 +45,12 @@ class Pengumuman extends Model
     {
         return $this->belongsTo(Pendaftaran::class, 'id_pendaftaran');
     }
+
+    public function whatsapp()
+    {
+        return $this->hasOne(Whatsapp::class, 'pengumuman_id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

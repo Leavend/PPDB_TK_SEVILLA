@@ -6,6 +6,7 @@ use App\Models\ProfileUser;
 use App\Models\User;
 use App\Models\Pendaftaran;
 use App\Models\Pembayaran;
+use App\Models\Whatsapp;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -130,6 +131,13 @@ class FormController extends Controller
             'id_pendaftaran' => $id_pendaftaran,
             'hasil_seleksi' => "Belum Seleksi",
             'status' => false,
+        ]);
+
+        $untuk_wa = pengumuman::orderBy('id', 'DESC')->first();
+        Whatsapp::create([
+            'pengumuman_id' => $untuk_wa->id,
+            'nama' => $request->nama_lengkap,
+            'no_hp' => $request->no_hp_ibu,
         ]);
 
 
