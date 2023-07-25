@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
 class AlternatifController extends Controller
@@ -10,6 +11,7 @@ class AlternatifController extends Controller
     public function list()
     {
         $data['getRecord'] = Alternatif::getAlternatif();
+        $data['getRecordPendaftaran'] = Pendaftaran::all();
         $data['header_title'] = 'List Alternatif';
         return view('admin.Alternatif.list', $data);
     }
