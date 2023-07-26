@@ -16,8 +16,17 @@ PPDB
           <h1 data-aos="fade-up" data-aos-delay="400">TK ISLAM SEVILLA AL FATAH</h1>
           <h5 data-aos="fade-up" data-aos-delay="400">Akreditasi: B</h5>
           <div class="mt-3 pt-4" data-aos="fade-up" data-aos-delay="700">
-            <h4 data-aos="fade-up" data-aos-delay="400"><strong>Jika belum mempunyai akun DAFTAR terlebih dahulu.</strong></h4>
-            <a href="{{ url('/registrasi') }}" class="btn-get-started scrollto">Daftar | Siswa</a>
+            @if(Auth::check())
+                @if(Auth::user()->user_type == 2)
+
+                @elseif (Auth::user()->user_type == 1)
+
+                @endif
+                @else
+                    <h4 data-aos="fade-up" data-aos-delay="400"><strong>Jika belum mempunyai akun DAFTAR terlebih dahulu.</strong></h4>
+                    <a href="{{ url('/registrasi') }}" class="btn-get-started scrollto">Daftar | Siswa</a>
+            @endif
+
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
