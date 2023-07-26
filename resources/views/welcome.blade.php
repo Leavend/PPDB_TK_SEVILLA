@@ -11,11 +11,12 @@ PPDB
     <div class="container">
       <div class="row">
         <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">PPDB Online</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">Ayo Segera Daftar Kuota Terbatas !</h2>
-          <h1 data-aos="fade-up" data-aos-delay="400">TK Sevilla</h1>
-          <h4 data-aos="fade-up" data-aos-delay="400"><strong>Jika belum mempunyai akun DAFTAR terlebih dahulu.</strong></h4>
-          <div data-aos="fade-up" data-aos-delay="700"> 
+          <h1 data-aos="fade-up" style="color: #3498db">PPDB Online</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400" style="color: #3498db">Ayo Segera Daftar Kuota Terbatas !</h2>
+          <h1 data-aos="fade-up" data-aos-delay="400">TK ISLAM SEVILLA AL FATAH</h1>
+          <h5 data-aos="fade-up" data-aos-delay="400">Akreditasi: B</h5>
+          <div class="mt-3 pt-4" data-aos="fade-up" data-aos-delay="700">
+            <h4 data-aos="fade-up" data-aos-delay="400"><strong>Jika belum mempunyai akun DAFTAR terlebih dahulu.</strong></h4>
             <a href="{{ url('/registrasi') }}" class="btn-get-started scrollto">Daftar | Siswa</a>
           </div>
         </div>
@@ -31,24 +32,16 @@ PPDB
 @section('main')
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
-      <div class="container">
+      <div class="container mt-5">
 
         <div class="section-title" data-aos="fade-up">
           <h2>Sejarah Sekolah</h2>
         </div>
 
-        {{-- <div class="row image">
-          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="150">
-            <img src="" alt="TK1">
-            <img src="" alt="TK2">
-            <img src="" alt="TK3">
-          </div>
-        </div> --}}
-
         <div class="row content">
           <div class="col-lg-12" data-aos="fade-up" data-aos-delay="150">
             <p>
-              Taman Kanak-Kanak Sevilla Al-Fatah  merupakan Sekolah Taman Kanak-Kanak yang berada dibawah naungan Dewan Pengelola dan Pendidikan Masjid Al-Fatah Yayasan Istiqomah. Program pembelajaran yang dilaksanakan berbasis agama Islam. TK Sevilla Al-Fatah berdiri pada tanggal 1 Oktober 2004. Status gedung permanen milik jama’ah Masjid Al-Fatah yang memberikan izin untuk pengelolaan TK Sevilla Al-Fatah dengan luas lahan 153m2. Berada ditengah komplek Masjid Al-Fatah dengan beberapa gedung yang pertama hanya digunakan untuk Taman Pendidikan Al-Fatah (TPA) Al-Qur’an. 
+              Taman Kanak-Kanak Sevilla Al-Fatah  merupakan Sekolah Taman Kanak-Kanak yang berada dibawah naungan Dewan Pengelola dan Pendidikan Masjid Al-Fatah Yayasan Istiqomah. Program pembelajaran yang dilaksanakan berbasis agama Islam. TK Sevilla Al-Fatah berdiri pada tanggal 1 Oktober 2004. Status gedung permanen milik jama’ah Masjid Al-Fatah yang memberikan izin untuk pengelolaan TK Sevilla Al-Fatah dengan luas lahan 153m2. Berada ditengah komplek Masjid Al-Fatah dengan beberapa gedung yang pertama hanya digunakan untuk Taman Pendidikan Al-Fatah (TPA) Al-Qur’an.
             </p>
             <p>
               Melihat kondisi dimana beberapa gedung yang masih kosong maka jama’ah masjid Al-Fatah berkeinginan untuk memanfaatkan gedung tersebut untuk dikelola. Pengurus Masjid Al-Fatah bekerjasama dengan TK Sevilla Samarinda untuk mendirikan lembaga Taman Kanak-Kanak. Akhirnya pelaksanaan pendirian TK terlaksana dengan memperkerjakan tenaga pendidik setempat yang kemudian di beri training di TK Sevilla Samarinda.
@@ -61,10 +54,33 @@ PPDB
     </section>
     <!-- End About Us Section -->
 
+    <!-- ======= Visi & Misi Section ======= -->
+    <section id="vismis" class="about">
+      <div class="container mt-5">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Visi & Misi</h2>
+        </div>
+
+        {{-- <div class="row content">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita et velit nesciunt, quos natus reprehenderit obcaecati ex totam deserunt inventore dolorum aut doloremque! Placeat eius id aliquam tempora culpa magni?</p>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+            <ul>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+          </div> --}}
+      </div>
+    </section>
+    <!-- End Visi & Misi Section -->
+
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
-      <div class="container">
+      <div class="container mt-5">
 
         <div class="section-title" data-aos="fade-up">
           <h2>Kontak Kami</h2>
@@ -74,13 +90,11 @@ PPDB
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="contact-about">
-              <h3>Adios!</h3>
-              <p>Cras fermentum odio eu feugiat. Justo eget magna fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+              <h3>Assalamualaikum Ayah Bunda!</h3>
+              <p>Yuk ikuti Sosial Media kami untuk mendapatkan informasi yang lebih banyak!</p>
               <div class="social-links">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="https://instagram.com/tk_sevillaalfatah" class="instagram"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
           </div>
@@ -89,17 +103,19 @@ PPDB
             <div class="info">
               <div>
                 <i class="ri-map-pin-line"></i>
-                <p>Jl. Margo Mulyo<br>Kecamatan Balikpapan Barat<br>Kota Balikpapan<br>Kalimantan Timur 76125</p>
+                <p>Komperta GN. IV Jl. Batu Butok II <br>Kelurahan Margo Mulyo, Kecamatan Balikpapan Barat, Kota Balikpapan, Kalimantan Timur, 76125</p>
               </div>
 
               <div>
                 <i class="ri-mail-send-line"></i>
-                <p>eqoco@eqoco.com</p>
+                <p>safbpp@gmail.com</p>
               </div>
 
               <div>
                 <i class="ri-phone-line"></i>
-                <p>+62 895 123 123 123</p>
+                <a href="https://wa.me/6281347153808">
+                    <p><strong>+62 813 4715 3808</strong></p>
+                </a>
               </div>
 
             </div>

@@ -50,18 +50,26 @@ Route::post('reset/{token}', [AuthController::class, 'postReset']);
 
 // Route Page PPDB
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',[
+        'title' => 'home'
+    ]);
 });
 
 Route::get('/home', function () {
-    return view('welcome');
+    return view('welcome',[
+        'title' => 'home'
+    ]);
 });
 
 Route::get('/jadwal-pendaftaran', function () {
-    return view('pendaftaran.jadwalPendaftaran');
+    return view('pendaftaran.jadwalPendaftaran',[
+        'title' => 'jadwal'
+    ]);
 });
 Route::get('/alur-pendaftaran', function () {
-    return view('pendaftaran.alurPendaftaran');
+    return view('pendaftaran.alurPendaftaran',[
+        'title' => 'alur'
+    ]);
 });
 
 

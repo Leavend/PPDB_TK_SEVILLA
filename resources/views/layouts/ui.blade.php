@@ -15,20 +15,49 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="{{ url('/home') }}">Home</a></li>
-          <li class="dropdown"><a href=""><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#about">Sejarah Sekolah</a></li>
-              <li><a href="#">Visi & Misi</a></li>
-              <li><a href="#contact">Kontak Kami</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Pendaftaran</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="{{ url('/jadwal-pendaftaran') }}">Jadwal Pendaftaran</a></li>
-              <li><a href="{{ url('/alur-pendaftaran') }}">Alur Pendaftaran</a></li>
-            </ul>
-          </li>
+          <li><a class="nav-link scrollto {{ $title === 'home' ? 'active' : '' }}" href="{{ url('/home') }}">Home</a></li>
+            @if ($title !== 'home')
+            <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                <li><a href="/home/#about">Sejarah Sekolah</a></li>
+                <li><a href="/home/#">Visi & Misi</a></li>
+                <li><a href="/home/#contact">Kontak Kami</a></li>
+                </ul>
+            </li>
+            @else
+            <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                <li><a href="#about">Sejarah Sekolah</a></li>
+                <li><a href="#vismis">Visi & Misi</a></li>
+                <li><a href="#contact">Kontak Kami</a></li>
+                </ul>
+            </li>
+            @endif
+
+            @if ($title !== 'home')
+            <li class="dropdown"><a class="active" href="#"><span>Pendaftaran</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                    <li><a href="#">Jadwal Pendaftaran</a></li>
+                    <li><a href="#jenjang">Jenjang Kelas</a></li>
+                    <li><a href="#persyaratan">Persyaratan</a></li>
+                    <li><a href="#alur">Alur Pendaftaran</a></li>
+                    <li><a href="#rincian">Rincian Biaya</a></li>
+                    <li><a href="#periode">Periode Pendaftaran</a></li>
+                </ul>
+            </li>
+            @else
+            <li class="dropdown"><a class="" href="#"><span>Pendaftaran</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                    <li><a href="/jadwal-pendaftaran">Jadwal Pendaftaran</a></li>
+                    <li><a href="/jadwal-pendaftaran/#jenjang">Jenjang Kelas</a></li>
+                    <li><a href="/jadwal-pendaftaran/#persyaratan">Persyaratan</a></li>
+                    <li><a href="/jadwal-pendaftaran/#alur">Alur Pendaftaran</a></li>
+                    <li><a href="/jadwal-pendaftaran/#rincian">Rincian Biaya</a></li>
+                    <li><a href="/jadwal-pendaftaran/#periode">Periode Pendaftaran</a></li>
+                </ul>
+            </li>
+            @endif
+
           <li>
             @if(Auth::check())
                 @if(Auth::user()->user_type == 2)
