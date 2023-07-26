@@ -48,6 +48,12 @@ Route::post('reset/{token}', [AuthController::class, 'postReset']);
 
 
 
+Route::post('/upload-payment', [PembayaranController::class, 'updateProofPayment'])->name('upload-payment');
+Route::get('/paid-payment/{id_pembayaran}', [PembayaranController::class, 'verifikasiPayment']);
+Route::get('/unpaid-payment/{id_pembayaran}', [PembayaranController::class, 'notPayment']);
+Route::get('/invalid-payment/{id_pembayaran}', [PembayaranController::class, 'invalidPayment']);
+
+
 // Route Page PPDB
 Route::get('/', function () {
     return view('welcome');
@@ -65,16 +71,6 @@ Route::get('/alur-pendaftaran', function () {
 });
 
 
-Route::post('/upload-payment', [PembayaranController::class, 'updatebuktipembayaran'])->name('upload-payment');
-Route::get('/paid-payment/{id_pembayaran}', [PembayaranController::class, 'verifikasipembayaran']);
-Route::get('/unpaid-payment/{id_pembayaran}', [PembayaranController::class, 'belumbayar']);
-Route::get('/invalid-payment/{id_pembayaran}', [PembayaranController::class, 'invalidbayar']);
-
-
-Route::get('/verified-registration/{id_pendaftaran}', [FormController::class, 'verifikasiStatusRegistration']);
-Route::get('/notverified-registration/{id_pendaftaran}', [FormController::class, 'notVerifikasiStatusRegistration']);
-Route::get('/invalid-registration/{id_pendaftaran}', [FormController::class, 'invalidStatusRegistration']);
-Route::get('/finish-registration/{id_pendaftaran}', [FormController::class, 'finishStatusRegistration']);
 
 
 // Route Middleware
@@ -101,6 +97,12 @@ Route::group(['middleware' => 'admin'], function () {
     // Route List Perhitungan
     Route::get('admin/perhitungan/list-perhitungan', [PerhitunganController::class, 'list']);
 
+    // Route List Pendaftaran
+    Route::get('/admin/data-pendaftaran', [FormController::class, 'list']);
+
+    // Route List Pembayaran
+    Route::get('/admin/data-pembayaran', [PembayaranController::class, 'list'])->name('data-pembayaran');
+
     // Route Akun Admin
     Route::get('admin/admin/tambah-admin', [AdminController::class, 'addAdmin']);
     Route::post('admin/admin/insertAdmin', [AdminController::class, 'insertAdmin']);
@@ -108,14 +110,29 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/admin/edit-admin/{id}', [AdminController::class, 'updateAdmin']);
     Route::get('admin/admin/delete-admin/{id}', [AdminController::class, 'deleteAdmin']);
 
-    // Route Pendaftaran
-    Route::get('/admin/data-pendaftaran', [FormController::class, 'list']);
+    // Route Pendaftaran 
+    // Route::get('admin/form-registration', [PendaftaranController::class, 'inputpendaftaran']);
+    // Route::post('/save-registration', [PendaftaranController::class, 'simpanpendaftaran']);
+    Route::get('admin/edit-pendaftaran/{id_pendaftaran}', [FormController::class, 'editRegistration']);
+    Route::post('admin/update-pendaftaran/{id_pendaftaran}', [FormController::class, 'updateRegistration']);
+    Route::get('admin/hapus-pendaftaran/{id_pendaftaran}', [FormController::class, 'deleteRegistration']);
+    Route::get('admin/detail-pendaftaran/{id_pendaftaran}', [FormController::class, 'detailRegistration']);
+    Route::get('admin/kartu-pendaftaran/{id_pendaftaran}', [FormController::class, 'cardRegistration']);
+
+    Route::get('admin/data-pendaftaran/verified-registration/{id_pendaftaran}', [FormController::class, 'verifikasiStatusRegistration']);
+    Route::get('admin/data-pendaftaran/notverified-registration/{id_pendaftaran}', [FormController::class, 'notVerifikasiStatusRegistration']);
+    Route::get('admin/data-pendaftaran/invalid-registration/{id_pendaftaran}', [FormController::class, 'invalidStatusRegistration']);
+    Route::get('admin/data-pendaftaran/finish-registration/{id_pendaftaran}', [FormController::class, 'finishStatusRegistration']);
 
     // Route Pembayaran
-    Route::get('/admin/data-payment', [PembayaranController::class, 'list'])->name('data-pembayaran');
     Route::post('/save-payment', [PembayaranController::class, 'simpanpembayaran']);
     Route::post('/update-payment/{id_pembayaran}', [PembayaranController::class, 'updatepembayaran']);
     Route::get('/delete-payment/{id_pembayaran}', [PembayaranController::class, 'hapuspembayaran']);
+
+    // Route::post('/upload-payment', [PembayaranController::class, 'updateProofPayment'])->name('upload-payment');
+    Route::get('/admin/data-pembayaran/paid-payment/{id_pembayaran}', [PembayaranController::class, 'verifikasiPayment']);
+    Route::get('/admin/data-pembayaran/unpaid-payment/{id_pembayaran}', [PembayaranController::class, 'notPayment']);
+    Route::get('/admin/data-pembayaran/invalid-payment/{id_pembayaran}', [PembayaranController::class, 'invalidPayment']);
 
     // Route Kriteria
     // Route::get('admin/kriteria/tambah-kriteria', [KriteriaController::class, 'addKriteria']);

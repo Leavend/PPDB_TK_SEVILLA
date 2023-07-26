@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alternatif;
+use App\Models\Kriteria;
 use App\Models\ProfileUser;
 use App\Models\User;
 use App\Models\Pendaftaran;
@@ -18,7 +20,7 @@ class FormController extends Controller
 {
     public function list()
     {
-        $data = Pendaftaran::all();
+        $data = Pendaftaran::getRegist();
         $dataTitle = 'Pendaftaran';
         $dataUser = ProfileUser::all();
         $dataPembayaran = Pembayaran::all();
@@ -133,7 +135,16 @@ class FormController extends Controller
             'status' => false,
         ]);
 
-        $untuk_wa = pengumuman::orderBy('id', 'DESC')->first();
+        Alternatif::create([
+            'nama_alternatif' => $request->nama_lengkap,
+            'pendaftaran_id' => $id_pendaftaran,
+        ]);
+
+        // Kriteria::create([
+        //     'nama_kriteria' =>
+        // ])
+
+        $untuk_wa = Pengumuman::orderBy('id', 'DESC')->first();
         Whatsapp::create([
             'pengumuman_id' => $untuk_wa->id,
             'nama' => $request->nama_lengkap,
@@ -323,7 +334,7 @@ class FormController extends Controller
         Pendaftaran::where("id_pendaftaran", "$id_pendaftaran")->update([
             'status_pendaftaran' => "Terverifikasi"
         ]);
-        return redirect('/siswa/data-pendaftaran');
+        return redirect('/admin/data-pendaftaran');
     }
 
     public function notVerifikasiStatusRegistration($id_pendaftaran)
@@ -332,7 +343,7 @@ class FormController extends Controller
         Pendaftaran::where("id_pendaftaran", "$id_pendaftaran")->update([
             'status_pendaftaran' => "Belum Terverifikasi"
         ]);
-        return redirect('/siswa/data-pendaftaran');
+        return redirect('/admin/data-pendaftaran');
     }
 
     public function invalidStatusRegistration($id_pendaftaran)
@@ -341,7 +352,7 @@ class FormController extends Controller
         Pendaftaran::where("id_pendaftaran", "$id_pendaftaran")->update([
             'status_pendaftaran' => "Tidak Sah"
         ]);
-        return redirect('/siswa/data-pendaftaran');
+        return redirect('/admin/data-pendaftaran');
     }
 
     public function finishStatusRegistration($id_pendaftaran)
@@ -350,6 +361,6 @@ class FormController extends Controller
         Pendaftaran::where("id_pendaftaran", "$id_pendaftaran")->update([
             'status_pendaftaran' => "Selesai"
         ]);
-        return redirect('/siswa/data-pendaftaran');
+        return redirect('/admin/data-pendaftaran');
     }
 }

@@ -81,9 +81,9 @@
                                                     Terverifikasi</button>
                                             @elseif ($viewData->status_pendaftaran == 'Terverifikasi')
                                                 @if ($viewDataPembayaran->status != 'Gratis' && $viewDataPembayaran->status != 'Dibayar')
-                                                    <button type="button" class="btn btn-primary mb-2"
-                                                        data-bs-toggle="modal" data-bs-target=".upload"
-                                                        style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Upload
+                                                    <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
+                                                        data-target=".modal" style="margin-bottom: 1rem;"><i
+                                                            class="mdi mdi-plus me-1"></i>Upload
                                                         Pembayaran</button>
                                                 @endif
                                                 <button class="btn btn-success mb-2" style="margin-bottom: 0.5rem;"
@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fade upload" tabindex="-1" role="dialog"
+                                {{-- <div class="modal fade upload" tabindex="-1" role="dialog"
                                     aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -142,6 +142,56 @@
                                             </div>
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal --> --}}
+
+                                <div class="modal fade upload" id="modal-primary">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content bg-primary">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Primary Modal</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('upload-payment') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="userid" value="{{ auth()->user()->id }}">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="id_pendaftaran" id="nama"
+                                                            class="form-control" value="{{ $viewData->id_pendaftaran }}">
+                                                        <div class="row">
+                                                            <div class="col-xl-12">
+                                                                <label for="iduser">Pilih Dokumen</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text">Upload</span>
+                                                                    <div class="form-file">
+                                                                        <input type="file"
+                                                                            class="form-file-input form-control"
+                                                                            name="pem">
+                                                                        <input type="hidden"
+                                                                            class="form-file-input form-control"
+                                                                            name="pathnya">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer border-top-0 d-flex">
+                                                        <button type="button" class="btn btn-danger light"
+                                                            data-dismiss="modal">Tutup</button>
+                                                        <button type="submit" name="add"
+                                                            class="btn btn-primary">Perbaharui Data</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
                                 </div>
                                 <!-- /.modal -->
 

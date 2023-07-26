@@ -22,8 +22,9 @@ class AlternatifController extends Controller
             'nama_alternatif' => 'required|string',
         ]);
 
+        $nama_pendaftaran = Pendaftaran::getName();
         $Alternatif = new Alternatif();
-        $Alternatif->nama_alternatif = $request->nama_alternatif;
+        $Alternatif->nama_alternatif = $request->nama_alternatif && $nama_pendaftaran;
         $Alternatif->save();
         return redirect('admin/alternatif/list-alternatif')->with('success', 'Berhasil menambahkan data');
     }

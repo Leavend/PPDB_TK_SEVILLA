@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
 
 class Pembayaran extends Model
 {
@@ -43,5 +44,17 @@ class Pembayaran extends Model
         }
         $kodeBaru = $kodetb . now()->format('y') . $addNol . $incrementKode;
         return $kodeBaru;
+    }
+
+    static public function getPayment()
+    {
+        $return = self::where('id_pembayaran', '!=', null);
+
+        if (!empty(Request::get('no_pembayaran'))) {
+            $return = $return->where('id_pembayaran', 'like', '%' . Request::get('no_pembayaran') . '%');
+        }
+
+        $return = $return->orderBy('id_pembayaran', 'asc')->paginate(3);
+        return $return;
     }
 }

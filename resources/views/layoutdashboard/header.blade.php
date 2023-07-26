@@ -103,92 +103,95 @@
 
                       <!-- Info Assignment -->
                       <li class="nav-item">
-                          <a href="{{ url('admin/dashboard') }}"
-                              class="nav-link @if (Request::segment(2) == 'dashboard')  @endif">
+                          <a href="#" class="nav-link @if (Request::segment(2) == 'dashboard')  @endif">
                               <i class="nav-icon fas fa-address-card"></i>
                               <p>
                                   Info Pendaftaran
-                                  <i class="right fas fa-angle-left"></i>
+                                  <i class="right fas fa-angle-left right"></i>
                               </p>
                           </a>
+                          <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                  <a href="{{ url('admin/data-pendaftaran') }}"
+                                      class="nav-link @if (Request::segment(2) == 'dashboard')  @endif">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Data Pendaftar</p>
+                                  </a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a href="{{ url('admin/data-pembayaran') }}"
+                                      class="nav-link @if (Request::segment(2) == 'dashboard')  @endif">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>
+                                          Data Pembayaran
+                                      </p>
+                                  </a>
+                              </li>
+                          </ul>
                       </li>
                       <!-- End Info Assignment -->
 
                       <!-- Info Assignment -->
                       <li class="nav-item">
-                          <a href="{{ url('admin/data-pendaftaran') }}"
-                              class="nav-link @if (Request::segment(2) == 'dashboard')  @endif">
+                          <a href="#" class="nav-link @if (Request::segment(2) == 'dashboard')  @endif">
                               <i class="nav-icon fas fa-address-card"></i>
                               <p>
-                                  Data Pendaftar
-                                  <i class="right fas fa-angle-left"></i>
+                                  Ranking Metode SAW
+                                  <i class="right fas fa-angle-left right"></i>
                               </p>
-
                           </a>
+                          <ul class="nav nav-treeview">
+                              <!-- Info Kriteria -->
+                              <li class="nav-item">
+                                  <a href="{{ url('admin/kriteria/list-kriteria') }}"
+                                      class="nav-link @if (Request::segment(2) == 'kriteria')  @endif">
+                                      <i class="nav-icon far fa-circle nav-icon"></i>
+                                      <p>
+                                          Kriteria
+                                      </p>
+                                  </a>
+                              </li>
+                              <!-- End Info Kriteria -->
+
+                              <!-- Info Alternatif -->
+                              <li class="nav-item">
+                                  <a href="{{ url('admin/alternatif/list-alternatif') }}"
+                                      class="nav-link @if (Request::segment(2) == 'alternatif')  @endif">
+                                      <i class="nav-icon far fa-circle nav-icon"></i>
+                                      <p>
+                                          Alternatif
+                                      </p>
+                                  </a>
+                              </li>
+                              <!-- End Info Alternatif -->
+
+                              <!-- Info Penilaian -->
+                              <li class="nav-item">
+                                  <a href="{{ url('admin/penilaian/list-penilaian') }}"
+                                      class="nav-link @if (Request::segment(2) == 'penilaian')  @endif">
+                                      <i class="nav-icon far fa-circle nav-icon"></i>
+                                      <p>
+                                          Penilaian
+                                      </p>
+                                  </a>
+                              </li>
+                              <!-- End Info Penilaian -->
+
+                              <!-- Info Perhitungan -->
+                              <li class="nav-item">
+                                  <a href="{{ url('admin/perhitungan/list-perhitungan') }}"
+                                      class="nav-link @if (Request::segment(2) == 'penilaian')  @endif">
+                                      <i class="nav-icon far fa-circle nav-icon"></i>
+                                      <p>
+                                          Perhitungan
+                                      </p>
+                                  </a>
+                              </li>
+                              <!-- End Info Perhitungan -->
+                          </ul>
                       </li>
                       <!-- End Info Assignment -->
-
-                      <!-- Info Assignment -->
-                      <li class="nav-item">
-                          <a href="{{ url('admin/data-pembayaran') }}"
-                              class="nav-link @if (Request::segment(2) == 'dashboard')  @endif">
-                              <i class="nav-icon fas fa-address-card"></i>
-                              <p>
-                                  Data Pembayaran
-                                  <i class="right fas fa-angle-left"></i>
-                              </p>
-                          </a>
-                      </li>
-                      <!-- End Info Assignment -->
-
-                      <!-- Info Kriteria -->
-                      <li class="nav-item">
-                          <a href="{{ url('admin/kriteria/list-kriteria') }}"
-                              class="nav-link @if (Request::segment(2) == 'kriteria')  @endif">
-                              <i class="nav-icon fas fa-address-card"></i>
-                              <p>
-                                  Kriteria
-                              </p>
-                          </a>
-                      </li>
-                      <!-- End Info Kriteria -->
-
-                      <!-- Info Alternatif -->
-                      <li class="nav-item">
-                          <a href="{{ url('admin/alternatif/list-alternatif') }}"
-                              class="nav-link @if (Request::segment(2) == 'alternatif')  @endif">
-                              <i class="nav-icon fas fa-address-card"></i>
-                              <p>
-                                  Alternatif
-                              </p>
-                          </a>
-                      </li>
-                      <!-- End Info Alternatif -->
-
-                      <!-- Info Penilaian -->
-                      <li class="nav-item">
-                          <a href="{{ url('admin/penilaian/list-penilaian') }}"
-                              class="nav-link @if (Request::segment(2) == 'penilaian')  @endif">
-                              <i class="nav-icon fas fa-address-card"></i>
-                              <p>
-                                  Penilaian
-                              </p>
-                          </a>
-                      </li>
-                      <!-- End Info Penilaian -->
-
-                      <!-- Info Perhitungan -->
-                      <li class="nav-item">
-                          <a href="{{ url('admin/perhitungan/list-perhitungan') }}"
-                              class="nav-link @if (Request::segment(2) == 'penilaian')  @endif">
-                              <i class="nav-icon fas fa-address-card"></i>
-                              <p>
-                                  Perhitungan
-                              </p>
-                          </a>
-                      </li>
-                      <!-- End Info Perhitungan -->
-
                   </ul>
               </nav>
               <!-- /.sidebar-menu -->
