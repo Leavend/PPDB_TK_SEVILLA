@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Request;
 
 class Pendaftaran extends Model
 {
@@ -81,6 +82,45 @@ class Pendaftaran extends Model
         return $kodeBaru;
     }
 
+    static public function getRegist()
+    {
+        $return = self::where('id_pendaftaran', '!=', null);
+
+        if (!empty(Request::get('no_pendaftaran'))) {
+            $return = $return->where('id_pendaftaran', 'like', '%' . Request::get('no_pendaftaran') . '%');
+        }
+
+        if (!empty(Request::get('name'))) {
+            $return = $return->where('nama_lengkap', 'like', '%' . Request::get('name') . '%');
+        }
+
+        if (!empty(Request::get('name_mom'))) {
+            $return = $return->where('nama_ibu', '=', Request::get('name_mom'));
+        }
+
+        $return = $return->orderBy('id_pendaftaran', 'asc')->paginate(3);
+        return $return;
+    }
+
+    static public function getTotalRegist()
+    {
+        $query = self::where('id_pendaftaran', '!=', null);
+
+        if (!empty(Request::get('no_pendaftaran'))) {
+            $query->where('id_pendaftaran', 'like', '%' . Request::get('no_pendaftaran') . '%');
+        }
+
+        if (!empty(Request::get('name'))) {
+            $query->where('nama_lengkap', 'like', '%' . Request::get('name') . '%');
+        }
+
+        if (!empty(Request::get('name_mom'))) {
+            $query->where('nama_ibu', '=', Request::get('name_mom'));
+        }
+
+        return $query->count();
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -95,4 +135,22 @@ class Pendaftaran extends Model
     {
         return $this->hasMany(Pengumuman::class);
     }
+
+    public function alternatif()
+    {
+        return $this->hasOne(Alternatif::class, 'alternatif_id');
+    }
+
+    // public static function boot()
+    // {
+    //     parent::boot();
+
+    //     // Menambahkan event saving, di mana kita akan membuat record baru di tabel 'alternatif'
+    //     // ketika ada data yang disimpan di tabel 'pendaftaran'
+    //     static::saving(function ($pendaftaran) {
+    //         if (!$pendaftaran->alternatif) {
+    //             $pendaftaran->alternatif()->create(['nama_alternatif' => $pendaftaran->nama_lengkap]);
+    //         }
+    //     });
+    // }
 }

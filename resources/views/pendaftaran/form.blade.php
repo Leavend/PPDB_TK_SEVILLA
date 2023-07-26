@@ -51,10 +51,10 @@
 
                                     @if (Auth::user()->profile->email != null)
                                         <input type="hidden" value="{{ Auth::user()->profile->email }}" style="width: 100%"
-                                            class="form-control" name="email">
+                                            class="form-control" name="email" required>
                                     @else
                                         <input type="text" value="{{ old('email') }}" style="width: 100%"
-                                            class="form-control" name="email">
+                                            class="form-control" name="email" required>
                                     @endif
                                     <!-- /.email -->
 
@@ -73,10 +73,11 @@
                                         </div>
                                         @if (Auth::user()->profile->nama != null)
                                             <input type="text" value="{{ Auth::user()->profile->nama }}"
-                                                style="width: 100%" class="form-control" name="nama_lengkap" disabled>
+                                                style="width: 100%" class="form-control" name="nama_lengkap" disabled
+                                                required>
                                         @else
                                             <input type="text" value="{{ old('nama_lengkap') }}" style="width: 100%"
-                                                class="form-control" name="nama_lengkap">
+                                                class="form-control" name="nama_lengkap" required>
                                         @endif
                                     </div>
                                     <!-- /.Nama Lengkap -->
@@ -85,7 +86,7 @@
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">⚥ Jenis Kelamin Anak</span>
                                         </div>
-                                        <select class="form-control" style="width: 100%;" name="jenis_kelamin">
+                                        <select class="form-control" style="width: 100%;" name="jenis_kelamin" required>
                                             <option value="">Pilih Jenis Kelamin</option>
                                             <option value="Laki-Laki">Laki-Laki</option>
                                             <option value="Perempuan">Perempuan</option>
@@ -97,9 +98,16 @@
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">🎂 Tempat Lahir</span>
                                         </div>
-                                        <input type="text" class="form-control" id="inputTempatLahir"
-                                            value="{{ Auth::user()->profile->tempat_lahir }}" placeholder="Tempat Lahir"
-                                            name="tempat_lahir">
+                                        @if (Auth::user()->profile->tempat_lahir != null)
+                                            <input type="text" class="form-control" id="inputTempatLahir"
+                                                value="{{ Auth::user()->profile->tempat_lahir }}" placeholder="Tempat Lahir"
+                                                name="tempat_lahir" required>
+                                        @else
+                                            <input type="text" class="form-control" id="inputTempatLahir"
+                                                value="{{ old('tempat_lahir') }}" placeholder="Tempat Lahir"
+                                                name="tempat_lahir" required>
+                                        @endif
+
                                     </div>
                                     <!-- /.Tempat Lahir Anak -->
 
@@ -107,15 +115,13 @@
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">🎂 Tanggal Lahir</span>
                                         </div>
-                                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input"
-                                                data-target="#reservationdate"
+                                        @if (Auth::user()->profile->tanggal_lahir != null)
+                                            <input type="date" class="form-control datetimepicker-input" required
                                                 value="{{ Auth::user()->profile->tanggal_lahir }}" name="tanggal_lahir">
-                                            <div class="input-group-append" data-target="#reservationdate"
-                                                data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
+                                        @else
+                                            <input type="date" class="form-control" id="inputTanggalLahir"
+                                                name="tanggal_lahir" required value="{{ old('tanggal_lahir') }}">
+                                        @endif
                                     </div>
                                     <!-- /.Tanggal Lahir Anak -->
 
@@ -132,7 +138,7 @@
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">👶 Anak Ke -</span>
                                         </div>
-                                        <select class="form-control" style="width: 100%;" name="anak_ke">
+                                        <select class="form-control" style="width: 100%;" name="anak_ke" required>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -149,7 +155,7 @@
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">☪️ Agama</span>
                                         </div>
-                                        <select class="form-control" style="width: 100%;" name="agama">
+                                        <select class="form-control" style="width: 100%;" name="agama" required>
                                             <option value="">Pilih Agama</option>
                                             <option value="Islam">☪️ Islam</option>
                                             <option value="Kristen Protestan">✝️ Kristen Protestan</option>
@@ -165,7 +171,7 @@
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">👨‍👩‍👧 Jumlah Saudara</span>
                                         </div>
-                                        <input type="text" class="form-control" name="jumlah_saudara" />
+                                        <input type="text" class="form-control" name="jumlah_saudara" required />
                                     </div>
                                     <!-- /.Jumlah Saudara -->
 
@@ -173,7 +179,8 @@
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">👨‍👩‍👧 Anak Tinggal Bersama ?</span>
                                         </div>
-                                        <select class="form-control" style="width: 100%;" name="tinggal_bersama">
+                                        <select class="form-control" style="width: 100%;" name="tinggal_bersama"
+                                            required>
                                             <option value="">Pilih Tinggal Bersama Siapa</option>
                                             <option value="Orang Tua">Orang Tua</option>
                                             <option value="Wali">Wali</option>
@@ -311,11 +318,11 @@
                                                 id="exampleDataList" placeholder="Masukkan Penghasilan..."
                                                 name="penghasilan_ayah" value="{{ old('penghasilan_ayah') }}" required>
                                             <datalist id="datalistOptionsOccupationMoney">
-                                                <option value="Kurang dari Rp 2.000.000"></option>
-                                                <option value="Rp 2.000.000 - Rp 3.000.000"></option>
-                                                <option value="Rp 3.000.000 - Rp 4.000.000"></option>
-                                                <option value="Rp 4.000.000 - Rp 5.000.000"></option>
-                                                <option value="Lebih dari Rp 5.000.000"></option>
+                                                <option value="Kurang dari Rp 1.500.000"></option>
+                                                <option value="Rp 1.500.000 - Rp 2.500.000"></option>
+                                                <option value="Rp 2.500.000 - Rp 3.500.000"></option>
+                                                <option value="Rp 3.500.000 - Rp 4.500.000"></option>
+                                                <option value="Lebih dari Rp 4.500.000"></option>
                                             </datalist>
 
                                         </div>
@@ -409,15 +416,15 @@
                                             <div class="form-group-prepend">
                                                 <span class="input-group-text">💰 Penghasilan Ibu</span>
                                             </div>
-                                            <input class="form-control" list="datalistOptionsOccupationMoney"
+                                            <input class="form-control" list="datalistOptionsOccupationMoneyIbu"
                                                 id="exampleDataList" placeholder="Masukkan Penghasilan..."
                                                 name="penghasilan_ibu" value="{{ old('penghasilan_ibu') }}" required>
-                                            <datalist id="datalistOptionsOccupationMoney">
-                                                <option value="Kurang dari Rp 2.000.000"></option>
-                                                <option value="Rp 2.000.000 - Rp 3.000.000"></option>
-                                                <option value="Rp 3.000.000 - Rp 4.000.000"></option>
-                                                <option value="Rp 4.000.000 - Rp 5.000.000"></option>
-                                                <option value="Lebih dari Rp 5.000.000"></option>
+                                            <datalist id="datalistOptionsOccupationMoneyIbu">
+                                                <option value="Kurang dari Rp 1.500.000"></option>
+                                                <option value="Rp 1.500.000 - Rp 2.500.000"></option>
+                                                <option value="Rp 2.500.000 - Rp 3.500.000"></option>
+                                                <option value="Rp 3.500.000 - Rp 4.500.000"></option>
+                                                <option value="Lebih dari Rp 4.500.000"></option>
                                             </datalist>
 
                                         </div>
@@ -472,7 +479,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Makanan pada masa <br> bayi (0-6 bulan)</label>
-                                        <select class="form-control" style="width: 100%;" name="makanan_bayi">
+                                        <select class="form-control" style="width: 100%;" name="makanan_bayi" required>
                                             <option value="">Pilih Makanan Bayi</option>
                                             <option value="asi">Asi</option>
                                             <option value="susuformula">Susu Formula</option>
@@ -483,7 +490,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Apakah anak menerima obat tertentu disaat kondisi tertentu ?</label>
-                                        <select class="form-control" style="width: 100%;" name="penyakit_kambuh">
+                                        <select class="form-control" style="width: 100%;" name="penyakit_kambuh"
+                                            required>
                                             <option value="">Pilih Ya / Tidak</option>
                                             <option value="ya">Ya</option>
                                             <option value="tidak">Tidak</option>

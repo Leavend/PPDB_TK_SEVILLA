@@ -25,4 +25,9 @@ class Alternatif extends Model
     {
         return $this->hasMany(Penilaian::class, 'alternatif_id');
     }
+
+    public function pendaftaran()
+    {
+        return $this->belongsTo(Pendaftaran::class, 'pendaftaran_id');
+    }
 }

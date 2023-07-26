@@ -16,8 +16,9 @@ class PembayaranController extends Controller
 {
     public function list()
     {
-        $data = Pembayaran::all();
-        $dataTitle['header_title'] = 'Data - Pembayaran';
+        $data = Pembayaran::getPayment();
+        // $dataPagiPendaftaran = Pendaftaran::getRegist();
+        $dataTitle['header_title'] = 'Pembayaran';
         $dataUser = ProfileUser::all();
         $dataPendaftaran = Pendaftaran::all();
         return view('pembayaran.list', $dataTitle, ['viewDataUser' => $dataUser, 'viewData' => $data, 'viewIdPendaftaran' => $dataPendaftaran]);
@@ -81,7 +82,7 @@ class PembayaranController extends Controller
             'bukti_pembayaran' => $pathBukti,
             'status' => "Dibayar",
         ]);
-        return redirect('/detail-registration' . '/' . $request->id_pendaftaran)->with('success', 'Data Terubah!!');
+        return redirect('siswa/detail-pendaftaran' . '/' . $request->id_pendaftaran)->with('success', 'Data Terubah!!');
     }
 
     public function deletePayment($id_pembayaran)
@@ -98,7 +99,7 @@ class PembayaranController extends Controller
         Pembayaran::where("id_pembayaran", "$id_pembayaran")->update([
             'status' => "Dibayar"
         ]);
-        return redirect('/data-payment');
+        return redirect('/admin/data-pembayaran');
     }
 
     public function notPayment($id_pembayaran)
@@ -107,7 +108,7 @@ class PembayaranController extends Controller
         Pembayaran::where("id_pembayaran", "$id_pembayaran")->update([
             'status' => "Belum Bayar"
         ]);
-        return redirect('/data-payment');
+        return redirect('/admin/data-pembayaran');
     }
 
     public function invalidPayment($id_pembayaran)
@@ -116,6 +117,6 @@ class PembayaranController extends Controller
         Pembayaran::where("id_pembayaran", "$id_pembayaran")->update([
             'status' => "Tidak Sah"
         ]);
-        return redirect('/data-payment');
+        return redirect('/admin/data-pembayaran');
     }
 }

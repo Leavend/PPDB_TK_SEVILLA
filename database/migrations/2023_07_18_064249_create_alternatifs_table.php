@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('alternatif', function (Blueprint $table) {
             $table->id();
             $table->string('nama_alternatif');
+            $table->unsignedBigInteger('pendaftaran_id')->nullable();
+            $table->foreign('pendaftaran_id')
+                ->references('id')
+                ->on('pendaftaran')
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
