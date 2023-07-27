@@ -10,6 +10,7 @@ class Alternatif extends Model
     use HasFactory;
     protected $fillable = [
         'nama_alternatif',
+        'pendaftaran_id'
     ];
 
     protected $table = 'alternatif';

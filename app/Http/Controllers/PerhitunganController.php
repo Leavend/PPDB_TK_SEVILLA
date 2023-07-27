@@ -14,6 +14,7 @@ class PerhitunganCOntroller extends Controller
         $alternatif = Alternatif::with('penilaian.crips')->get();
         $kriteria = Kriteria::with('crips')->orderBy('nama_kriteria', 'ASC')->get();
         $penilaian = Penilaian::with('crips', 'alternatif')->get();
+        $header_title = 'Perhitungan';
 
         if (count($penilaian) == 0) {
             return redirect('/admin/penilaian/list-penilaian');
@@ -31,6 +32,7 @@ class PerhitunganCOntroller extends Controller
                 }
             }
         }
+        // dd($minMax);
 
         // normalisasi
         foreach ($penilaian as $key_1 => $value_1) {
@@ -45,6 +47,9 @@ class PerhitunganCOntroller extends Controller
             }
         }
 
+        // dd($normalisasi);
+
+
         // perangkingan
         foreach ($normalisasi as $key => $value) {
             foreach ($kriteria as $key_1 => $value_1) {
@@ -57,6 +62,6 @@ class PerhitunganCOntroller extends Controller
         }
         arsort($ranking);
 
-        return view('admin.perhitungan.list', compact('alternatif', 'kriteria', 'normalisasi', 'ranking'));
+        return view('admin.perhitungan.list', compact('alternatif', 'kriteria', 'normalisasi', 'ranking', 'header_title'));
     }
 }

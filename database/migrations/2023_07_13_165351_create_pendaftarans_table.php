@@ -19,9 +19,11 @@ return new class extends Migration
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->string('nama_panggilan');
-            $table->string('nama_lengkap');
-            $table->string('jenis_kelamin');
+            $table->string('nama_panggilan')->nullable();
+            $table->string('nama_lengkap')->nullable();
+            $table->tinyInteger('usia')->nullable();
+            $table->string('jenjang')->nullable();
+            $table->string('jenis_kelamin')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('anak_ke')->nullable();
@@ -38,24 +40,6 @@ return new class extends Migration
             // Alamat lengkap
             $table->string('alamat')->nullable();
 
-            //data pendaftaran
-            // $table->unsignedBigInteger('gelombang')->nullable();
-            // $table->foreign('gelombang')
-            //     ->references('id')
-            //     ->on('jadwal_kegiatan')
-            //     ->onUpdate('cascade')->onDelete('cascade');
-            // $table->string('tahun_masuk');
-            // $table->unsignedBigInteger('pil1')->nullable();
-            // $table->foreign('pil1')
-            //     ->references('id')
-            //     ->on('program_studi')
-            //     ->onUpdate('cascade')->onDelete('cascade');
-            // $table->unsignedBigInteger('pil2')->nullable();
-            // $table->foreign('pil2')
-            //     ->references('id')
-            //     ->on('program_studi')
-            //     ->onUpdate('cascade')->onDelete('cascade');
-
             //data orang tua
             $table->string('nama_ayah')->nullable();
             $table->string('nama_ibu')->nullable();
@@ -66,17 +50,19 @@ return new class extends Migration
             $table->string('penghasilan_ayah')->nullable();
             $table->string('penghasilan_ibu')->nullable();
 
-            // $table->string('berkas_ortu'); //kk akte ijazah raport penghasilan
-
-
             //data kesehatan anak
             $table->string('penyakit_anak')->nullable();
             $table->string('makanan_bayi')->nullable();
             $table->string('penyakit_kambuh')->nullable();
 
+            //data tambahan anak
+            $table->string('perkembangan_moral')->nullable();
+            $table->string('perkembangan_motorik')->nullable();
+            $table->string('perkembangan_bahasa')->nullable();
 
-            $table->string('status_pendaftaran');
-            $table->datetime('tgl_pendaftaran');
+
+            $table->string('status_pendaftaran')->nullable();
+            $table->datetime('tgl_pendaftaran')->nullable();
             $table->timestamps();
         });
     }

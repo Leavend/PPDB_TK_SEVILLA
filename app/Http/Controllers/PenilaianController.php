@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alternatif;
 use App\Models\Kriteria;
 use App\Models\Penilaian;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,8 +14,10 @@ class PenilaianController extends Controller
     public function list()
     {
         $alternatif = Alternatif::with('penilaian.crips')->get();
+        $pendaftaran = Pendaftaran::all();
+        $header_title = 'List Penilaian';
         $kriteria = Kriteria::with('crips')->orderBy('nama_kriteria', 'ASC')->get();
-        return view('admin.penilaian.list', compact('alternatif', 'kriteria'));
+        return view('admin.penilaian.list', compact('alternatif', 'kriteria', 'header_title', 'pendaftaran'));
     }
 
     public function insertPenilaian(Request $request)

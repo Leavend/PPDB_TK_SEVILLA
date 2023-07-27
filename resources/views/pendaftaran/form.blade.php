@@ -84,6 +84,37 @@
 
                                     <div class="form-group mb-3">
                                         <div class="form-group-prepend">
+                                            <span class="input-group-text">🧒 Usia Anak</span>
+                                        </div>
+                                        <select class="form-control" style="width: 100%;" name="usia_anak" required>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                        </select>
+                                    </div>
+                                    <!-- /.Usia Anak -->
+
+                                    <div class="form-group mb-3">
+                                        <div class="form-group-prepend">
+                                            <span class="input-group-text">👨‍🎓 / 👩‍🎓 Jenjang Anak</span>
+                                        </div>
+                                        <input class="form-control" list="datalistOptionsOccupationJenjang"
+                                            id="exampleDataList"
+                                            placeholder="Bermain (3-4 Tahun) / TK A (4-5 Tahun) / TK B (5-6 Tahun)"
+                                            name="jenjang" required>
+                                        <datalist id="datalistOptionsOccupationJenjang">
+                                            <option value="Kelompok Bermain"></option>
+                                            <option value="TK A"></option>
+                                            <option value="TK B"></option>
+                                        </datalist>
+                                    </div>
+                                    <!-- /.Jenjang -->
+
+                                    <div class="form-group mb-3">
+                                        <div class="form-group-prepend">
                                             <span class="input-group-text">⚥ Jenis Kelamin Anak</span>
                                         </div>
                                         <select class="form-control" style="width: 100%;" name="jenis_kelamin" required>
@@ -100,8 +131,8 @@
                                         </div>
                                         @if (Auth::user()->profile->tempat_lahir != null)
                                             <input type="text" class="form-control" id="inputTempatLahir"
-                                                value="{{ Auth::user()->profile->tempat_lahir }}" placeholder="Tempat Lahir"
-                                                name="tempat_lahir" required>
+                                                value="{{ Auth::user()->profile->tempat_lahir }}"
+                                                placeholder="Tempat Lahir" name="tempat_lahir" required>
                                         @else
                                             <input type="text" class="form-control" id="inputTempatLahir"
                                                 value="{{ old('tempat_lahir') }}" placeholder="Tempat Lahir"
@@ -119,8 +150,8 @@
                                             <input type="date" class="form-control datetimepicker-input" required
                                                 value="{{ Auth::user()->profile->tanggal_lahir }}" name="tanggal_lahir">
                                         @else
-                                            <input type="date" class="form-control" id="inputTanggalLahir"
-                                                name="tanggal_lahir" required value="{{ old('tanggal_lahir') }}">
+                                            <input type="date" class="form-control" name="tanggal_lahir" required
+                                                value="{{ old('tanggal_lahir') }}">
                                         @endif
                                     </div>
                                     <!-- /.Tanggal Lahir Anak -->
@@ -172,6 +203,13 @@
                                             <span class="input-group-text">👨‍👩‍👧 Jumlah Saudara</span>
                                         </div>
                                         <input type="text" class="form-control" name="jumlah_saudara" required />
+                                        <select class="form-control" style="width: 100%;" name="jumlah_saudara" required>
+                                            <option value="1 Anak">1</option>
+                                            <option value="2 Anak">2</option>
+                                            <option value="3 Anak">3</option>
+                                            <option value="4 Anak">4</option>
+                                            <option value=">= 5 Anak">Lebih dari 5</option>
+                                        </select>
                                     </div>
                                     <!-- /.Jumlah Saudara -->
 
@@ -318,11 +356,11 @@
                                                 id="exampleDataList" placeholder="Masukkan Penghasilan..."
                                                 name="penghasilan_ayah" value="{{ old('penghasilan_ayah') }}" required>
                                             <datalist id="datalistOptionsOccupationMoney">
-                                                <option value="Kurang dari Rp 1.500.000"></option>
-                                                <option value="Rp 1.500.000 - Rp 2.500.000"></option>
-                                                <option value="Rp 2.500.000 - Rp 3.500.000"></option>
-                                                <option value="Rp 3.500.000 - Rp 4.500.000"></option>
-                                                <option value="Lebih dari Rp 4.500.000"></option>
+                                                <option value="<= Rp1.500.000"></option>
+                                                <option value="Rp1.500.000 - <= Rp 2.500.000"></option>
+                                                <option value="Rp1.500.000 - <= Rp 2.500.000"></option>
+                                                <option value="Rp1.500.000 - <= Rp 2.500.000"></option>
+                                                <option value="=> Rp4.500.000"></option>
                                             </datalist>
 
                                         </div>
@@ -505,13 +543,109 @@
                     </div>
                     <!-- /.card Kesehatan Calon Siswa -->
 
+                    <!-- Data Tambahan Calon Siswa -->
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title">Data Tambahan Calon Siswa</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+
+                        <div class="card-body">
+                            <div class="col-md-12">
+
+                                <div class="card-header">
+                                    <h3 class="card-title" style="font-weight: bold">Data Tambahan Calon Siswa</h3>
+                                </div>
+                                <!-- /.card-header Data Calon Siswa -->
+
+                                <div class="card-body">
+
+                                    <div class="form-group mb-3">
+                                        <div class="form-group-prepend">
+                                            <span class="input-group-text">🕌 Perkembangan Moral Islam Anak</span>
+                                        </div>
+                                        <input class="form-control" list="datalistOptionsOccupationMoral"
+                                            id="exampleDataList" placeholder="Seberapa Tinggi Level Moral Islam Anak ?"
+                                            name="perkembangan_moral" required>
+                                        <datalist id="datalistOptionsOccupationMoral">
+                                            <option value="level 1"></option>
+                                            <option value="level 2"></option>
+                                            <option value="level 3"></option>
+                                            <option value="level 4"></option>
+                                            {{-- <option value="Lebih dari Rp 4.500.000"></option> --}}
+                                        </datalist>
+
+                                    </div>
+                                    <!-- /.Perkembangan Moral Islam -->
+
+                                    <div class="form-group mb-3">
+                                        <div class="form-group-prepend">
+                                            <span class="input-group-text">💭 Perkembangan Motorik Anak</span>
+                                        </div>
+                                        <input class="form-control" list="datalistOptionsOccupationMotorik"
+                                            id="exampleDataList" placeholder="Seberapa Tinggi Level Motorik Anak ?"
+                                            name="perkembangan_motorik" required>
+                                        <datalist id="datalistOptionsOccupationMotorik">
+                                            <option value="level 1"></option>
+                                            <option value="level 2"></option>
+                                            {{-- <option value="level 3"></option>
+                                            <option value="level 4"></option> --}}
+                                            {{-- <option value="Lebih dari Rp 4.500.000"></option> --}}
+                                        </datalist>
+
+                                    </div>
+                                    <!-- /.Perkembangan Moral Islam -->
+
+                                    <div class="form-group mb-3">
+                                        <div class="form-group-prepend">
+                                            <span class="input-group-text">🗣 Perkembangan Bahasa</span>
+                                        </div>
+                                        <input class="form-control" list="datalistOptionsOccupationBahasa"
+                                            id="exampleDataList"
+                                            placeholder="Seberapa Tinggi Level Berbahasa / Berbicara Anak ?"
+                                            name="perkembangan_bahasa" required>
+                                        <datalist id="datalistOptionsOccupationBahasa">
+                                            <option value="level 1"></option>
+                                            <option value="level 2"></option>
+                                            {{-- <option value="level 3"></option>
+                                            <option value="level 4"></option> --}}
+                                            {{-- <option value="Lebih dari Rp 4.500.000"></option> --}}
+                                        </datalist>
+
+                                    </div>
+                                    <!-- /.Perkembangan Moral Islam -->
+
+
+                                </div>
+                                <!-- /.card-body Data Calon Siswa-->
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <h6 style="color: red">Tolong di isi dengan sebenar-benarnya <span>🤗</span></h6>
+                        </div>
+
+
+                    </div>
+                    <!-- /.card Data Tambahan Calon Siswa -->
+
+
+
 
                     <!-- Tombol Daftar -->
                     <div class="row my-4">
                         <div class="col">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <button type="submit" name="add" class="btn btn-primary mb-5 active"
-                                    data-bs-toggle="button" aria-pressed="true">Buat Pendaftaran</button>
+                                    data-toggle="button" aria-pressed="true">Buat Pendaftaran</button>
                             </div>
                         </div>
                         <!-- end col -->

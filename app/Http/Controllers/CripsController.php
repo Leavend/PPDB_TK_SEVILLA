@@ -30,6 +30,7 @@ class CripsController extends Controller
     public function editCrips($id)
     {
         $data['crips'] = Crips::findOrFail($id);
+        $data['header_title'] = 'Crips';
 
         return view('admin.crips.edit', $data);
     }
@@ -41,13 +42,13 @@ class CripsController extends Controller
             'nama_crips' => $request->nama_crips,
             'bobot' => $request->bobot
         ]);
-        return back()->with('success', 'Berhasil update Crips');
+        return redirect('admin/kriteria/list-kriteria')->with('success', 'Berhasil update Crips');
     }
 
     public function deleteCrips($id)
     {
         $crips = Crips::findOrFail($id);
         $crips->delete();
-        return back()->with('success', 'Berhasil hapus Crips');
+        return redirect('admin/kriteria/list-kriteria')->with('success', 'Berhasil hapus Crips');
     }
 }

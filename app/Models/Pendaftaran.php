@@ -22,6 +22,8 @@ class Pendaftaran extends Model
         'user_id',
         'nama_panggilan',
         'nama_lengkap',
+        'usia',
+        'jenjang',
         'jenis_kelamin',
         'tempat_lahir',
         'tanggal_lahir',
@@ -53,6 +55,11 @@ class Pendaftaran extends Model
         'penyakit_anak',
         'makanan_bayi',
         'penyakit_kambuh',
+
+        //data tambahan
+        'perkembangan_moral',
+        'perkembangan_motorik',
+        'perkembangan_bahasa',
 
         'status_pendaftaran',
         'tgl_pendaftaran',

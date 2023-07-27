@@ -59,6 +59,8 @@ class FormController extends Controller
         // $fileftberkas_ortu->move($namaFolderftgaji, $nama_fileftberkas_ortu);
         // $pathOrtu = $namaFolderftgaji . "/" . $nama_fileftberkas_ortu;
 
+
+
         Pendaftaran::create([
 
             // data calon siswa
@@ -66,6 +68,8 @@ class FormController extends Controller
             'user_id' => $request->user_id,
             'nama_panggilan' => $request->nama_panggilan,
             'nama_lengkap' => $request->nama_lengkap,
+            'usia' => $request->usia_anak,
+            'jenjang' => $request->jenjang,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
@@ -102,6 +106,11 @@ class FormController extends Controller
             'penyakit_kambuh' => $request->penyakit_kambuh,
             // 'obat' => $request->obat,
 
+            // data tambahan calon siswa
+            'perkembangan_moral' => $request->perkembangan_moral,
+            'perkembangan_motorik' => $request->perkembangan_motorik,
+            'perkembangan_bahasa' => $request->perkembangan_bahasa,
+
             'status_pendaftaran' => 'Belum Terverifikasi',
             'tgl_pendaftaran' => now(),
             // 'created_at' => now()
@@ -135,14 +144,11 @@ class FormController extends Controller
             'status' => false,
         ]);
 
+        // Membuat data alternatif
         Alternatif::create([
             'nama_alternatif' => $request->nama_lengkap,
             'pendaftaran_id' => $id_pendaftaran,
         ]);
-
-        // Kriteria::create([
-        //     'nama_kriteria' =>
-        // ])
 
         $untuk_wa = Pengumuman::orderBy('id', 'DESC')->first();
         Whatsapp::create([
@@ -154,6 +160,105 @@ class FormController extends Controller
 
         return redirect('/siswa/data-pendaftaran')->with('success', 'Data Tersimpan!!');
     }
+
+    // public function insertRegistration(Request $request)
+    // {
+    //     $kodependaftaran = Pendaftaran::id();
+    //     // Membuat data pendaftaran
+    //     $file = $request->file('foto');
+    //     $nama_file = "Pasfoto" . time() . "-" . $file->getClientOriginalName();
+    //     $namaFolder = 'data pendaftar/' . $kodependaftaran;
+    //     $file->move($namaFolder, $nama_file);
+    //     $pathFoto = $namaFolder . "/" . $nama_file;
+
+    //     $pendaftaran = Pendaftaran::create([
+    //         // Data calon siswa
+    //         'id_pendaftaran' => Pendaftaran::id(),
+    //         'user_id' => $request->user_id,
+    //         'nama_panggilan' => $request->nama_panggilan,
+    //         'nama_lengkap' => $request->nama_lengkap,
+    //         'usia' => $request->usia_anak,
+    //         'jenjang' => $request->jenjang,
+    //         'jenis_kelamin' => $request->jenis_kelamin,
+    //         'tempat_lahir' => $request->tempat_lahir,
+    //         'tanggal_lahir' => $request->tanggal_lahir,
+    //         'anak_ke' => $request->anak_ke,
+    //         'agama' => $request->agama,
+    //         'jumlah_saudara' => $request->jumlah_saudara,
+    //         'tinggal_bersama' => $request->tinggal_bersama,
+    //         'pas_foto' => $pathFoto,
+
+    //         'email' => $request->email,
+    //         'no_hp_ayah' => $request->no_hp_ayah,
+    //         'no_hp_ibu' => $request->no_hp_ibu,
+
+    //         'alamat' => $request->alamat,
+
+    //         // Data wali / ortu calon siswa
+    //         'nama_ayah' => $request->nama_ayah,
+    //         'nama_ibu' => $request->nama_ibu,
+    //         'pekerjaan_ayah' => $request->pekerjaan_ayah,
+    //         'pekerjaan_ibu' => $request->pekerjaan_ibu,
+    //         'pendidikan_ayah' => $request->pendidikan_ayah,
+    //         'pendidikan_ibu' => $request->pendidikan_ibu,
+    //         'penghasilan_ayah' => $request->penghasilan_ayah,
+    //         'penghasilan_ibu' => $request->penghasilan_ibu,
+
+    //         // Data kesehatan calon siswa
+    //         'penyakit_anak' => $request->penyakit_anak,
+    //         'makanan_bayi' => $request->makanan_bayi,
+    //         'penyakit_kambuh' => $request->penyakit_kambuh,
+
+    //         // Data tambahan calon siswa
+    //         'perkembangan_moral' => $request->perkembangan_moral,
+    //         'perkembangan_motorik' => $request->perkembangan_motorik,
+    //         'perkembangan_bahasa' => $request->perkembangan_bahasa,
+
+    //         'status_pendaftaran' => 'Belum Terverifikasi',
+    //         'tgl_pendaftaran' => now(),
+    //     ]);
+
+    //     // Membuat data pembayaran
+    //     $kodepembayaran = Pembayaran::id();
+    //     Pembayaran::create([
+    //         'id_pembayaran' => $kodepembayaran,
+    //         'bukti_pembayaran' => "NULL",
+    //         'status' => "Belum Bayar",
+    //         'verifikasi' => false,
+    //         'jatuh_tempo'  => now()->addDays(2)->format('Y-m-d'),
+    //         'tanggal_pembayaran' => now(),
+    //         'total_bayar'  => 3000000,
+    //         'id_pendaftaran' => $kodependaftaran,
+    //     ]);
+
+    //     // Membuat data pengumuman
+    //     $kodepengumuman = Pengumuman::id();
+    //     Pengumuman::create([
+    //         'id_pengumuman' => $kodepengumuman,
+    //         'user_id' => $request->user_id,
+    //         'id_pendaftaran' => $kodependaftaran,
+    //         'hasil_seleksi' => "Belum Seleksi",
+    //         'status' => false,
+    //     ]);
+
+    //     // Membuat data alternatif
+    //     Alternatif::create([
+    //         'nama_alternatif' => $request->nama_lengkap,
+    //         'pendaftaran_id' => $pendaftaran->id,
+    //     ]);
+
+    //     // Membuat data Whatsapp
+    //     $untuk_wa = Pengumuman::orderBy('id', 'DESC')->first();
+    //     Whatsapp::create([
+    //         'pengumuman_id' => $untuk_wa->id,
+    //         'nama' => $request->nama_lengkap,
+    //         'no_hp' => $request->no_hp_ibu,
+    //     ]);
+
+    //     return redirect('/siswa/data-pendaftaran')->with('success', 'Data Tersimpan!!');
+    // }
+
+
 
     public function editRegistration($id_pendaftaran)
     {

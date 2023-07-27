@@ -18,16 +18,28 @@ class AlternatifController extends Controller
 
     public function insertAlternatif(Request $request)
     {
-        request()->validate([
+        // Validasi input
+        $request->validate([
             'nama_alternatif' => 'required|string',
         ]);
 
-        $nama_pendaftaran = Pendaftaran::getName();
-        $Alternatif = new Alternatif();
-        $Alternatif->nama_alternatif = $request->nama_alternatif && $nama_pendaftaran;
-        $Alternatif->save();
+        // Membuat data alternatif
+        $alternatif = new Alternatif();
+        $alternatif->nama_alternatif = $request->nama_alternatif;
+        $alternatif->save();
+
+        // Mengambil data pendaftaran berdasarkan nama pendaftaran
+        $pendaftaran = Pendaftaran::where('nama_lengkap', $request->nama_alternatif)->first();
+
+        // Jika data pendaftaran ditemukan, tambahkan id pendaftaran ke kolom pendaftaran_id di tabel alternatif
+        if ($pendaftaran) {
+            $alternatif->pendaftaran_id = $pendaftaran->id;
+            $alternatif->save();
+        }
+
         return redirect('admin/alternatif/list-alternatif')->with('success', 'Berhasil menambahkan data');
     }
+
 
     public function editAlternatif($id)
     {

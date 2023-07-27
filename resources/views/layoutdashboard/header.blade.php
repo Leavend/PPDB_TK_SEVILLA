@@ -181,7 +181,7 @@
                               <!-- Info Perhitungan -->
                               <li class="nav-item">
                                   <a href="{{ url('admin/perhitungan/list-perhitungan') }}"
-                                      class="nav-link @if (Request::segment(2) == 'penilaian')  @endif">
+                                      class="nav-link @if (Request::segment(2) == 'perhitungan')  @endif">
                                       <i class="nav-icon far fa-circle nav-icon"></i>
                                       <p>
                                           Perhitungan
