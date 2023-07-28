@@ -202,7 +202,6 @@
                                         <div class="form-group-prepend">
                                             <span class="input-group-text">👨‍👩‍👧 Jumlah Saudara</span>
                                         </div>
-                                        <input type="text" class="form-control" name="jumlah_saudara" required />
                                         <select class="form-control" style="width: 100%;" name="jumlah_saudara" required>
                                             <option value="1 Anak">1</option>
                                             <option value="2 Anak">2</option>
