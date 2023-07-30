@@ -205,14 +205,26 @@
               <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                   <div class="image">
                       @if (Auth::user()->profile->foto != null)
-                          <img class="profile-user-img img-fluid img-circle"
+                          <img style="height: 25px; width:25px; object-fit: cover" class="profile-user-img img-fluid img-circle"
                               src="{{ url('upload/profile/' . Auth::user()->profile->foto) }}" alt="User Image">
                       @else
-                          <img src="../../dist/img/user4-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+                          <img src="../../dist/img/UserLogo.png" class="img-circle elevation-2" alt="User Image">
                       @endif
                   </div>
                   <div class="info">
-                      <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                    <?php
+                        $fullName = Auth::user()->name;
+                        $nameWords = explode(' ', $fullName); // Memisahkan kata-kata berdasarkan spasi
+                        if (count($nameWords) >= 2) {
+                            // Jika ada dua kata atau lebih
+                            $firstName = $nameWords[0];
+                            $lastName = $nameWords[1];
+                            echo '<a href="#" class="d-block">' . $firstName . ' ' . $lastName . '</a>';
+                        } else {
+                            // Jika hanya ada satu kata atau kurang
+                            echo '<a href="#" class="d-block">' . $fullName . '</a>';
+                        }
+                    ?>
                   </div>
               </div>
 

@@ -82,7 +82,7 @@
                                                     <td>{{ $key }}</td>
                                                     @foreach ($value as $key_1 => $value_1)
                                                         <td>
-                                                            @if ($value[count($value) - 1] != $key_1)
+                                                            @if ($value[count($value) - 1])
                                                                 {{ $value_1 }}
                                                             @endif
                                                         </td>

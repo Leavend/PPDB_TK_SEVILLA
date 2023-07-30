@@ -21,6 +21,8 @@ class PerhitunganCOntroller extends Controller
         }
 
         // mencari min max tahap normalisasi
+        $nilai = [];
+        $nilai2 = [];
         foreach ($kriteria as $key => $value) {
             foreach ($penilaian as $key_1 => $value_1) {
                 if ($value->id == $value_1->crips->kriteria_id) {
@@ -60,7 +62,17 @@ class PerhitunganCOntroller extends Controller
         foreach ($normalisasi as $key => $value) {
             $ranking[$key][] = array_sum($rank[$key]);
         }
-        arsort($ranking);
+
+
+        foreach ($ranking as $key => $row) {
+            $index[$key]  = $row[6];
+        }
+
+        // Sort the data with attack descending
+        array_multisort($index, SORT_DESC, $ranking);
+
+        // arsort($ranking);
+        // dd($ranking);
 
         return view('admin.perhitungan.list', compact('alternatif', 'kriteria', 'normalisasi', 'ranking', 'header_title'));
     }

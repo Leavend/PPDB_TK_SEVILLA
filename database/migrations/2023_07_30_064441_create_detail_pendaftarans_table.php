@@ -9,15 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('pengumuman', function (Blueprint $table) {
+        Schema::create('detail_pendaftarans', function (Blueprint $table) {
             $table->id();
-            $table->string('id_pengumuman')->unique();
             $table->foreignId('id_pendaftaran')->constrained('pendaftaran')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('user_id')->nullable();
-            $table->string('hasil_seleksi')->nullable();
-            $table->boolean('status');
+            $table->string('foto_ayah')->nullable();
+            $table->string('foto_ibu')->nullable();
+            $table->string('akte')->nullable();
+            $table->string('kk')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengumuman');
+        Schema::dropIfExists('detail_pendaftarans');
     }
 };

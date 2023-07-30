@@ -25,25 +25,42 @@
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     @if (Auth::user()->profile->foto != null)
-                                        <img class="profile-user-img img-fluid img-circle"
+                                        <img style="width: 128px; height: 128px; object-fit: cover" class="profile-user-img img-fluid img-circle"
                                             src="{{ url('upload/profile/' . Auth::user()->profile->foto) }}"
                                             alt="User profile picture">
                                     @else
-                                        <img class="profile-user-img img-fluid img-circle"
-                                            src="{{ url('../../dist/img/user4-128x128.jpg') }}" alt="User profile picture">
+                                        <img style="width: 128px; height: 128px; object-fit: cover" class="profile-user-img img-fluid img-circle"
+                                            src="{{ url('../../dist/img/UserLogo.png') }}" alt="User profile picture">
                                     @endif
                                 </div>
                                 <h3 class="profile-username text-center">{{ Auth::user()->profile->nama }}</h3>
                                 <ul class="list-group list-group-unbordered mb-3">
+                                    @php
+                                        $nama = Auth::user()->profile->nama;
+                                        $nameWords = explode(' ', $nama);
+                                        $formattedNama = '';
+
+                                        if (count($nameWords) > 2) {
+                                            $formattedNama = $nameWords[0] . ' ' . $nameWords[1];
+                                            for ($i = 2; $i < count($nameWords); $i++) {
+                                                $formattedNama .= ' ' . ucfirst($nameWords[$i][0]) . '.';
+                                            }
+                                        } else {
+                                            $formattedNama = $nama;
+                                        }
+                                    @endphp
                                     <li class="list-group-item">
-                                        <b>Nama :</b> <a class="float-right">{{ Auth::user()->profile->nama }}</a>
+                                        <b>Nama Siswa :</b> <a class="float-right">{{ $formattedNama }}</a>
                                     </li>
+                                    {{-- <li class="list-group-item">
+                                        <b>Nama Siswa :</b> <a class="float-right">{{ Auth::user()->profile->nama }}</a>
+                                    </li> --}}
                                     <li class="list-group-item">
                                         <b>No HP Wali :</b> <a
                                             class="float-right">{{ Auth::user()->profile->no_hp ? Auth::user()->profile->no_hp : '-' }}</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Email :</b> <a class="float-right">{{ Auth::user()->profile->email }}</a>
+                                        <b>Email Wali :</b> <a class="float-right">{{ Auth::user()->profile->email }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -95,7 +112,7 @@
                                         @endif
                                         <div class="card-body">
 
-                                            <strong><i class="fas fa-user mr-1"></i> Nama </strong>
+                                            <strong><i class="fas fa-user mr-1"></i> Nama Siswa</strong>
                                             <p class="text-muted">
                                                 {{ Auth::user()->profile->nama ? Auth::user()->profile->nama : '-' }}</p>
                                             <hr>
@@ -141,7 +158,7 @@
 
                                             <input type="hidden" name="userid" value="{{ auth()->user()->id }}">
                                             <div class="form-group row">
-                                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                                <label for="inputName" class="col-sm-2 col-form-label">Nama Siswa</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" disabled="disabled" style="width: 100%;"
                                                         class="form-control" id="inputName" placeholder="Name"
@@ -164,9 +181,22 @@
                                                 <div class="col-sm-10">
                                                     <select class="form-control wide" style="width: 100%;" required
                                                         name="jenis_kelamin">
+                                                    @php
+                                                        $jenisKelamin = ["Pilih Jenis Kelamin","laki-laki","perempuan"]
+                                                    @endphp
+                                                    @if (isset(Auth::user()->profile->jenis_kelamin))
+                                                        @foreach ($jenisKelamin as $jk)
+                                                            @if (Auth::user()->profile->jenis_kelamin == $jk)
+                                                                <option value="{{ $jk }}" selected>{{ $jk }}</option>
+                                                            @else
+                                                                <option value="{{ $jk }}">{{ $jk }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    @else
                                                         <option value="">Pilih Jenis Kelamin</option>
                                                         <option value="laki-laki">Laki-Laki</option>
                                                         <option value="perempuan">Perempuan</option>
+                                                    @endif
                                                     </select>
                                                 </div>
                                             </div>
@@ -185,7 +215,7 @@
                                                     Lahir</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="inputTempatLahir"
-                                                        name="tempat_lahir" value="{{ old('tempat_lahir') }}">
+                                                        name="tempat_lahir" value="{{ Auth::user()->profile->tempat_lahir ? Auth::user()->profile->tempat_lahir : '' }}">
                                                 </div>
                                             </div>
 
@@ -194,16 +224,16 @@
                                                     Lahir</label>
                                                 <div class="col-sm-10">
                                                     <input type="date" class="form-control" id="inputTanggalLahir"
-                                                        name="tanggal_lahir" required value="{{ old('tanggal_lahir') }}">
+                                                        name="tanggal_lahir" required value="{{ Auth::user()->profile->tanggal_lahir ? Auth::user()->profile->tanggal_lahir : '' }}">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
                                                 <label for="inputNoHP" class="col-sm-2 col-form-label">Nomor HP</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputNoHP"
+                                                    <input type="number" class="form-control" id="inputNoHP"
                                                         name="no_hp" placeholder="Nomor HP"
-                                                        value="{{ old('no_hp') }}">
+                                                        value="{{ Auth::user()->profile->no_hp ? Auth::user()->profile->no_hp : '' }}">
                                                 </div>
                                             </div>
 

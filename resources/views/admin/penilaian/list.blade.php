@@ -42,6 +42,30 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @forelse ($hasil as $alt => $valt)
+                                                    <tr>
+                                                        <input type="hidden" value="{{ $valt[0] }}"
+                                                            name="alternatif_id[]">
+                                                        <td>{{ $valt[1] }}</td>
+                                                        @for ($i = 2; $i < count($valt); $i++)
+                                                        <td>
+                                                            <select name="crips_id[{{ $valt[0] }}][]" class="form-control">
+                                                                @foreach ($crips as $c )
+                                                                    @if ($valt[$i] == $c->id)
+                                                                        <option value="{{ $valt[$i] }}">{{ $c->nama_crips }}</option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                        @endfor
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td>Tidak ada Data</td>
+                                                    </tr>
+                                                @endforelse
+                                            </tbody>
+                                            {{-- <tbody>
                                                 @forelse ($alternatif as $alt => $valt)
                                                     <tr>
                                                         <input type="hidden" value="{{ $valt->id }}"
@@ -64,7 +88,7 @@
                                                         <td>Tidak ada Data</td>
                                                     </tr>
                                                 @endforelse
-                                            </tbody>
+                                            </tbody> --}}
                                         </table>
                                     </form>
                                 </div>

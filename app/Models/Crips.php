@@ -14,13 +14,18 @@ class Crips extends Model
 
     public function kriteria()
     {
-        return $this->belongsTo(Kriteria::class, 'kriteria_id');
+        return $this->belongsTo(Kriteria::class);
     }
 
+    public function penilaian()
+    {
+        return $this->hasMany(Penilaian::class, 'crips_id');
+    }
 
     static public function getCrips()
     {
         $return = self::orderBy('nama_crips', 'ASC')->get();
         return $return;
     }
+
 }

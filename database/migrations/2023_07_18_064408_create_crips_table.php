@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('crips', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('kriteria_id');
+            $table->foreignId('kriteria_id')->constrained('kriterias')->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama_crips');
             $table->integer('bobot');
             $table->timestamps();

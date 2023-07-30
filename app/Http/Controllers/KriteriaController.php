@@ -18,7 +18,7 @@ class KriteriaController extends Controller
             // Membuat data kriteria berdasarkan kolom pada tabel pendaftaran
             $kriteriaData = [
                 [
-                    'nama_kriteria' => 'Penghasilan Ayah',
+                    'nama_kriteria' => 'Penghasilan Orang Tua',
                     'attribut' => 'Benefit',
                     'bobot' => 30,
                 ],
@@ -28,7 +28,7 @@ class KriteriaController extends Controller
                     'bobot' => 25,
                 ],
                 [
-                    'nama_kriteria' => 'Perkembangan Moral',
+                    'nama_kriteria' => 'Jarak Tempuh',
                     'attribut' => 'Benefit',
                     'bobot' => 20,
                 ],
@@ -115,27 +115,27 @@ class KriteriaController extends Controller
             // Membuat data kriteria berdasarkan kolom pada tabel pendaftaran
             $cripsData = [
                 [
-                    'nama_crips' => '<= 1.500.000',
+                    'nama_crips' => '< Rp. 1.500.000',
                     'kriteria_id' => '1',
                     'bobot' => 1,
                 ],
                 [
-                    'nama_crips' => 'Rp1.500.000 - <= Rp 2.500.000',
+                    'nama_crips' => 'Rp1.500.000 - Rp 2.449.000',
                     'kriteria_id' => '1',
                     'bobot' => 2,
                 ],
                 [
-                    'nama_crips' => 'Rp2.500.000 - <= Rp 3.500.000',
+                    'nama_crips' => 'Rp2.500.000 - Rp 3.449.000',
                     'kriteria_id' => '1',
                     'bobot' => 3,
                 ],
                 [
-                    'nama_crips' => 'Rp3.500.000 - <= Rp 4.500.000',
+                    'nama_crips' => 'Rp3.500.000 - Rp 4.500.000',
                     'kriteria_id' => '1',
                     'bobot' => 4,
                 ],
                 [
-                    'nama_crips' => '=> Rp4.500.000',
+                    'nama_crips' => '> Rp4.500.000',
                     'kriteria_id' => '1',
                     'bobot' => 5,
                 ],
@@ -160,49 +160,54 @@ class KriteriaController extends Controller
                     'bobot' => 2,
                 ],
                 [
-                    'nama_crips' => '>=5 Anak',
+                    'nama_crips' => '>= 5 Anak',
                     'kriteria_id' => '2',
                     'bobot' => 1,
                 ],
                 [
-                    'nama_crips' => 'level 1',
+                    'nama_crips' => 'Jauh',
                     'kriteria_id' => '3',
                     'bobot' => 1,
                 ],
                 [
-                    'nama_crips' => 'level 2',
+                    'nama_crips' => 'Cukup Jauh',
                     'kriteria_id' => '3',
                     'bobot' => 2,
                 ],
                 [
-                    'nama_crips' => 'level 3',
+                    'nama_crips' => 'Dekat',
                     'kriteria_id' => '3',
                     'bobot' => 3,
                 ],
                 [
-                    'nama_crips' => 'level 4',
-                    'kriteria_id' => '3',
-                    'bobot' => 4,
-                ],
-                [
-                    'nama_crips' => 'level 1',
+                    'nama_crips' => 'Kurang Terampil',
                     'kriteria_id' => '4',
                     'bobot' => 1,
                 ],
                 [
-                    'nama_crips' => 'level 2',
+                    'nama_crips' => 'Cukup Terampil',
                     'kriteria_id' => '4',
                     'bobot' => 2,
                 ],
                 [
-                    'nama_crips' => 'level 1',
+                    'nama_crips' => 'Sangat Terampil',
+                    'kriteria_id' => '4',
+                    'bobot' => 3,
+                ],
+                [
+                    'nama_crips' => 'Terbatas',
                     'kriteria_id' => '5',
                     'bobot' => 1,
                 ],
                 [
-                    'nama_crips' => 'level 2',
+                    'nama_crips' => 'Cukup Lancar',
                     'kriteria_id' => '5',
                     'bobot' => 2,
+                ],
+                [
+                    'nama_crips' => 'Lancar',
+                    'kriteria_id' => '5',
+                    'bobot' => 3,
                 ],
             ];
 

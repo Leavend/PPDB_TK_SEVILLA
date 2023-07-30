@@ -8,6 +8,7 @@ use App\Models\ProfileUser;
 use App\Models\User;
 use App\Models\Pendaftaran;
 use App\Models\Pembayaran;
+use App\Models\detailPendaftaran;
 use App\Models\Whatsapp;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
@@ -45,6 +46,8 @@ class FormController extends Controller
 
     public function insertRegistration(Request $request)
     {
+
+
         $kodependaftaran = Pendaftaran::id();
 
         $file = $request->file('foto');
@@ -53,15 +56,39 @@ class FormController extends Controller
         $file->move($namaFolder, $nama_file);
         $pathFoto = $namaFolder . "/" . $nama_file;
 
+        $file1 = $request->file('pas_fotoAyah');
+        $nama_file1 = "PasfotoAyah" . time() . "-" . $file1->getClientOriginalName();
+        $namaFolder1 = 'data pendaftar/' . $kodependaftaran . '/berkas tambahan';
+        $file1->move($namaFolder1, $nama_file1);
+        $pasAyah = $namaFolder1 . "/" . $nama_file1;
+
+        $file2 = $request->file('pas_fotoIbu');
+        $nama_file2 = "PasfotoIbu" . time() . "-" . $file2->getClientOriginalName();
+        $namaFolder2 = 'data pendaftar/' . $kodependaftaran . '/berkas tambahan';
+        $file2->move($namaFolder2, $nama_file2);
+        $pasIbu = $namaFolder2 . "/" . $nama_file2;
+
+        $file3 = $request->file('akte');
+        $nama_file3 = "Akte" . time() . "-" . $file3->getClientOriginalName();
+        $namaFolder3 = 'data pendaftar/' . $kodependaftaran . '/berkas tambahan';
+        $file3->move($namaFolder3, $nama_file3);
+        $akte = $namaFolder3 . "/" . $nama_file3;
+
+        $file4 = $request->file('kk');
+        $nama_file4 = "Kartukeluarga" . time() . "-" . $file4->getClientOriginalName();
+        $namaFolder4 = 'data pendaftar/' . $kodependaftaran . '/berkas tambahan';
+        $file4->move($namaFolder4, $nama_file4);
+        $kk = $namaFolder4 . "/" . $nama_file4;
+
         // $fileftberkas_ortu = $request->file('ftberkas_ortu');
         // $nama_fileftberkas_ortu = "BerkasOrtu" . time() . "-" . $fileftberkas_ortu->getClientOriginalName();
         // $namaFolderftgaji = 'data pendaftar/' . $kodependaftaran;
         // $fileftberkas_ortu->move($namaFolderftgaji, $nama_fileftberkas_ortu);
         // $pathOrtu = $namaFolderftgaji . "/" . $nama_fileftberkas_ortu;
 
-
-
         Pendaftaran::create([
+
+        // $listDaftar= ([
 
             // data calon siswa
             'id_pendaftaran' => $kodependaftaran,
@@ -98,6 +125,7 @@ class FormController extends Controller
             // penghasilan
             'penghasilan_ayah' => $request->penghasilan_ayah,
             'penghasilan_ibu' => $request->penghasilan_ibu,
+            'penghasilan_orang_tua' => max($request->penghasilan_ayah,$request->penghasilan_ibu),
             // 'berkas_ortu' =>  $pathOrtu,
 
             // data kesehatan calon siswa
@@ -107,7 +135,7 @@ class FormController extends Controller
             // 'obat' => $request->obat,
 
             // data tambahan calon siswa
-            'perkembangan_moral' => $request->perkembangan_moral,
+            'jarak_tempuh' => $request->jarak_tempuh,
             'perkembangan_motorik' => $request->perkembangan_motorik,
             'perkembangan_bahasa' => $request->perkembangan_bahasa,
 
@@ -116,9 +144,16 @@ class FormController extends Controller
             // 'created_at' => now()
         ]);
 
-
         $pendaftaranbaru = Pendaftaran::orderBy('id', 'DESC')->first();
         $id_pendaftaran = $pendaftaranbaru->id;
+
+        detailPendaftaran::create([
+            'id_pendaftaran' => $id_pendaftaran,
+            'foto_ayah' => $pasAyah,
+            'foto_ibu' => $pasIbu,
+            'akte' => $akte,
+            'kk' => $kk,
+        ]);
 
         //tambah insert
         $kodepembayaran = Pembayaran::id();
@@ -379,6 +414,7 @@ class FormController extends Controller
             // penghasilan
             'penghasilan_ayah' => $request->penghasilan_ayah,
             'penghasilan_ibu' => $request->penghasilan_ibu,
+            'penghasilan_orang_tua' => max($request->penghasilan_ayah, $request->penghasilan_ibu),
             // 'berkas_ortu' =>  $pathOrtu,
 
             // data kesehatan calon siswa

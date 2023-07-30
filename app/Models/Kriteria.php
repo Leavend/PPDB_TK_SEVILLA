@@ -23,6 +23,11 @@ class Kriteria extends Model
         return $this->hasMany(Crips::class, 'kriteria_id');
     }
 
+    public function penilaian()
+    {
+        return $this->hasMany(Penilaian::class, 'kriteria_id');
+    }
+
     static public function getKriteria()
     {
         $return = self::orderBy('nama_kriteria', 'ASC')->get();

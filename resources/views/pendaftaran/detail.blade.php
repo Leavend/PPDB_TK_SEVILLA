@@ -197,15 +197,13 @@
 
 
                                 <div class="card-body">
-
+                                    <div class="row">
+                                        <div class="pl-2 border-bottom-1 pb-3">
+                                            <h4 class="text-primary"><b>PROFIL SISWA</b></h4>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-6">
-
-                                            <div class="row mb-2">
-                                                <div class="pt-4 border-bottom-1 pb-3">
-                                                    <h4 class="text-primary"><b>PROFIL SISWA</b></h4>
-                                                </div>
-                                            </div>
                                             <div class="row mb-2">
                                                 <div class="col-sm-4 col-6">
                                                     <h5 class="f-w-400"><strong>Nomor Pendaftaran</strong></h5>
@@ -288,10 +286,10 @@
                                                         <?php
                                                         // Misalkan $viewData->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
                                                         $originalDate = $viewData->tgl_pendaftaran;
-                                                        
+
                                                         // Ubah format tanggal menjadi "d-m-Y" (tanggal-bulan-tahun)
                                                         $formattedDate = date('d-m-Y', strtotime($originalDate));
-                                                        
+
                                                         // Tampilkan hasilnya
                                                         echo $formattedDate;
                                                         ?>
@@ -300,9 +298,8 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="pt-4 border-bottom-1 pb-3">
-                                                <img src="{{ asset($viewData->pas_foto) }}" width="250px"
-                                                    height="300" alt="">
+                                            <div class="border-bottom-1 pb-3">
+                                                <img src="{{ asset($viewData->pas_foto) }}" style="width: 250px; height: 350px; object-fit: cover" alt="">
                                             </div>
                                         </div>
                                     </div>

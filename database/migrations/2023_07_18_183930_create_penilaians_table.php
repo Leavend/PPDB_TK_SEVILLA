@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('penilaian', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('alternatif_id');
-            $table->unsignedBigInteger('crips_id');
+            $table->foreignId('alternatif_id')->constrained('alternatif')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('crips_id')->constrained('crips')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

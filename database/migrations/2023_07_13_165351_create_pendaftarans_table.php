@@ -28,7 +28,7 @@ return new class extends Migration
             $table->date('tanggal_lahir')->nullable();
             $table->string('anak_ke')->nullable();
             $table->string('agama')->nullable();
-            $table->string('jumlah_saudara')->nullable();
+            $table->integer('jumlah_saudara')->nullable();
             $table->string('tinggal_bersama')->nullable();
             $table->string('pas_foto')->nullable();
 
@@ -47,8 +47,9 @@ return new class extends Migration
             $table->string('pekerjaan_ibu')->nullable();
             $table->string('pendidikan_ayah')->nullable();
             $table->string('pendidikan_ibu')->nullable();
-            $table->string('penghasilan_ayah')->nullable();
-            $table->string('penghasilan_ibu')->nullable();
+            $table->integer('penghasilan_ayah')->nullable();
+            $table->integer('penghasilan_ibu')->nullable();
+            $table->integer('penghasilan_orang_tua')->nullable();
 
             //data kesehatan anak
             $table->string('penyakit_anak')->nullable();
@@ -56,9 +57,9 @@ return new class extends Migration
             $table->string('penyakit_kambuh')->nullable();
 
             //data tambahan anak
-            $table->string('perkembangan_moral')->nullable();
-            $table->string('perkembangan_motorik')->nullable();
-            $table->string('perkembangan_bahasa')->nullable();
+            $table->integer('jarak_tempuh')->nullable();
+            $table->integer('perkembangan_motorik')->nullable();
+            $table->integer('perkembangan_bahasa')->nullable();
 
 
             $table->string('status_pendaftaran')->nullable();

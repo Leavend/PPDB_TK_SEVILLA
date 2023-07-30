@@ -1,0 +1,31 @@
+/* Menghilangkan tombol panah pada input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield; /* Untuk Firefox */
+}
+
+@media print {
+    /* Atur tata letak untuk mencetak */
+    .header-kartu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-kartu {
+        flex: 2;
+        text-align: center;
+        margin-right: 25px;
+        margin-left: 25px;
+    }
+
+    .text-kartu {
+        flex: 10;
+        text-align: center;
+    }
+}

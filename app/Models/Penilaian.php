@@ -13,7 +13,12 @@ class Penilaian extends Model
 
     public function crips()
     {
-        return $this->belongsTo(Crips::class, 'crips_id');
+        return $this->belongsTo(Crips::class);
+    }
+
+    public function kriteria()
+    {
+        return $this->belongsTo(Kriteria::class);
     }
 
     public function alternatif()

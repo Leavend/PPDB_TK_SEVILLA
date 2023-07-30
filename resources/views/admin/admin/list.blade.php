@@ -24,7 +24,7 @@
         <div class="row">
           <div class="col-md-12">
 
-            
+
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Cari Admin</h3>
@@ -39,11 +39,11 @@
                     <div class="form-group col-md-3">
                       <label>Email</label>
                       <input type="text" value="{{ Request::get('email') }}" class="form-control" name="email" placeholder="Email">
-                    </div>  
+                    </div>
                     <div class="form-group col-md-3">
                       <label>Date</label>
                       <input type="date" value="{{ Request::get('date') }}" class="form-control" name="date" placeholder="Date">
-                    </div>  
+                    </div>
                     <div class="form-group col-md-3">
                       <button class="btn btn-primary" type="submit" style="margin-top: 30px">Search</button>
                       <a href="{{ url('admin/admin/list-admin') }}" class="btn btn-success" style="margin-top: 30px">Clear</a>
@@ -74,15 +74,40 @@
                   <tbody>
                     @foreach ($getRecord as $value)
                         <tr>
-                          <td>{{ $value->id }}</td>
+                          <td>{{ $loop->iteration }}</td>
                           <td>{{ $value->name }}</td>
                           <td>{{ $value->email }}</td>
                           <td>{{ date('m-d-Y H:i A', strtotime($value->created_at)) }}</td>
                           <td>
                             <a href="{{ url('admin/admin/edit-admin/' .$value->id) }}" class="btn btn-primary">Edit</a>
-                            <a href="{{ url('admin/admin/delete-admin/' .$value->id) }}" class="btn btn-danger">Delete</a>
+                            @if (auth()->check() && auth()->user()->id != $value->id)
+                            <a data-toggle="modal" data-target="#deleteModal" href="{{ url('admin/admin/delete-admin/' .$value->id) }}" class="btn btn-danger">Delete</a>
+                            @endif
                           </td>
                         </tr>
+                        {{-- modal hapus data --}}
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <form action="{{ url('admin/admin/delete-admin/' .$value->id) }}" method="POST">
+                                  @csrf
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel">Hapus Data</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Yakin Menghapus Data ?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                     @endforeach
                   </tbody>
                 </table>

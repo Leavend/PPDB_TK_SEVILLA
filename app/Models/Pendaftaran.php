@@ -50,6 +50,7 @@ class Pendaftaran extends Model
         'pendidikan_ibu',
         'penghasilan_ayah',
         'penghasilan_ibu',
+        'penghasilan_orang_tua',
 
         //data kesehatan anak
         'penyakit_anak',
@@ -57,7 +58,7 @@ class Pendaftaran extends Model
         'penyakit_kambuh',
 
         //data tambahan
-        'perkembangan_moral',
+        'jarak_tempuh',
         'perkembangan_motorik',
         'perkembangan_bahasa',
 
@@ -140,12 +141,16 @@ class Pendaftaran extends Model
 
     public function pengumuman()
     {
-        return $this->hasMany(Pengumuman::class);
+        return $this->hasMany(Pengumuman::class, 'pengumuman_id');
     }
 
     public function alternatif()
     {
         return $this->hasOne(Alternatif::class, 'alternatif_id');
+    }
+    public function detail()
+    {
+        return $this->hasOne(detailPendaftaran::class, 'pengumuman_id');
     }
 
     // public static function boot()

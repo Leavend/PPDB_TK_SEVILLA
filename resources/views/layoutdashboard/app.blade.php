@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="../../../plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="../../../plugins/summernote/summernote-bs4.min.css">
+  <!-- style biasa -->
+  <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}">
 </head>
 @yield('style')
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -40,7 +42,7 @@
   @yield('content')
 
   @include('layoutdashboard.footer')
-  
+
 </div>
 <!-- ./wrapper -->
 

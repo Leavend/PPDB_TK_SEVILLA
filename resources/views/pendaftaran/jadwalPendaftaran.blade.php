@@ -80,10 +80,10 @@ PPDB
             <div class="text-start">
                 <ul>
                     <li>Mangisi Formulir Pendaftaran</li>
-                    <li>Fotocopy Akte Kelahiran 1 lembar</li>
-                    <li>Fotocopy Kartu Keluarga (KK) 1 lembar</li>
-                    <li>Foto orang tua ukuran 3 x 4 berwarna <br> masing-masing 1 lembar</li>
-                    <li>Foto anak ukuran 3 x 4 berwarna 1 lembar</li>
+                    <li>Upload Kelahiran 1 lembar</li>
+                    <li>Upload Kartu Keluarga (KK) 1 lembar</li>
+                    <li>Upload Foto orang tua ukuran 3 x 4 berwarna <br> masing-masing</li>
+                    <li>Upload Foto anak ukuran 3 x 4 berwarna</li>
                 </ul>
             </div>
         </div>
