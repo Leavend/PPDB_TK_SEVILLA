@@ -11,7 +11,7 @@ PPDB
     <div class="container">
       <div class="row">
         <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up" style="color: #3498db">PPDB Online Coy</h1>
+          <h1 data-aos="fade-up" style="color: #3498db">PPDB Online</h1>
           <h2 data-aos="fade-up" data-aos-delay="400" style="color: #3498db">Ayo Segera Daftar Kuota Terbatas !</h2>
           <h1 data-aos="fade-up" data-aos-delay="400">TK ISLAM SEVILLA AL FATAH</h1>
           <h5 data-aos="fade-up" data-aos-delay="400">Akreditasi: B</h5>
