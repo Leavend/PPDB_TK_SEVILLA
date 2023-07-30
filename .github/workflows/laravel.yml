@@ -17,4 +17,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }} # Menggunakan hostname atau alamat IP instance EC2 AWS Anda
           username: ${{ secrets.SSH_USERNAME }} # Menggunakan username untuk SSH ke instance EC2 AWS Anda
           key: ${{ secrets.SSH_PRIVATE_KEY }} # Menggunakan kunci privat SSH untuk otentikasi
-          script: "cd /var/www/PPDB_TK_SEVILLA ./deployer.sh"
+          script: "cd /var/www/PPDB_TK_SEVILLA && ./deployer.sh"
