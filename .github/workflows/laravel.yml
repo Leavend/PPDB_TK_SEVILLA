@@ -2,21 +2,19 @@ name: Laravel
 
 on:
   push:
-    branches: [ "Version5" ]
+    branches: ["Version5"]
   pull_request:
-    branches: [ "Version5" ]
+    branches: ["Version5"]
 
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
-    
-    steps: 
-    - name: Deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}  # Menggunakan hostname atau alamat IP instance EC2 AWS Anda
-        username: ${{ secrets.SSH_USERNAME }}  # Menggunakan username untuk SSH ke instance EC2 AWS Anda
-        key: ${{ secrets.SSH_PRIVATE_KEY }}  # Menggunakan kunci privat SSH untuk otentikasi
-        script: |
-          cd /var/www/PPDB_TK_SEVILLA
-          ./deployer.sh
+
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }} # Menggunakan hostname atau alamat IP instance EC2 AWS Anda
+          username: ${{ secrets.SSH_USERNAME }} # Menggunakan username untuk SSH ke instance EC2 AWS Anda
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # Menggunakan kunci privat SSH untuk otentikasi
+          script: "cd /var/www/PPDB_TK_SEVILLA ./deployer.sh"
