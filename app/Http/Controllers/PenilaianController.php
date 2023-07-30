@@ -15,7 +15,12 @@ class PenilaianController extends Controller
     public function list()
     {
         // $alternatif = Alternatif::with('penilaian.crips')->get();
-        $alternatif = Alternatif::with('pendaftaran')->get();
+        // $alternatif = Alternatif::with('pendaftaran')->get();
+
+        $alternatif = Alternatif::whereHas('pendaftaran', function ($query) {
+            $query->where('status_pendaftaran', 'Terverifikasi');
+        })->get();
+
         $header_title = 'List Penilaian';
         $kriteria = Kriteria::with('crips')->orderBy('nama_kriteria', 'ASC')->get();
         $crips = Crips::all();

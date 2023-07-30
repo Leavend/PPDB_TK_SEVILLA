@@ -234,10 +234,10 @@
                                                             <td><strong><?php
                                                             // Misalkan $x->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
                                                             $originalDate = $x->tgl_pendaftaran;
-                                                            
+
                                                             // Ubah format tanggal menjadi "d-m-Y" (tanggal-bulan-tahun)
                                                             $formattedDate = date('d-m-Y', strtotime($originalDate));
-                                                            
+
                                                             // Tampilkan hasilnya
                                                             echo $formattedDate;
                                                             ?></strong>
@@ -313,10 +313,10 @@
                                                                 <td><strong><?php
                                                                 // Misalkan $x->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
                                                                 $originalDate = $x->tgl_pendaftaran;
-                                                                
+
                                                                 // Ubah format tanggal menjadi "d-m-Y" (tanggal-bulan-tahun)
                                                                 $formattedDate = date('d-m-Y', strtotime($originalDate));
-                                                                
+
                                                                 // Tampilkan hasilnya
                                                                 echo $formattedDate;
                                                                 ?></strong>
@@ -380,10 +380,10 @@
                                                                 <td><strong><?php
                                                                 // Misalkan $x->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
                                                                 $originalDate = $x->tgl_pendaftaran;
-                                                                
+
                                                                 // Ubah format tanggal menjadi "d-m-Y" (tanggal-bulan-tahun)
                                                                 $formattedDate = date('d-m-Y', strtotime($originalDate));
-                                                                
+
                                                                 // Tampilkan hasilnya
                                                                 echo $formattedDate;
                                                                 ?></strong>
@@ -444,10 +444,10 @@
                                                                 <td><strong><?php
                                                                 // Misalkan $x->tgl_pendaftaran adalah tanggal yang ingin Anda ubah formatnya
                                                                 $originalDate = $x->tgl_pendaftaran;
-                                                                
+
                                                                 // Ubah format tanggal menjadi "d-m-Y" (tanggal-bulan-tahun)
                                                                 $formattedDate = date('d-m-Y', strtotime($originalDate));
-                                                                
+
                                                                 // Tampilkan hasilnya
                                                                 echo $formattedDate;
                                                                 ?></strong>

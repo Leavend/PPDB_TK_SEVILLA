@@ -6,9 +6,17 @@ use App\Models\Alternatif;
 use App\Models\Kriteria;
 use App\Models\Penilaian;
 use Illuminate\Http\Request;
+use App\Http\Controllers\WhatsappController;
 
 class PerhitunganCOntroller extends Controller
 {
+    protected $whatsappController;
+
+    public function __construct(WhatsappController $whatsappController)
+    {
+        $this->whatsappController = $whatsappController;
+    }
+
     public function list()
     {
         $alternatif = Alternatif::with('penilaian.crips')->get();
@@ -71,9 +79,21 @@ class PerhitunganCOntroller extends Controller
         // Sort the data with attack descending
         array_multisort($index, SORT_DESC, $ranking);
 
-        // arsort($ranking);
-        // dd($ranking);
 
-        return view('admin.perhitungan.list', compact('alternatif', 'kriteria', 'normalisasi', 'ranking', 'header_title'));
+        // pengumuman dan notifikasi
+        $siswaLolos = array_slice($ranking,0,2);
+        $siswaTidakLolos = array_slice($ranking,2);
+        $names = array_keys($siswaLolos);
+        $names2 = array_keys($siswaTidakLolos);
+
+        // $this->whatsappController->store($names);
+
+
+        return view('admin.perhitungan.list', compact('alternatif', 'kriteria', 'normalisasi', 'ranking', 'header_title', 'names','names2'));
+    }
+
+    public function announchement()
+    {
+        dd($names);
     }
 }

@@ -31,8 +31,7 @@ use App\Http\Controllers\PerhitunganController;
 //     return view('welcome');
 // });
 
-//notif whatsapp
-Route::resource('wa', WhatsappController::class);
+
 
 
 // Route AuthController
@@ -118,7 +117,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/admin/edit-admin/{id}', [AdminController::class, 'updateAdmin']);
     Route::get('admin/admin/delete-admin/{id}', [AdminController::class, 'deleteAdmin']);
 
-    // Route Pendaftaran 
+    // Route Pendaftaran
     // Route::get('admin/form-registration', [PendaftaranController::class, 'inputpendaftaran']);
     // Route::post('/save-registration', [PendaftaranController::class, 'simpanpendaftaran']);
     Route::get('admin/edit-pendaftaran/{id_pendaftaran}', [FormController::class, 'editRegistration']);
@@ -174,7 +173,8 @@ Route::group(['middleware' => 'admin'], function () {
     // Route Perhitungan
 
 
-    // Route Pengumuman
+    // Route Pengumuman (notif/whatsapp)
+    Route::resource('admin/pengumuman', WhatsappController::class);
 
 });
 

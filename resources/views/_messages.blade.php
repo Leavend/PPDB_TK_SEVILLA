@@ -9,7 +9,7 @@
 @endif
 
 @if(Session::has('error'))
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Info!</strong>
     {{ session('error') }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -19,13 +19,13 @@
 @endif
 
 {{-- @if(!@empty(session('success')))
-  <div class="alert alert-success alert-dismissible fade in" role="alert"> 
+  <div class="alert alert-success alert-dismissible fade in" role="alert">
     {{ session('success') }}
-  </div> 
+  </div>
 @endif
 
 @if(!@empty(session('success')))
-  <div class="alert alert-success alert-dismissible fade in" role="alert"> 
+  <div class="alert alert-success alert-dismissible fade in" role="alert">
     {{ session('success') }}
-  </div> 
+  </div>
 @endif --}}

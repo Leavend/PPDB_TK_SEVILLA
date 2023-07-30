@@ -103,7 +103,14 @@
                                 <h3 class="card-title">Tahap Ranking</h3>
                             </div>
                             <div class="card-body">
+                                @include('_messages')
                                 <div class="table-responsive">
+                                    <form action="/admin/pengumuman" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="data" id="data_input" value="{{ json_encode($names) }}">
+                                        <input type="hidden" name="data2" id="data_input2" value="{{ json_encode($names2) }}">
+                                        <button class="btn btn-sm btn-primary float-right" type="submit">Umumkan</button>
+                                    </form><br><br>
                                     <table class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
